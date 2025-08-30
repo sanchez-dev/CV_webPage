@@ -1,96 +1,132 @@
 import { useTranslation } from 'react-i18next';
-import { motion } from 'framer-motion';
+import { useState, useEffect } from 'react';
 import profileImage from '../assets/me.png';
 
 const Hero = () => {
   const { t } = useTranslation();
+  const [scrollY, setScrollY] = useState(0);
+  const [imageLoaded, setImageLoaded] = useState(false);
+  const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 });
+  const [isOverInteractive, setIsOverInteractive] = useState(false);
+  const [showBlur, setShowBlur] = useState(true);
+
+  useEffect(() => {
+    let animationId;
+    
+    const handleScroll = () => {
+      if (animationId) {
+        cancelAnimationFrame(animationId);
+      }
+      
+      animationId = requestAnimationFrame(() => {
+        const element = document.querySelector('.parallax-element');
+        if (element) {
+          const scrolled = window.scrollY;
+          const speed = scrolled * 0.4;
+          const maxOffset = Math.min(speed, 600);
+          element.style.transform = `translate(-50%, calc(-50% - 30px + ${maxOffset}px))`;
+        }
+      });
+    };
+    
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      if (animationId) {
+        cancelAnimationFrame(animationId);
+      }
+    };
+  }, []);
+
+  useEffect(() => {
+    let restoreBlurTimer;
+    let hasStartedTimer = false;
+
+    const handleMouseMove = (e) => {
+      setCursorPosition({ x: e.clientX, y: e.clientY });
+      
+      // Check if cursor is over an interactive element
+      const target = e.target;
+      const isInteractive = target.tagName === 'BUTTON' || 
+                           target.tagName === 'A' || 
+                           target.closest('button') || 
+                           target.closest('a') ||
+                           target.style.cursor === 'pointer' ||
+                           getComputedStyle(target).cursor === 'pointer';
+      
+      setIsOverInteractive(isInteractive);
+      
+      if (isInteractive) {
+        // Clear any existing timer and remove blur immediately
+        clearTimeout(restoreBlurTimer);
+        hasStartedTimer = false;
+        setShowBlur(false);
+      } else if (!showBlur && !hasStartedTimer) {
+        // Only start timer once when blur is off and timer hasn't started yet
+        hasStartedTimer = true;
+        restoreBlurTimer = setTimeout(() => {
+          setShowBlur(true);
+          hasStartedTimer = false;
+        }, 3000);
+      }
+    };
+
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove);
+      clearTimeout(restoreBlurTimer);
+    };
+  }, [showBlur]);
 
   return (
-    <section className="min-h-screen bg-background pt-20 px-6">
-      <div className="max-w-7xl mx-auto">
-        <div className="grid lg:grid-cols-2 gap-16 items-center min-h-[80vh]">
-          {/* Left Side - Text Content */}
-          <motion.div 
-            className="space-y-8"
-            initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-          >
-            {/* Main Title */}
-            <div className="space-y-2">
-              <h1 className="text-6xl lg:text-8xl font-tt-norms font-bold text-primary uppercase leading-none">
-                {t('hero.title')}
-              </h1>
-              <h2 className="text-6xl lg:text-8xl font-tt-norms font-bold text-primary uppercase leading-none">
-                {t('hero.subtitle')}
-              </h2>
-              <h3 className="text-3xl lg:text-4xl font-tt-norms font-normal text-primary uppercase tracking-wider mt-4">
-                {t('hero.role')}
-              </h3>
-            </div>
+    <section className="min-h-screen bg-background px-6 relative">
+      {/* Profile Image - Background with parallax effect */}
+      <div 
+        className="absolute top-1/2 left-1/2 z-0 parallax-element"
+        style={{ 
+          transform: 'translate(-50%, calc(-50% - 30px))',
+          willChange: 'transform'
+        }}
+      >
+        <img 
+          src={profileImage}
+          alt="Jose Luis Sanchez"
+          className={`w-[639px] h-[639px] lg:w-[799px] lg:h-[799px] object-contain will-change-transform transition-all duration-1000 ease-out ${
+            imageLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
+          }`}
+          onLoad={() => setImageLoaded(true)}
+        />
+      </div>
 
-            {/* Introduction Text */}
-            <div className="bg-white p-8 rounded-lg shadow-sm max-w-md">
-              <p className="text-black font-tt-norms text-lg">
-                <span className="font-normal">{t('hero.intro')} </span>
-                <span className="font-bold text-primary">{t('hero.name')}</span>
-                <br />
-                <span className="font-normal">
-                  {t('hero.description')}
-                </span>
-              </p>
-            </div>
-          </motion.div>
+      <div className="max-w-7xl mx-auto relative z-20">
+        <div className="min-h-[100vh] flex flex-col items-start justify-center">
+          {/* Main Title - First, with extra strong weight */}
+          <div className="space-y-2 relative z-5 mb-28">
+            <h1 className="text-6xl lg:text-8xl font-tt-norms text-primary uppercase leading-none tracking-tight font-[1000]" >
+              {t('hero.title')}
+            </h1>
+            <h2 className="text-6xl lg:text-8xl font-tt-norms text-primary uppercase leading-none tracking-tight font-[1000]" >
+              {t('hero.subtitle')}
+            </h2>
+            <h3 className="text-6xl lg:text-6xl font-tt-norms font-normal text-primary uppercase tracking-wider mt-4">
+              {t('hero.role')}
+            </h3>
+          </div>
 
-          {/* Right Side - Profile Image */}
-          <motion.div 
-            className="flex justify-center lg:justify-end"
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-          >
-            <div className="relative">
-              <div className="w-96 h-96 lg:w-[500px] lg:h-[500px] relative">
-                {/* Background blur circle */}
-                <div 
-                  className="absolute inset-0 rounded-full"
-                  style={{
-                    background: `url(${profileImage}) center/cover`,
-                    filter: 'blur(40px)',
-                    opacity: 0.3,
-                    transform: 'scale(1.2)'
-                  }}
-                />
-                
-                {/* Main profile image */}
-                <div 
-                  className="w-full h-full rounded-full bg-cover bg-center relative z-10"
-                  style={{
-                    backgroundImage: `url(${profileImage})`,
-                    backgroundPosition: 'center',
-                    backgroundSize: 'cover'
-                  }}
-                />
-                
-                {/* Gradient overlay for better integration */}
-                <div 
-                  className="absolute inset-0 rounded-full z-20"
-                  style={{
-                    background: 'radial-gradient(circle at center, transparent 60%, rgba(243, 243, 237, 0.8) 100%)'
-                  }}
-                />
-              </div>
-            </div>
-          </motion.div>
+          {/* Introduction Text - After title */}
+          <div className="bg-background p-8 rounded-sm max-w-xl relative z-30">
+            <p className="text-black font-tt-norms text-4xl">
+              <span className="font-normal">{t('hero.intro')} </span>
+              <span className="font-bold text-primary text-5xl">{t('hero.name')}</span>
+              <br />
+              <span className="font-normal" dangerouslySetInnerHTML={{ __html: t('hero.description') }}>
+              </span>
+            </p>
+          </div>
         </div>
 
         {/* Scroll indicator */}
-        <motion.div 
-          className="flex justify-center pb-12"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.8, delay: 1 }}
-        >
+        <div className="flex justify-center pb-12">
           <div className="w-12 h-12 rounded-full bg-black flex items-center justify-center cursor-pointer hover:bg-primary transition-colors">
             <svg 
               width="16" 
@@ -102,11 +138,21 @@ const Hero = () => {
               className="text-white"
             >
               <path d="M7 13l3 3 7-7" />
-              <path d="M2 12h20" />
             </svg>
           </div>
-        </motion.div>
+        </div>
       </div>
+
+      {/* Custom Cursor Circle */}
+      <div 
+        className="cursor-circle"
+        style={{
+          left: cursorPosition.x + 9,
+          top: cursorPosition.y + 9,
+          backdropFilter: `blur(${showBlur ? 8 : 0}px)`,
+          background: `rgba(255, 255, 255, ${showBlur ? 0.1 : 0})`
+        }}
+      />
     </section>
   );
 };

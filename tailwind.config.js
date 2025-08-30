@@ -7,12 +7,36 @@ export default {
   theme: {
     extend: {
       colors: {
-        primary: '#FF6900',
-        secondary: '#1141DB', 
-        tertiary: '#1C5845',
-        background: '#F3F3ED',
-        black: '#0D120C',
-        white: '#FFFFFF'
+        primary: {
+          DEFAULT: 'var(--color-primary)',
+          light: 'var(--color-primary-light)',
+          dark: 'var(--color-primary-dark)',
+        },
+        secondary: {
+          DEFAULT: 'var(--color-secondary)',
+          light: 'var(--color-secondary-light)',
+          dark: 'var(--color-secondary-dark)',
+        },
+        tertiary: {
+          DEFAULT: 'var(--color-tertiary)',
+          light: 'var(--color-tertiary-light)',
+          dark: 'var(--color-tertiary-dark)',
+        },
+        background: 'var(--color-background)',
+        black: 'var(--color-black)',
+        white: 'var(--color-white)',
+        gray: {
+          50: 'var(--color-gray-50)',
+          100: 'var(--color-gray-100)',
+          200: 'var(--color-gray-200)',
+          300: 'var(--color-gray-300)',
+          400: 'var(--color-gray-400)',
+          500: 'var(--color-gray-500)',
+          600: 'var(--color-gray-600)',
+          700: 'var(--color-gray-700)',
+          800: 'var(--color-gray-800)',
+          900: 'var(--color-gray-900)',
+        },
       },
       fontFamily: {
         'tt-norms': ['TT Norms Pro', 'system-ui', 'sans-serif'],

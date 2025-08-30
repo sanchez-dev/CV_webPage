@@ -7,10 +7,10 @@
   "hero": {
     "title": "PRODUCT",
     "subtitle": "LEAD",
-    "role": "UX / CX",
+    "role": "CX / UX / UI",
     "intro": "Soy",
     "name": "Jose.",
-    "description": "Y durante 13 años, he estado obsesionado con conectar los negocios con sus Usuarios."
+    "description": "Y durante <span class='font-bold'>13 años</span>, he estado obsesionado con conectar los negocios con sus Usuarios."
   },
   "highlights": {
     "title": "Highlights",
