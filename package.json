@@ -11,7 +11,7 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist"
   },
-  "homepage": "https://sanchez-dev.github.io/CV_webPage",
+  "homepage": "https://jose.run",
   "dependencies": {
     "framer-motion": "^12.23.12",
     "i18next": "^25.4.2",
