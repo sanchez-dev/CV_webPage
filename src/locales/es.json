@@ -1,0 +1,43 @@
+{
+  "navigation": {
+    "resume": "CURRÍCULUM",
+    "about": "ACERCA DE", 
+    "contact": "CONTACTO"
+  },
+  "hero": {
+    "title": "PRODUCT",
+    "subtitle": "LEAD",
+    "role": "UX / CX",
+    "intro": "Soy",
+    "name": "Jose.",
+    "description": "Y durante 13 años, he estado obsesionado con conectar los negocios con sus Usuarios."
+  },
+  "highlights": {
+    "title": "Highlights",
+    "items": [
+      "Producto 360°",
+      "Mentalidad Ágil", 
+      "Basado en datos",
+      "Diseño Centrado en el Usuario",
+      "Entregas de Alta Definición",
+      "Banca / Pagos",
+      "Especialista en UI y Sistemas de Diseño",
+      "Nativo en Tech & IA"
+    ]
+  },
+  "footer": {
+    "about": "Acerca de",
+    "newsletter": "Newsletter",
+    "resume": "Currículum", 
+    "linkedin": "LinkedIn",
+    "contact": "Contacto",
+    "copyright": "Jose Sanchez • 2015",
+    "website": "https://jose.run"
+  },
+  "contact": {
+    "email": "run@jose.run",
+    "phone": "(+57) 321-887-3935",
+    "linkedin": "https://www.linkedin.com/in/josesanchezc/",
+    "location": "LATAM (Remote-first)"
+  }
+}
