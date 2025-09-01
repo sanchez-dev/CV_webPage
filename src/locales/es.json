@@ -1,28 +1,28 @@
 {
   "navigation": {
-    "resume": "CURRÍCULUM",
-    "about": "ACERCA DE", 
-    "contact": "CONTACTO"
+    "resume": "CV",
+    "about": "SOBRE MÍ", 
+    "contact": "HABLEMOS"
   },
   "hero": {
-    "title": "PRODUCT",
-    "subtitle": "LEAD",
+    "title": "LEAD PRODUCT DESIGNER",
+    "subtitle": "",
     "role": "CX / UX / UI",
     "intro": "Soy",
     "name": "Jose.",
-    "description": "Y durante <span class='font-bold'>13 años</span>, he estado obsesionado con conectar los negocios con sus Usuarios."
+    "description": "Y durante <span class='font-bold'>13 años</span>, he estado obsesionado con conectar Negocios con sus Usuarios."
   },
   "highlights": {
     "title": "Highlights",
     "items": [
-      "Producto 360°",
+      "Vision 360° del Producto",
       "Mentalidad Ágil", 
-      "Basado en datos",
-      "Diseño Centrado en el Usuario",
-      "Entregas de Alta Definición",
-      "Banca / Pagos",
+      "Data-driven",
+      "Diseño Centrado en el Usuario (UCD)",
+      "Entregables en Alta Definición",
+      "Banking / Payments",
       "Especialista en UI y Sistemas de Diseño",
-      "Nativo en Tech & IA"
+      "Nativo Digital & IA"
     ]
   },
   "footer": {

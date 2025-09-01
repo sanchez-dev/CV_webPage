@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://jose.run/sitemap.xml
