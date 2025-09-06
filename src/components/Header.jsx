@@ -27,28 +27,16 @@ const Header = () => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
       
-      // Only hide/show on desktop (768px+), always visible on mobile
-      if (window.innerWidth >= 768) {
-        if (currentScrollY > 300) {
-          setIsVisible(true);
-        } else {
-          setIsVisible(false);
-        }
+      if (currentScrollY > 100) {
+        setIsVisible(true);
       } else {
-        setIsVisible(true); // Always visible on mobile
+        setIsVisible(false);
       }
-      
-      setLastScrollY(currentScrollY);
     };
-
-    // Set initial visibility based on screen size
-    if (window.innerWidth < 768) {
-      setIsVisible(true);
-    }
-
+    
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [lastScrollY]);
+  }, []);
 
   useEffect(() => {
     const handleMouseMove = (e) => {
@@ -71,8 +59,15 @@ const Header = () => {
       <div className="max-w-7xl mx-auto px-6 py-2">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <div className="text-primary font-tt-norms font-bold text-lg tracking-wide">
-            JOSE S.
+          <div className="flex items-center gap-2">
+            <img 
+              src="/brand.svg" 
+              alt="Jose S. Logo" 
+              className="w-6 h-6"
+            />
+            <span className="text-primary font-tt-norms font-bold text-lg tracking-wide">
+              JOSE S.
+            </span>
           </div>
 
           {/* Divider Line */}

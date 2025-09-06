@@ -11,17 +11,17 @@ const Footer = () => {
   };
 
   return (
-    <footer className="bg-black text-white py-16">
+    <footer className="bg-black text-white py-40">
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid md:grid-cols-2 gap-12">
           {/* Left Column */}
-          <div className="space-y-8">
+          <div className="space-y-12">
             <div>
-              <h3 className="font-tt-norms font-semibold text-lg mb-4 text-white">
+              <h3 className="font-tt-norms font-semibold text-4xl mb-10 text-white">
                 {t('footer.about')}
               </h3>
-              <p className="font-tt-norms text-white/70 leading-relaxed">
-                Product Lead specializing in Banking, Fintech, and Payments with 13+ years connecting business with users through data-driven design.
+              <p className="font-tt-norms text-lg text-white/70 leading-relaxed">
+                {t('footer.description')}
               </p>
             </div>
 

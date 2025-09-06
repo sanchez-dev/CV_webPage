@@ -1,4 +1,68 @@
-@import url('https://fonts.googleapis.com/css2?family=TT+Norms+Pro:wght@300;400;500;600;700;800;900&display=swap');
+
+/* TT Norms Pro Font Faces */
+@font-face {
+  font-family: 'TT Norms Pro';
+  src: url('/TTNormsPro-Normal.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'TT Norms Pro';
+  src: url('/TTNormsPro-NormalItalic.ttf') format('truetype');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'TT Norms Pro';
+  src: url('/TTNormsPro-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'TT Norms Pro';
+  src: url('/TTNormsPro-MediumItalic.ttf') format('truetype');
+  font-weight: 500;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'TT Norms Pro';
+  src: url('/TTNormsPro-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'TT Norms Pro';
+  src: url('/TTNormsPro-BoldItalic.ttf') format('truetype');
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'TT Norms Pro';
+  src: url('/TTNormsPro-Black.ttf') format('truetype');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'TT Norms Pro';
+  src: url('/TTNormsPro-BlackItalic.ttf') format('truetype');
+  font-weight: 900;
+  font-style: italic;
+  font-display: swap;
+}
 
 @tailwind base;
 @tailwind components;
@@ -8,7 +72,7 @@
   :root {
     /* Brand Colors */
     --color-primary: #FF6900;
-    --color-secondary: #1141DB;
+    --color-secondary: #0000FF;
     --color-tertiary: #1C5845;
     --color-background: #F3F3ED;
     --color-black: #0D120C;
@@ -17,8 +81,8 @@
     /* Color Variations */
     --color-primary-light: #FF8533;
     --color-primary-dark: #CC5400;
-    --color-secondary-light: #3D5FDF;
-    --color-secondary-dark: #0D34B8;
+    --color-secondary-light: #3333FF;
+    --color-secondary-dark: #0000CC;
     --color-tertiary-light: #2A7A5E;
     --color-tertiary-dark: #134535;
     
@@ -49,101 +113,62 @@
     padding: 0;
     background-color: var(--color-background);
   }
-
+  
+  /* Hide default cursor - Cross-browser compatibility */
   * {
     box-sizing: border-box;
-    cursor: url('/design/cursor.svg') 4 4, auto;
+  }
+  
+  /* Enhanced cursor hiding for all browsers including Safari */
+  html, body, div, span, a, button, input, textarea, select, 
+  h1, h2, h3, h4, h5, h6, p, ul, ol, li, img, video {
+    cursor: none !important;
+    -webkit-cursor: none !important;
+    -moz-cursor: none !important;
+    -ms-cursor: none !important;
+    -o-cursor: none !important;
+  }
+  
+  /* Force cursor styles on pseudo-elements */
+  *::before, *::after {
+    cursor: none !important;
+    -webkit-cursor: none !important;
+  }
+  
+  .italic {
+    font-style: italic;
   }
 
   .cursor-circle {
-    position: fixed;
-    width: 110px;
-    height: 110px;
-    border-radius: 50%;
-    pointer-events: none;
-    z-index: 9999;
-    transition: transform 0.1s ease-out, backdrop-filter 0.3s ease-out, background 0.3s ease-out;
-    transform: translate(-50%, -50%);
+    display: block;
+    /* Ensure backdrop-filter works properly */
+    -webkit-backdrop-filter: blur(var(--blur-amount, 0px));
+    backdrop-filter: blur(var(--blur-amount, 0px));
+    /* Better performance with hardware acceleration */
+    transform: translate3d(0, 0, 0);
   }
+}
 
-  @keyframes glitch {
-    0% { 
-      opacity: 1;
-      transform: translate(-50%, -50%) scale(1);
-    }
-    15% { 
-      opacity: 1;
-      transform: translate(-50%, -50%) scale(1);
-    }
-    20% { 
-      opacity: 0;
-      transform: translate(-50%, -50%) scale(1.1) skewX(5deg);
-    }
-    25% { 
-      opacity: 0;
-      transform: translate(-50%, -50%) scale(1.1) skewX(5deg);
-    }
-    30% { 
-      opacity: 1;
-      transform: translate(-50%, -50%) scale(0.9) skewX(-3deg);
-    }
-    35% { 
-      opacity: 1;
-      transform: translate(-50%, -50%) scale(0.9) skewX(-3deg);
-    }
-    40% { 
-      opacity: 0;
-      transform: translate(-50%, -50%) scale(1.05) translateX(2px);
-    }
-    45% { 
-      opacity: 0;
-      transform: translate(-50%, -50%) scale(1.05) translateX(2px);
-    }
-    50% { 
-      opacity: 1;
-      transform: translate(-50%, -50%) scale(0.95) translateX(-1px);
-    }
-    55% { 
-      opacity: 1;
-      transform: translate(-50%, -50%) scale(0.95) translateX(-1px);
-    }
-    60% { 
-      opacity: 0;
-      transform: translate(-50%, -50%) scale(1) skewY(2deg);
-    }
-    65% { 
-      opacity: 0;
-      transform: translate(-50%, -50%) scale(1) skewY(2deg);
-    }
-    70% { 
-      opacity: 1;
-      transform: translate(-50%, -50%) scale(1.02) skewY(-1deg);
-    }
-    75% { 
-      opacity: 1;
-      transform: translate(-50%, -50%) scale(1.02) skewY(-1deg);
-    }
-    80% { 
-      opacity: 0;
-      transform: translate(-50%, -50%) scale(0.98) translateY(1px);
-    }
-    85% { 
-      opacity: 0;
-      transform: translate(-50%, -50%) scale(0.98) translateY(1px);
-    }
-    90% { 
-      opacity: 0.3;
-      transform: translate(-50%, -50%) scale(1.01) translateY(-0.5px);
-    }
-    95% { 
-      opacity: 0;
-      transform: translate(-50%, -50%) scale(0.99);
-    }
-    100% { 
-      opacity: 0;
-      transform: translate(-50%, -50%) scale(1);
-    }
+/* Global cursor override with higher specificity for Safari */
+html, body, *, *:hover, *:active, *:focus, *:visited {
+  cursor: none !important;
+  -webkit-cursor: none !important;
+  -moz-cursor: none !important;
+}
+
+/* Additional Safari-specific overrides */
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
+  html, body, * {
+    cursor: none !important;
+    -webkit-cursor: none !important;
   }
+}
+
+/* Simple video optimization */
+video {
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
 }
 
 @layer utilities {

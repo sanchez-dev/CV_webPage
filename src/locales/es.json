@@ -6,14 +6,15 @@
   },
   "hero": {
     "title": "LEAD PRODUCT DESIGNER",
-    "subtitle": "",
-    "role": "CX / UX / UI",
+    "subtitle": "Definir. Crear. Lanzar.",
+    "role": "",
     "intro": "Soy",
     "name": "Jose.",
     "description": "Y durante <span class='font-bold'>13 años</span>, he estado obsesionado con conectar Negocios con sus Usuarios."
   },
   "highlights": {
-    "title": "Highlights",
+    "title": "Sobre mí",
+"opening": "Llevo 13 años evolucionando insights “claves” a experiencias digitales accesibles, que la gente entienda, use y disfrute.  Más que diseñar interfaces, identifico oportunidades de negocio claras, mostrando cómo cada decisión en UX se convierte en valor tangible para empresas y clientes.\nMi fortaleza está en conectar equipos diversos —diseño, desarrollo, negocio, legal, riesgos, mercadeo— para que trabajen como uno solo. En pocas palabras: traduzco las necesidades de unos en el lenguaje de otros.\nHe liderado el diseño de aplicaciones web/móviles, productos financieros y plataformas empresariales que integran de forma impecable front y back end.",
     "items": [
       "Vision 360° del Producto",
       "Mentalidad Ágil", 
@@ -27,12 +28,41 @@
   },
   "footer": {
     "about": "Acerca de",
+    "description": "Líder de Producto con enfoque en diseño centrado en el usuario, estrategia de producto e innovación en banca y fintech.",
     "newsletter": "Newsletter",
     "resume": "Currículum", 
     "linkedin": "LinkedIn",
     "contact": "Contacto",
     "copyright": "Jose Sanchez • 2015",
     "website": "https://jose.run"
+  },
+  "jobs": {
+    "title": "Proyectos Recientes",
+    "subtitle": "Una muestra de mi trabajo más reciente en banca, fintech y soluciones de pago. Cada proyecto demuestra diseño centrado en el usuario y pensamiento estratégico de producto.",
+    "cta": "Trabajemos Juntos",
+    "projects": {
+      "project1": {
+        "title": "App Móvil Bancaria",
+        "company": "BMM", 
+        "year": "2024",
+        "description": "Rediseño completo de experiencia bancaria móvil enfocado en accesibilidad y optimización de flujos de usuario.",
+        "technologies": ["UX", "Producto 360º", "Banking"]
+      },
+      "project2": {
+        "title": "Integración Gateway de Pagos",
+        "company": "Fintech Startup",
+        "year": "2023",
+        "description": "Lideré la estrategia de producto para integración perfecta de pagos en múltiples plataformas y divisas.",
+        "technologies": ["Estrategia de Producto", "Diseño API", "Pagos"]
+      },
+      "project3": {
+        "title": "Proyecto Video Background",
+        "company": "Creative Studio", 
+        "year": "2024",
+        "description": "Integración de video de fondo para experiencias de usuario inmersivas.",
+        "technologies": ["UX/UI", "Estrategia 360º", "Motion"]
+      }
+    }
   },
   "contact": {
     "email": "run@jose.run",

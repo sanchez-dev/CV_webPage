@@ -6,14 +6,15 @@
   },
   "hero": {
     "title": "LEAD PRODUCT DESIGNER",
-    "subtitle": "",
+    "subtitle": "Ideate. Build. Launch.",
     "role": "",
     "intro": "I'm",
     "name": "Jose.",
     "description": "And during <span class='font-bold'>13 years</span>, I've been obsessed with connect business with their Users."
   },
   "highlights": {
-    "title": "Highlights",
+    "title": "About me",
+"opening": "I’ve spent the last 13 years turning key insights into accessible digital experiences that people can actually understand, use, and enjoy. More than just designing interfaces, I spot clear business opportunities—showing how every UX decision translates into tangible value for both companies and their customers.\n My strength lies in bringing together diverse teams—design, development, business, legal, risk, marketing—and helping them work as one. In short: I translate the needs of some into the language of others.\n I’ve led the design of web and mobile applications, financial products, and enterprise platforms that seamlessly integrate front and back end.",
     "items": [
       "Product 360°",
       "Mindset Agile", 
@@ -27,12 +28,39 @@
   },
   "footer": {
     "about": "About",
+    "description": "Product Lead combining user-centered design, product strategy, and innovation in banking and fintech",
     "newsletter": "Newsletter",
     "resume": "Resume", 
     "linkedin": "Linkedin",
     "contact": "Contact",
     "copyright": "Jose Sanchez • 2015",
     "website": "https://jose.run"
+  },
+  "jobs": {
+    "title": "Recent Projects",
+    "subtitle": "A showcase of my latest work in banking, fintech, and payment solutions. Each project demonstrates user-centered design and strategic product thinking.",
+    "cta": "Let's Work Together",
+    "projects": {
+      "project1": {
+        "title": "Banking Mobile App",
+        "year": "2024",
+        "description": "Complete redesign of mobile banking experience with focus on accessibility and user flow optimization.",
+        "technologies": ["CX/UX", "Product 360º", "Payments"]
+      },
+      "project2": {
+        "title": "Realt State Strategy",
+        "year": "2020", 
+        "description": "Led product strategy for seamless payment integration across multiple platforms and currencies.",
+        "technologies": ["Strategy", "UX/UI", "Information Architecture", "Banking"]
+      },
+      "project3": {
+        "title": "Background Video Project",
+        "company": "Creative Studio",
+        "year": "2024",
+        "description": "Background video integration for immersive user experiences.",
+        "technologies": ["UX/UI", "Strategy 360º", "Real Estate"]
+      }
+    }
   },
   "contact": {
     "email": "run@jose.run",

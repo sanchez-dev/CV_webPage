@@ -4,7 +4,6 @@ import profileImage from '../assets/me.png';
 
 const Hero = () => {
   const { t, i18n } = useTranslation();
-  console.log('Hero component loaded - Language selector should be visible');
   const [scrollY, setScrollY] = useState(0);
   const [imageLoaded, setImageLoaded] = useState(false);
   const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 });
@@ -35,8 +34,8 @@ const Hero = () => {
         const element = document.querySelector('.parallax-element');
         if (element) {
           const scrolled = window.scrollY;
-          const speed = scrolled * 0.4;
-          const maxOffset = Math.min(speed, 300);
+          const speed = scrolled * 0.6; // Increased from 0.4 to 0.6 for more movement
+          const maxOffset = Math.min(speed, 600); // Set max to 600px
           element.style.transform = `translate(-50%, calc(-50% - 30px + ${maxOffset}px))`;
         }
       });
@@ -51,45 +50,10 @@ const Hero = () => {
     };
   }, []);
 
-  useEffect(() => {
-    let restoreBlurTimer;
-    let hasStartedTimer = false;
-
-    const handleMouseMove = (e) => {
-      setCursorPosition({ x: e.clientX, y: e.clientY });
-      
-      // Check if cursor is over an interactive element
-      const target = e.target;
-      const isInteractive = target.tagName === 'BUTTON' || 
-                           target.tagName === 'A' || 
-                           target.closest('button') || 
-                           target.closest('a') ||
-                           target.style.cursor === 'pointer' ||
-                           getComputedStyle(target).cursor === 'pointer';
-      
-      setIsOverInteractive(isInteractive);
-      
-      if (isInteractive) {
-        // Clear any existing timer and remove blur immediately
-        clearTimeout(restoreBlurTimer);
-        hasStartedTimer = false;
-        setShowBlur(false);
-      } else if (!showBlur && !hasStartedTimer) {
-        // Only start timer once when blur is off and timer hasn't started yet
-        hasStartedTimer = true;
-        restoreBlurTimer = setTimeout(() => {
-          setShowBlur(true);
-          hasStartedTimer = false;
-        }, 3000);
-      }
-    };
-
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => {
-      window.removeEventListener('mousemove', handleMouseMove);
-      clearTimeout(restoreBlurTimer);
-    };
-  }, [showBlur]);
+  // TEMPORARILY DISABLED CURSOR LOGIC
+  // useEffect(() => {
+  //   // cursor logic here  
+  // }, [showBlur]);
 
   return (
     <section className="min-h-screen bg-background px-6 relative">
@@ -156,24 +120,34 @@ const Hero = () => {
           </div>
         </div>
 
-        <div className="min-h-[100vh] flex flex-col items-start justify-between lg:justify-center pt-[60px] lg:pt-0 pb-4 lg:pb-0">
+        <div className="min-h-[102vh] mt-0 flex flex-col items-start justify-between lg:justify-center pt-[60px] lg:pt-0 pb-12 lg:pb-0">
           {/* Main Title - First, with extra strong weight */}
           <div className="relative z-[-1] mb-0 lg:mb-28">
-            <h1 className="space-y-2 text-7xl lg:text-7xl font-tt-norms text-primary uppercase leading-none tracking-tight font-[1000]" >
+            <h1 className="space-y-0 -mt-8 font-tt-norms text-primary uppercase leading-none tracking-space font-[1000]" >
               {t('hero.title').split(' ').map((word, index) => (
                 <span 
                   key={index} 
-                  className={`block ${
-                    index === 0 ? 'text-[30]' : 
-                    index === 2 ? 'text-4xl lg:text-7xl italic font-[300]' : ''
+                  className={`block mr-3 ${
+                    index === 0 ? 'text-5xl lg:text-7xl font-[800] ' : 
+                    index === 1 ? 'text-5xl lg:text-7xl font-[800]' : 
+                    index === 2 ? 'text-5xl lg:text-7xl font-[400] italic' : ''
                   }`}
                 >
                   {word}
                 </span>
               ))}
             </h1>
-            <h2 className="text-7xl lg:text-6xl font-tt-norms text-primary uppercase leading-none tracking-tight font-[1000]" >
-              {t('hero.subtitle')}
+            <h2 className="mt-14 text-2xl lg:text-3xl font-tt-norms text-primary uppercase leading-none tracking-tight font-[400]" >
+              <span className="block lg:hidden">
+                {t('hero.subtitle').split(' ').map((word, index) => (
+                  <span key={index} className="block">
+                    {word}
+                  </span>
+                ))}
+              </span>
+              <span className="hidden lg:block">
+                {t('hero.subtitle')}
+              </span>
             </h2>
             <h3 className="text-3xl lg:text-7xl font-tt-norms font-normal text-primary uppercase tracking-wider mt-4">
               {t('hero.role')}
@@ -181,16 +155,7 @@ const Hero = () => {
           </div>
 
           {/* Introduction Text - After title */}
-          <div 
-            className="bg-background py-8 sm:py-4 rounded-sm lg:max-w-xl relative z-30 lg:mx-0 lg:pr-0" 
-            style={{
-              width: window.innerWidth < 1024 ? '100vw' : 'auto',
-              marginLeft: window.innerWidth < 1024 ? 'calc(-50vw + 50%)' : '0',
-              marginRight: window.innerWidth < 1024 ? 'calc(-50vw + 50%)' : '0',
-              paddingLeft: window.innerWidth < 1024 ? '1.5rem' : '0',
-              paddingRight: window.innerWidth < 1024 ? '1.5rem' : '0'
-            }}
-          >
+          <div className="bg-background py-8 lg:py-10  lg:max-w-xl relative z-30 lg:mx-0 lg:pr-0 w-screen lg:w-auto -ml-6 lg:ml-0 px-6 lg:px-0">
             <p className="text-black font-tt-norms text-4xl">
               <span className="font-normal">{t('hero.intro')} </span>
               <span className="font-bold text-primary text-5xl">{t('hero.name')}</span>
