@@ -61,13 +61,33 @@ const Footer = () => {
                   rel="noopener noreferrer"
                   className="font-tt-norms text-white hover:text-primary transition-colors text-lg"
                 >
-                  {i18n.language === 'es' ? 'Resume - Español' : 'Resume - English'}
+                  {t('footer.resumeText')}
                 </a>
               </div>
               <p className="font-tt-norms text-white/60 text-sm mt-2 leading-relaxed">
-                {i18n.language === 'es' 
-                  ? 'Este archivo está en Español. Cambia el idioma a Inglés para obtener la versión en inglés.'
-                  : 'This file is in English. Change the page to Spanish to grab the Spanish version.'}
+                {i18n.language === 'es' ? (
+                  <>
+                    Este archivo está en Español. Cambia el idioma a{' '}
+                    <button 
+                      onClick={() => toggleLanguage('en')}
+                      className="underline hover:text-white transition-colors cursor-pointer"
+                    >
+                      inglés
+                    </button>
+                    {' '}para obtener la versión en inglés.
+                  </>
+                ) : (
+                  <>
+                    This file is in English. Change the page to{' '}
+                    <button 
+                      onClick={() => toggleLanguage('es')}
+                      className="underline hover:text-white transition-colors cursor-pointer"
+                    >
+                      Spanish
+                    </button>
+                    {' '}to grab the Spanish version.
+                  </>
+                )}
               </p>
             </div>
 
@@ -76,7 +96,11 @@ const Footer = () => {
               <nav className="space-y-4">
                 <a 
                   href="#"
-                  className="block font-tt-norms text-white hover:text-primary transition-colors text-lg"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                  }}
+                  className="block font-tt-norms text-white hover:text-primary transition-colors text-lg cursor-pointer"
                 >
                   {t('navigation.home')}
                 </a>

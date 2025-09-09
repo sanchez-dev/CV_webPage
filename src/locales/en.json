@@ -69,5 +69,9 @@
     "phone": "(+57) 321-887-3935",
     "linkedin": "https://www.linkedin.com/in/josesanchezc/",
     "location": "LATAM (Remote-first)"
+  },
+  "footer": {
+    "resumeText": "Resume - English",
+    "resumeDescription": "This file is in English. Change the page to Spanish to grab the Spanish version."
   }
 }

@@ -84,8 +84,8 @@ const Jobs = () => {
                   className="w-full h-full"
                 />
 
-                {/* Technologies - Bottom right */}
-                <div className="absolute bottom-4 right-4 flex flex-wrap gap-2 justify-end z-10">
+                {/* Technologies - Bottom center */}
+                <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex flex-wrap gap-2 justify-center z-10">
                   {t('jobs.projects.project1.technologies', { returnObjects: true }).map((tech, i) => (
                     <span
                       key={i}
@@ -120,8 +120,8 @@ const Jobs = () => {
                   className="w-full h-full"
                 />
 
-                {/* Technologies - Bottom right */}
-                <div className="absolute bottom-4 right-4 flex flex-wrap gap-2 justify-end z-10">
+                {/* Technologies - Bottom center */}
+                <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex flex-wrap gap-2 justify-center z-10">
                   {t('jobs.projects.project3.technologies', { returnObjects: true }).map((tech, i) => (
                     <span
                       key={i}
@@ -145,8 +145,8 @@ const Jobs = () => {
                   className="w-full h-full"
                 />
 
-                {/* Technologies - Bottom right */}
-                <div className="absolute bottom-4 right-4 flex flex-wrap gap-2 justify-middle z-10">
+                {/* Technologies - Bottom center */}
+                <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex flex-wrap gap-2 justify-center z-10">
                   {t('jobs.projects.project2.technologies', { returnObjects: true }).map((tech, i) => (
                     <span
                       key={i}

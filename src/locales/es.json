@@ -48,21 +48,21 @@
         "company": "BMM", 
         "year": "2024",
         "description": "Rediseño completo de experiencia bancaria móvil enfocado en accesibilidad y optimización de flujos de usuario.",
-        "technologies": ["UX", "Producto 360º", "Banking"]
+        "technologies": ["Producto 360º", "UX/UI", "research", "Banking"]
       },
       "project2": {
         "title": "Integración Gateway de Pagos",
         "company": "Fintech Startup",
         "year": "2023",
         "description": "Lideré la estrategia de producto para integración perfecta de pagos en múltiples plataformas y divisas.",
-        "technologies": ["Estrategia de Producto", "Diseño API", "Pagos"]
+        "technologies": ["Estrategia 360º", "UX/UI", "Construcción"]
       },
       "project3": {
         "title": "Proyecto Video Background",
         "company": "Creative Studio", 
         "year": "2024",
         "description": "Integración de video de fondo para experiencias de usuario inmersivas.",
-        "technologies": ["UX/UI", "Estrategia 360º", "Motion"]
+        "technologies": ["Estrategia 360º", "Arquitectura de información", "UX/UI", "Banking"]
       }
     }
   },
@@ -71,5 +71,9 @@
     "phone": "(+57) 321-887-3935",
     "linkedin": "https://www.linkedin.com/in/josesanchezc/",
     "location": "LATAM (Remote-first)"
+  },
+  "footer": {
+    "resumeText": "Hoja de vida - Español",
+    "resumeDescription": "Este archivo está en Español. Cambia el idioma a Inglés para obtener la versión en inglés."
   }
 }

@@ -24,7 +24,7 @@ const Hero = () => {
           const scrolled = window.scrollY;
           const speed = scrolled * 0.6; // Increased from 0.4 to 0.6 for more movement
           const maxOffset = Math.min(speed, 600); // Set max to 600px
-          element.style.transform = `translate(-50%, calc(-50% - 30px + ${maxOffset}px))`;
+          element.style.transform = `translate(-50%, calc(-50% - 80px + ${maxOffset}px))`;
         }
       });
     };
@@ -51,7 +51,7 @@ const Hero = () => {
         style={{ 
           transform: window.innerWidth < 1024 
             ? 'translate(-50%, calc(-50% + 25px))' 
-            : 'translate(-50%, calc(-50% - 20px))',
+            : 'translate(-50%, calc(-50% - 70px))',
           willChange: 'transform'
         }}
       >
@@ -110,23 +110,6 @@ const Hero = () => {
               <span className="font-normal" dangerouslySetInnerHTML={{ __html: t('hero.description') }}>
               </span>
             </p>
-          </div>
-        </div>
-
-        {/* Scroll indicator */}
-        <div className="flex justify-center pb-0">
-          <div className="w-12 h-12 rounded-full bg-black flex items-center justify-center cursor-pointer hover:bg-primary transition-colors">
-            <svg 
-              width="16" 
-              height="16" 
-              viewBox="0 0 24 24" 
-              fill="none" 
-              stroke="currentColor" 
-              strokeWidth="2" 
-              className="text-white"
-            >
-              <path d="M7 13l3 3 7-7" />
-            </svg>
           </div>
         </div>
 
