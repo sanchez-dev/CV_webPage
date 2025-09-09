@@ -1,8 +1,10 @@
 {
   "navigation": {
-    "resume": "RESUME",
-    "about": "ABOUT", 
-    "contact": "CONTACT"
+    "resume": "Resume",
+    "about": "About", 
+    "contact": "Contact",
+    "home": "Home",
+    "projects": "Recent Projects"
   },
   "hero": {
     "title": "LEAD PRODUCT DESIGNER",
@@ -14,16 +16,16 @@
   },
   "highlights": {
     "title": "About me",
-"opening": "I’ve spent the last 13 years turning key insights into accessible digital experiences that people can actually understand, use, and enjoy. More than just designing interfaces, I spot clear business opportunities—showing how every UX decision translates into tangible value for both companies and their customers.\n My strength lies in bringing together diverse teams—design, development, business, legal, risk, marketing—and helping them work as one. In short: I translate the needs of some into the language of others.\n I’ve led the design of web and mobile applications, financial products, and enterprise platforms that seamlessly integrate front and back end.",
+"opening": "I've spent the last <span class=\"font-bold\">13 years</span> turning key insights into accessible digital experiences that people can actually <span class=\"font-bold\">understand, use, and enjoy</span>. More than just designing interfaces, I spot clear business opportunities—showing how every UX decision translates into <span class=\"font-bold text-secondary\">Tangible Value</span> for both companies and their customers.\n My strength lies in bringing together diverse teams—design, development, business, legal, risk, marketing—and helping them work as one. In short: <span class=\"font-bold\">I translate the needs of some into the language of others</span>.\n I've led the design of web and mobile applications, financial products, and enterprise platforms that seamlessly integrate front and back end.",
     "items": [
       "Product 360°",
-      "Mindset Agile", 
       "Data-driven",
       "User Centered Design",
-      "High Definition Deliveries",
+      "Mindset Agile", 
+      "Front Dev & AI-native",
       "Banking / Payments",
       "UI and Design Systems Specialist",
-      "Tech & AI-native"
+      "High Definition Deliveries"
     ]
   },
   "footer": {
@@ -39,26 +41,26 @@
   "jobs": {
     "title": "Recent Projects",
     "subtitle": "A showcase of my latest work in banking, fintech, and payment solutions. Each project demonstrates user-centered design and strategic product thinking.",
-    "cta": "Let's Work Together",
+    "cta": "<span class=\"font-bold\">Let's discuss these</span><br/>or other projects",
     "projects": {
       "project1": {
         "title": "Banking Mobile App",
         "year": "2024",
         "description": "Complete redesign of mobile banking experience with focus on accessibility and user flow optimization.",
-        "technologies": ["CX/UX", "Product 360º", "Payments"]
+        "technologies": ["Product 360º", "CX/UX", "Payments"]
       },
       "project2": {
         "title": "Realt State Strategy",
         "year": "2020", 
         "description": "Led product strategy for seamless payment integration across multiple platforms and currencies.",
-        "technologies": ["Strategy", "UX/UI", "Information Architecture", "Banking"]
+        "technologies": ["Strategy", "Information Architecture", "UX/UI", "Banking"]
       },
       "project3": {
         "title": "Background Video Project",
         "company": "Creative Studio",
         "year": "2024",
         "description": "Background video integration for immersive user experiences.",
-        "technologies": ["UX/UI", "Strategy 360º", "Real Estate"]
+        "technologies": ["Strategy 360º", "UX/UI", "Real Estate"]
       }
     }
   },

@@ -1,8 +1,10 @@
 {
   "navigation": {
     "resume": "CV",
-    "about": "SOBRE MÍ", 
-    "contact": "HABLEMOS"
+    "about": "Sobre mí", 
+    "contact": "Hablemos",
+    "home": "Inicio",
+    "projects": "Proyectos Recientes"
   },
   "hero": {
     "title": "LEAD PRODUCT DESIGNER",
@@ -14,16 +16,16 @@
   },
   "highlights": {
     "title": "Sobre mí",
-"opening": "Llevo 13 años evolucionando insights “claves” a experiencias digitales accesibles, que la gente entienda, use y disfrute.  Más que diseñar interfaces, identifico oportunidades de negocio claras, mostrando cómo cada decisión en UX se convierte en valor tangible para empresas y clientes.\nMi fortaleza está en conectar equipos diversos —diseño, desarrollo, negocio, legal, riesgos, mercadeo— para que trabajen como uno solo. En pocas palabras: traduzco las necesidades de unos en el lenguaje de otros.\nHe liderado el diseño de aplicaciones web/móviles, productos financieros y plataformas empresariales que integran de forma impecable front y back end.",
+"opening": "Llevo <span class=\"font-bold\">13 años</span> evolucionando insights \"claves\" a experiencias digitales accesibles, que la gente <span class=\"font-bold\">entienda, use y disfrute</span>.  Más que diseñar interfaces, identifico oportunidades de negocio claras, mostrando cómo cada decisión en UX se convierte en <span class=\"font-bold text-secondary\">Valor Tangible</span> para empresas y clientes.\nMi fortaleza está en conectar equipos diversos —diseño, desarrollo, negocio, legal, riesgos, mercadeo— para que trabajen como uno solo. En pocas palabras: <span class=\"font-bold\">traduzco las necesidades de unos en el lenguaje de otros</span>.\nHe liderado el diseño de aplicaciones web/móviles, productos financieros y plataformas empresariales que integran de forma impecable front y back end.",
     "items": [
-      "Vision 360° del Producto",
-      "Mentalidad Ágil", 
+      "Vision 360° de Producto",
       "Data-driven",
       "Diseño Centrado en el Usuario (UCD)",
-      "Entregables en Alta Definición",
+      "Mentalidad Ágil", 
+      "Desarrollador Front-end & Nativo IA",
       "Banking / Payments",
-      "Especialista en UI y Sistemas de Diseño",
-      "Nativo Digital & IA"
+      "Experto UI y Sistemas de Diseño",
+      "Entregables en Alta Definición"
     ]
   },
   "footer": {
@@ -39,7 +41,7 @@
   "jobs": {
     "title": "Proyectos Recientes",
     "subtitle": "Una muestra de mi trabajo más reciente en banca, fintech y soluciones de pago. Cada proyecto demuestra diseño centrado en el usuario y pensamiento estratégico de producto.",
-    "cta": "Trabajemos Juntos",
+    "cta": "<span class=\"font-bold\">Hablemos de estos</span><br/>u otros proyectos",
     "projects": {
       "project1": {
         "title": "App Móvil Bancaria",

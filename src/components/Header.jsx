@@ -74,27 +74,67 @@ const Header = () => {
           <div className="h-px w-60 bg-primary hidden md:block"></div>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-8">
+          <nav className="hidden md:flex items-center">
             <a 
               href={resumeUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-primary font-tt-norms font-medium text-sm tracking-wide hover:opacity-70 transition-opacity"
+              className="text-primary font-tt-norms font-medium text-sm tracking-wide hover:opacity-70 transition-opacity uppercase mr-8"
             >
               {t('navigation.resume')}
             </a>
             <a 
               href="#about" 
-              className="text-primary font-tt-norms font-medium text-sm tracking-wide hover:opacity-70 transition-opacity"
+              className="text-primary font-tt-norms font-medium text-sm tracking-wide hover:opacity-70 transition-opacity uppercase mr-8"
             >
               {t('navigation.about')}
             </a>
             <a 
               href="#contact" 
-              className="text-primary font-tt-norms font-medium text-sm tracking-wide hover:opacity-70 transition-opacity"
+              className="text-primary font-tt-norms font-medium text-sm tracking-wide hover:opacity-70 transition-opacity uppercase mr-8"
             >
               {t('navigation.contact')}
             </a>
+            
+            {/* Language Selector - Desktop */}
+            <div className="relative ml-12">
+              <button
+                onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+                className="flex items-center gap-2 px-2 py-0 text-sm font-tt-norms font-medium tracking-wide text-primary border border-primary rounded-xs hover:bg-primary/10 transition-all uppercase"
+              >
+                {currentLang === 'en' ? 'ENG' : 'ESP'}
+                <svg 
+                  width="8" 
+                  height="11" 
+                  viewBox="0 0 8 11" 
+                  fill="none"
+                  className={`transform transition-transform ${isDropdownOpen ? '' : 'rotate-180'}`}
+                >
+                  <path d="M4.80078 10.5051C4.80078 10.7813 4.57692 11.0051 4.30078 11.0051C4.02464 11.0051 3.80078 10.7813 3.80078 10.5051L4.30078 10.5051L4.80078 10.5051ZM3.94723 0.859094C4.14249 0.663831 4.45907 0.663831 4.65434 0.859094L7.83632 4.04107C8.03158 4.23634 8.03158 4.55292 7.83632 4.74818C7.64105 4.94344 7.32447 4.94344 7.12921 4.74818L4.30078 1.91975L1.47235 4.74818C1.27709 4.94344 0.96051 4.94344 0.765248 4.74818C0.569985 4.55292 0.569985 4.23634 0.765248 4.04107L3.94723 0.859094ZM4.30078 10.5051L3.80078 10.5051L3.80078 1.21265L4.30078 1.21265L4.80078 1.21265L4.80078 10.5051L4.30078 10.5051Z" fill="currentColor"/>
+                </svg>
+              </button>
+              
+              {isDropdownOpen && (
+                <div className="absolute top-full right-0 mt-1 bg-background border border-primary rounded-sm overflow-hidden z-10">
+                  <button
+                    onClick={() => toggleLanguage('en')}
+                    className={`block w-full text-center px-2 py-0 text-sm font-tt-norms font-medium transition-all hover:bg-primary/10 ${
+                      currentLang === 'en' ? 'bg-primary text-white' : 'text-primary'
+                    }`}
+                  >
+                    ENG
+                  </button>
+                  <button
+                    onClick={() => toggleLanguage('es')}
+                    className={`block w-full text-center px-2 py-0 text-sm font-tt-norms font-medium transition-all hover:bg-primary/10 ${
+                      currentLang === 'es' ? 'bg-primary text-white' : 'text-primary'
+                    }`}
+                  >
+                    ESP
+                  </button>
+                </div>
+              )}
+            </div>
           </nav>
 
           {/* Mobile Controls */}
@@ -159,21 +199,21 @@ const Header = () => {
                 href={resumeUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="block text-primary font-tt-norms font-medium text-2xl tracking-wide hover:opacity-70 transition-opacity"
+                className="block text-primary font-tt-norms font-medium text-2xl tracking-wide hover:opacity-70 transition-opacity uppercase"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 {t('navigation.resume')}
               </a>
               <a 
                 href="#about" 
-                className="block text-primary font-tt-norms font-medium text-2xl tracking-wide hover:opacity-70 transition-opacity"
+                className="block text-primary font-tt-norms font-medium text-2xl tracking-wide hover:opacity-70 transition-opacity uppercase"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 {t('navigation.about')}
               </a>
               <a 
                 href="#contact" 
-                className="block text-primary font-tt-norms font-medium text-2xl tracking-wide hover:opacity-70 transition-opacity"
+                className="block text-primary font-tt-norms font-medium text-2xl tracking-wide hover:opacity-70 transition-opacity uppercase"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 {t('navigation.contact')}

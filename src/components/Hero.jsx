@@ -9,18 +9,6 @@ const Hero = () => {
   const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 });
   const [isOverInteractive, setIsOverInteractive] = useState(false);
   const [showBlur, setShowBlur] = useState(true);
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const [currentLang, setCurrentLang] = useState('en');
-
-  const toggleLanguage = (lang) => {
-    i18n.changeLanguage(lang);
-    setCurrentLang(lang);
-    setIsDropdownOpen(false);
-  };
-
-  useEffect(() => {
-    setCurrentLang(i18n.language);
-  }, [i18n.language]);
 
   useEffect(() => {
     let animationId;
@@ -56,7 +44,7 @@ const Hero = () => {
   // }, [showBlur]);
 
   return (
-    <section className="min-h-screen bg-background px-6 relative">
+    <section className="min-h-screen bg-background px-6 relative pb-16 lg:pb-40">
       {/* Profile Image - Background with parallax effect */}
       <div 
         className="absolute top-1/2 left-1/2 z-0 parallax-element flex items-center justify-center"
@@ -78,49 +66,8 @@ const Hero = () => {
       </div>
 
       <div className="max-w-7xl mx-auto relative z-20">
-        {/* Language Selector - Hidden on mobile, visible on desktop */}
-        <div className="absolute top-40 right-0 z-40 hidden md:block">
-          <div className="relative">
-              <button
-                onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-                className="flex items-center gap-2 px-2 py-0 text-sm font-tt-norms font-medium text-primary border font-bold border-primary rounded-xs hover:bg-primary/10 transition-all"
-              >
-                {currentLang === 'en' ? 'ENG' : 'ESP'}
-                <svg 
-                  width="8" 
-                  height="11" 
-                  viewBox="0 0 8 11" 
-                  fill="none"
-                  className={`transform transition-transform ${isDropdownOpen ? '' : 'rotate-180'}`}
-                >
-                  <path d="M4.80078 10.5051C4.80078 10.7813 4.57692 11.0051 4.30078 11.0051C4.02464 11.0051 3.80078 10.7813 3.80078 10.5051L4.30078 10.5051L4.80078 10.5051ZM3.94723 0.859094C4.14249 0.663831 4.45907 0.663831 4.65434 0.859094L7.83632 4.04107C8.03158 4.23634 8.03158 4.55292 7.83632 4.74818C7.64105 4.94344 7.32447 4.94344 7.12921 4.74818L4.30078 1.91975L1.47235 4.74818C1.27709 4.94344 0.96051 4.94344 0.765248 4.74818C0.569985 4.55292 0.569985 4.23634 0.765248 4.04107L3.94723 0.859094ZM4.30078 10.5051L3.80078 10.5051L3.80078 1.21265L4.30078 1.21265L4.80078 1.21265L4.80078 10.5051L4.30078 10.5051Z" fill="currentColor"/>
-                </svg>
-              </button>
-              
-              {isDropdownOpen && (
-                <div className="absolute top-full left-0 mt-1 bg-background border border-primary rounded-sm overflow-hidden z-10">
-                  <button
-                    onClick={() => toggleLanguage('en')}
-                    className={`block w-full text-center px-2 py-0 text-sm font-tt-norms font-medium transition-all hover:bg-primary/10 ${
-                      currentLang === 'en' ? 'bg-primary text-white' : 'text-primary'
-                    }`}
-                  >
-                    ENG
-                  </button>
-                  <button
-                    onClick={() => toggleLanguage('es')}
-                    className={`block w-full text-center px-2 py-0 text-sm font-tt-norms font-medium transition-all hover:bg-primary/10 ${
-                      currentLang === 'es' ? 'bg-primary text-white' : 'text-primary'
-                    }`}
-                  >
-                    ESP
-                  </button>
-                </div>
-              )}
-          </div>
-        </div>
 
-        <div className="min-h-[102vh] mt-0 flex flex-col items-start justify-between lg:justify-center pt-[60px] lg:pt-0 pb-12 lg:pb-0">
+        <div className="min-h-[102vh] mt-0 flex flex-col items-start justify-between lg:justify-center pt-[60px] lg:pt-0 pb-0">
           {/* Main Title - First, with extra strong weight */}
           <div className="relative z-[-1] mb-0 lg:mb-28">
             <h1 className="space-y-0 -mt-8 font-tt-norms text-primary uppercase leading-none tracking-space font-[1000]" >
@@ -167,7 +114,7 @@ const Hero = () => {
         </div>
 
         {/* Scroll indicator */}
-        <div className="flex justify-center pb-12">
+        <div className="flex justify-center pb-0">
           <div className="w-12 h-12 rounded-full bg-black flex items-center justify-center cursor-pointer hover:bg-primary transition-colors">
             <svg 
               width="16" 
