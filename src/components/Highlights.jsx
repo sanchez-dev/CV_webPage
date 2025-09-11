@@ -7,7 +7,7 @@ const Highlights = () => {
 
   return (
     <section className="py-16 lg:py-40" id="about">
-      <div className="max-w-7xl mx-auto px-6">
+      <div className="max-w-7xl mx-auto px-4">
         <div className="grid grid-cols-12 gap-6 lg:gap-8">
           {/* Left Side - Title (4 columns) */}
           <div className="col-span-12 lg:col-span-4">

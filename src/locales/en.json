@@ -61,6 +61,20 @@
         "year": "2024",
         "description": "Background video integration for immersive user experiences.",
         "technologies": ["Strategy 360º", "UX/UI", "Real Estate"]
+      },
+      "project4": {
+        "title": "Product Development Project",
+        "company": "Tech Innovation",
+        "year": "2024",
+        "description": "Comprehensive product development with focus on user testing and 360° product vision.",
+        "technologies": ["Product 360º", "Testing", "User Centered Design"]
+      },
+      "project5": {
+        "title": "Strategic Information Architecture",
+        "company": "Enterprise Solutions",
+        "year": "2024",
+        "description": "Strategic approach to information architecture with comprehensive product vision and planning.",
+        "technologies": ["Product 360º", "Strategy", "Information Architecture"]
       }
     }
   },

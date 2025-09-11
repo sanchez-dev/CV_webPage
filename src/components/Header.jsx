@@ -56,7 +56,7 @@ const Header = () => {
     <header className={`fixed top-0 left-0 right-0 z-50 bg-background transition-transform duration-300 ${
       (isVisible || isHovered) ? 'translate-y-0' : '-translate-y-full'
     }`}>
-      <div className="max-w-7xl mx-auto px-6 py-2">
+      <div className="max-w-7xl mx-auto px-4 py-2">
         <div className="flex items-center justify-between">
           {/* Logo */}
           <div className="flex items-center gap-2">
@@ -194,7 +194,7 @@ const Header = () => {
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
           <div className="md:hidden bg-background border-t border-primary/20">
-            <nav className="px-6 py-6 space-y-6">
+            <nav className="px-4 py-6 space-y-6">
               <a 
                 href={resumeUrl}
                 target="_blank"

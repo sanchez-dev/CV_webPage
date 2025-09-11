@@ -63,6 +63,20 @@
         "year": "2024",
         "description": "Integración de video de fondo para experiencias de usuario inmersivas.",
         "technologies": ["Estrategia 360º", "Arquitectura de información", "UX/UI", "Banking"]
+      },
+      "project4": {
+        "title": "Proyecto Desarrollo de Producto",
+        "company": "Tech Innovation",
+        "year": "2024",
+        "description": "Desarrollo integral de producto con enfoque en testing de usuarios y visión 360° de producto.",
+        "technologies": ["Producto 360º", "Testing", "Diseño Centrado en Usuario"]
+      },
+      "project5": {
+        "title": "Arquitectura de Información Estratégica",
+        "company": "Enterprise Solutions",
+        "year": "2024",
+        "description": "Enfoque estratégico para arquitectura de información con visión integral de producto y planificación.",
+        "technologies": ["Producto 360º", "Estrategia", "Arquitectura de Información"]
       }
     }
   },

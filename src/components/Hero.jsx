@@ -44,7 +44,7 @@ const Hero = () => {
   // }, [showBlur]);
 
   return (
-    <section className="min-h-screen bg-background px-6 relative pb-16 lg:pb-40">
+    <section className="min-h-screen bg-background px-4 relative pb-16 lg:pb-40">
       {/* Profile Image - Background with parallax effect */}
       <div 
         className="absolute top-1/2 left-1/2 z-0 parallax-element flex items-center justify-center"
@@ -102,7 +102,7 @@ const Hero = () => {
           </div>
 
           {/* Introduction Text - After title */}
-          <div className="bg-background py-8 lg:py-10  lg:max-w-xl relative z-30 lg:mx-0 lg:pr-0 w-screen lg:w-auto -ml-6 lg:ml-0 px-6 lg:px-0">
+          <div className="bg-background py-8 lg:py-10  lg:max-w-xl relative z-30 lg:mx-0 lg:pr-0 w-screen lg:w-auto -ml-4 lg:ml-0 px-4 lg:px-0">
             <p className="text-black font-tt-norms text-4xl">
               <span className="font-normal">{t('hero.intro')} </span>
               <span className="font-bold text-primary text-5xl">{t('hero.name')}</span>

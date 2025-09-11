@@ -14,7 +14,7 @@ const Footer = () => {
     <>
       {/* Section 1: Dark Footer */}
       <footer className="py-16 lg:pt-40 lg:pb-20" id="contact">
-        <div className="max-w-7xl mx-auto px-6">
+        <div className="max-w-7xl mx-auto px-4">
           <div className="bg-gradient-to-tr from-gray-800 to-black text-white rounded-lg lg:rounded-xl px-6 lg:px-12 py-12 lg:py-16" style={{boxShadow: '0 0 3px rgba(0, 0, 0, 0.3), 0 0 10px rgba(0, 0, 0, 0.4)'}}>
           <div className="grid lg:grid-cols-3 gap-12 lg:gap-16">
             {/* Column 1: Contact Title */}
@@ -131,7 +131,7 @@ const Footer = () => {
 
       {/* Section 2: Light Footer */}
       <section className="bg-gradient-to-b from-transparent to-[#CBCBCE] py-16 lg:py-30">
-        <div className="max-w-7xl mx-auto px-6 text-center">
+        <div className="max-w-7xl mx-auto px-4 text-center">
           {/* Logo - Centered */}
           <img src="/design/brand-footer.svg" alt="Jose S." className="w-[7.8rem] h-[7.8rem] lg:w-[9.75rem] lg:h-[9.75rem] mx-auto mb-28" />
 

@@ -70,18 +70,56 @@ Personal portfolio website for Jose Luis Sanchez, Lead Product Designer speciali
 - **Video handling**: Custom LazyVideo component with intersection observer
 - **Styling approach**: TailwindCSS with custom CSS variables for theming
 
-## Files to Watch
-- Package.json dependencies may change during development
-- Jobs.jsx has recent modifications (per git status)
-- Design folder contains footer assets (about me.png, linkedin.svg, etc.) - **NOT YET IMPLEMENTED** (future development phase)
+## Recent Session Completed (Sept 9, 2025)
+**Major updates and bug fixes implemented:**
 
-## Development Phases
-- **Current Phase**: Core portfolio functionality
-- **Future Phase**: Footer enhancement with design assets from /design folder
-- **Approach**: Working in stages - will be notified when ready for next phase
+### Footer Redesign (COMPLETED)
+- Two-section footer: dark floating island + light bottom section
+- Dark section: 3-column grid (Contact title | Links & Resume | Navigation with divider)
+- Light section: Centered logo + copyright + language selector
+- Added interactive language switching in resume description text
+- Fixed "Resume - Españo" typo to proper translations
+
+### UX/UI Enhancements (COMPLETED)
+- **Project Tags**: Centered technology tags in all project cards (bottom-center positioning)
+- **Navigation**: Fixed home link with smooth scroll to top functionality  
+- **Hero Image**: Adjusted positioning to prevent jump on scroll (parallax alignment)
+- **Language Switching**: Moved from hero to header, unified typography
+- **CTA Improvements**: Full-width mobile support, blue glow effects on secondary CTAs
+
+### Translation System (COMPLETED)
+- Fixed resume text translations: "Hoja de vida - Español" (ES) / "Resume - English" (EN)
+- Added interactive language links in footer descriptions with underline styling
+- Updated job CTA with two-line formatting and HTML rendering support
+
+### Content Updates (COMPLETED)
+- Updated project technologies in both EN/ES locale files
+- Enhanced project descriptions with proper HTML formatting
+- Added proper spacing normalization across all sections (py-16 lg:py-40)
+
+### Resume Files Management (COMPLETED)
+- Updated resume PDFs: `JoseSanchez_CV_ENG_run@jose.run.pdf` & `JoseSanchez_CV_ESP_run@jose.run.pdf`
+- Proper deployment workflow: public/Content → build → root/Content → GitHub Pages
+- Fixed development server conflicts by ensuring proper index.html src references
+
+## Current State
+- **Status**: Production-ready and deployed at https://jose.run
+- **Last Deploy**: Sept 9, 2025 (commit: 90a8652)
+- **Resume Files**: Latest versions successfully deployed
+- **Known Issues**: None - all reported bugs fixed
+
+## Development Environment
+- **Dev Server**: Run `npm run dev` for development (port 5173)
+- **Build Process**: `npm run build` → copy dist/* to root → copy public/* to root → git push
+- **Important**: Always ensure index.html points to `/src/main.jsx` for dev, gets updated to production assets during build
 
 ## Performance Considerations
 - Videos are lazy-loaded using Intersection Observer
 - Images use react-lazy-load-image-component with blur effect
 - Parallax effects use requestAnimationFrame for smooth performance
 - Mobile-first responsive design prioritizes mobile performance
+
+## Files to Watch
+- Resume PDFs in `public/Content/` and root `Content/` must stay synchronized
+- Jobs.jsx project technologies updated with latest content
+- Footer.jsx has complex two-section layout with interactive elements

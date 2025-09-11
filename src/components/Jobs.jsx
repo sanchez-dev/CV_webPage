@@ -64,7 +64,7 @@ const Jobs = () => {
 
   return (
     <section className="py-16 lg:py-40 relative bg-background z-10" id="projects">
-      <div className="max-w-7xl mx-auto px-6 ">
+      <div className="max-w-7xl mx-auto px-4 ">
         {/* Section Header */}
         <div className="mb-14 ">
           <h2 className="text-4xl lg:text-5xl font-tt-norms font-bold text-black tracking-tight mb-4">
@@ -170,6 +170,67 @@ const Jobs = () => {
                     backgroundPosition: 'center'
                   }}
                 />
+              </div>
+            </div>
+          </div>
+
+          {/* Row 3: Project 4 (6 cols) + Item 3 (3 cols) + Project 5 (3 cols) */}
+          <div className="grid grid-cols-12 gap-4">
+            {/* Project 4 - 6 columns */}
+            <div className="col-span-12 lg:col-span-6">
+              <div className="relative overflow-hidden rounded-sm h-[384px] lg:h-[550px] bg-[#e1e1e1]">
+                <LazyVideo
+                  src="/v4.mp4"
+                  className="w-full h-full"
+                />
+
+                {/* Technologies - Bottom center */}
+                <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex flex-wrap gap-2 justify-center z-10">
+                  {t('jobs.projects.project4.technologies', { returnObjects: true }).map((tech, i) => (
+                    <span
+                      key={i}
+                      className="px-2 py-1 border-stone-600/20 border text-stone-600/40 text-sm font-tt-norms rounded-sm backdrop-blur-lg"
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            {/* Item 3 decorative - 3 columns - hidden on mobile */}
+            <div className="hidden lg:block lg:col-span-3">
+              <div className="relative overflow-hidden rounded-sm h-64 lg:h-[550px] bg-[#e1e1e1]">
+                <div 
+                  className="w-full h-full bg-cover bg-center"
+                  style={{
+                    backgroundImage: `url('/item3.jpg')`,
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center'
+                  }}
+                />
+              </div>
+            </div>
+
+            {/* Project 5 - 3 columns */}
+            <div className="col-span-12 lg:col-span-3">
+              <div className="relative overflow-hidden rounded-sm h-[384px] lg:h-[550px] bg-[#e1e1e1]">
+                <LazyVideo
+                  src="/v5.mp4"
+                  className="w-full h-full"
+                />
+
+                {/* Technologies - Bottom center */}
+                <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex flex-wrap gap-2 justify-center z-10">
+                  {t('jobs.projects.project5.technologies', { returnObjects: true }).map((tech, i) => (
+                    <span
+                      key={i}
+                      className="px-2 py-1 border-stone-600/20 border text-stone-600/40 text-sm font-tt-norms rounded-sm backdrop-blur-lg"
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
