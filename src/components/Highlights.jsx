@@ -55,7 +55,8 @@ const Highlights = () => {
             {/* CTA Button */}
             <a
               href="#contact"
-              className="block w-full md:inline-block md:w-auto text-center px-8 py-4 border-2 border-secondary text-secondary font-tt-norms font-medium rounded-full hover:bg-secondary hover:text-white transition-colors text-2xl"
+              className="flex w-full md:inline-flex md:w-auto justify-center items-center px-12 py-4 bg-secondary text-white font-tt-norms font-medium rounded-full hover:bg-secondary-dark transition-colors text-2xl"
+              style={{boxShadow: '0 0 3px rgba(0, 0, 255, 0.3), 0 0 10px rgba(0, 0, 255, 0.2)'}}
             >
               Let's work together
             </a>

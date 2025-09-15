@@ -25,6 +25,8 @@ export default {
         background: 'var(--color-background)',
         black: 'var(--color-black)',
         white: 'var(--color-white)',
+        'project-text': 'var(--color-project-text)',
+        'project-tags': 'var(--color-project-tags)',
         gray: {
           50: 'var(--color-gray-50)',
           100: 'var(--color-gray-100)',

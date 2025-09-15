@@ -44,37 +44,37 @@
     "cta": "<span class=\"font-bold\">Let's discuss these</span><br/>or other projects",
     "projects": {
       "project1": {
-        "title": "Banking Mobile App",
+        "title": "BANKING APP (BMM)",
         "year": "2024",
-        "description": "Complete redesign of mobile banking experience with focus on accessibility and user flow optimization.",
-        "technologies": ["Product 360º", "CX/UX", "Payments"]
+        "description": "A digital ecosystem with integrated products, payments, and services aligned with Colombian regulations.",
+        "technologies": ["Research & Jobs-To-Be-Done", "Concept & user testing", "Prototyping", "Design system", "End-to-end product lifecycle", "User-validated APP"]
       },
       "project2": {
-        "title": "Realt State Strategy",
+        "title": "Banking - BTG Pactual Portal",
         "year": "2020", 
-        "description": "Led product strategy for seamless payment integration across multiple platforms and currencies.",
-        "technologies": ["Strategy", "Information Architecture", "UX/UI", "Banking"]
+        "description": "BTG Pactual informational portal that simplifies investment product exploration and allows users to learn about the bank and its offerings.",
+        "technologies": ["Content strategy", "Information architecture", "UX/UI design", "Design system", "Simplified portal aligned with business"]
       },
       "project3": {
-        "title": "Background Video Project",
+        "title": "WEB Constructora Bolivar",
         "company": "Creative Studio",
         "year": "2024",
-        "description": "Background video integration for immersive user experiences.",
-        "technologies": ["Strategy 360º", "UX/UI", "Real Estate"]
+        "description": "Constructora Bolívar's Digital Hub, a web application that unifies projects from multiple cities, optimizing client consultation and the sales process.",
+        "technologies": ["UX research", "Information architecture", "UX/UI design", "Design system", "Product strategy alignment", "WEB that speaks the language of sales team and users"]
       },
       "project4": {
-        "title": "Product Development Project",
+        "title": "The user at the center",
         "company": "Tech Innovation",
         "year": "2024",
-        "description": "Comprehensive product development with focus on user testing and 360° product vision.",
-        "technologies": ["Product 360º", "Testing", "User Centered Design"]
+        "description": "From the first idea to the prototype, user feedback defines whether an idea deserves to become a product.",
+        "technologies": ["User interviews", "Co-creation workshops", "Concept testing", "Usability testing", "Validated concepts through direct user feedback"]
       },
       "project5": {
-        "title": "Strategic Information Architecture",
+        "title": "Portal Web Evolution",
         "company": "Enterprise Solutions",
         "year": "2024",
-        "description": "Strategic approach to information architecture with comprehensive product vision and planning.",
-        "technologies": ["Product 360º", "Strategy", "Information Architecture"]
+        "description": "A clearer, more accessible experience: optimized architecture, a coherent design system, and accessibility standards.",
+        "technologies": ["Information architecture", "UX/UI design", "Design system", "Accessibility compliance (WCAG 2.0)", "Portal serving 100,000+ monthly users"]
       }
     }
   },

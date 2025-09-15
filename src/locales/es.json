@@ -44,39 +44,39 @@
     "cta": "<span class=\"font-bold\">Hablemos de estos</span><br/>u otros proyectos",
     "projects": {
       "project1": {
-        "title": "App Móvil Bancaria",
+        "title": "BANKING APP (BMM)",
         "company": "BMM", 
         "year": "2024",
-        "description": "Rediseño completo de experiencia bancaria móvil enfocado en accesibilidad y optimización de flujos de usuario.",
-        "technologies": ["Producto 360º", "UX/UI", "research", "Banking"]
+        "description": "Ecosistema digital con productos, pagos y servicios integrados, en línea con la normativa colombiana.",
+        "technologies": ["Investigación y Jobs-to-be-Done", "Pruebas de concepto y usabilidad", "Sistema de diseño", "Ciclo de vida de producto end-to-end", "APP validada con usuarios"]
       },
       "project2": {
-        "title": "Integración Gateway de Pagos",
+        "title": "Banking - BTG Pactual Portal",
         "company": "Fintech Startup",
         "year": "2023",
-        "description": "Lideré la estrategia de producto para integración perfecta de pagos en múltiples plataformas y divisas.",
-        "technologies": ["Estrategia 360º", "UX/UI", "Construcción"]
+        "description": "Portal informativo BTG Pactual que simplifica la exploración de productos de inversión y permite a los usuarios conocer el banco y sus ofertas.",
+        "technologies": ["Estrategia de contenidos", "Arquitectura de información", "Diseño UX/UI", "Sistema de diseño", "Portal simplificado y alineado al negocio"]
       },
       "project3": {
-        "title": "Proyecto Video Background",
+        "title": "WEB Constructora Bolivar",
         "company": "Creative Studio", 
         "year": "2024",
-        "description": "Integración de video de fondo para experiencias de usuario inmersivas.",
-        "technologies": ["Estrategia 360º", "Arquitectura de información", "UX/UI", "Banking"]
+        "description": "El Hub Digital de Constructora Bolívar, una aplicación web que unifica proyectos de múltiples ciudades, optimizando la consulta del cliente y el proceso comercial.",
+        "technologies": ["Investigación UX", "Arquitectura de información", "Diseño UX/UI", "Sistema de diseño", "Alineación de estrategia de producto", "Portal que entiende a la fuerza comercial y clientes"]
       },
       "project4": {
-        "title": "Proyecto Desarrollo de Producto",
+        "title": "El usuario en el centro",
         "company": "Tech Innovation",
         "year": "2024",
-        "description": "Desarrollo integral de producto con enfoque en testing de usuarios y visión 360° de producto.",
-        "technologies": ["Producto 360º", "Testing", "Diseño Centrado en Usuario"]
+        "description": "Siempre, desde la primera idea al prototipo, su feedback define si una idea merece ser producto.",
+        "technologies": ["Entrevistas de usuario", "Talleres de co-creación", "Pruebas de concepto", "Pruebas de usabilidad", "Validación a través de feedback directo del usuario"]
       },
       "project5": {
-        "title": "Arquitectura de Información Estratégica",
+        "title": "Evolución portal web BMM",
         "company": "Enterprise Solutions",
         "year": "2024",
-        "description": "Enfoque estratégico para arquitectura de información con visión integral de producto y planificación.",
-        "technologies": ["Producto 360º", "Estrategia", "Arquitectura de Información"]
+        "description": "Una experiencia más clara y accesible: arquitectura optimizada, diseño coherente y estándares de accesibilidad.",
+        "technologies": ["Arquitectura de información", "Diseño UX/UI", "Sistema de diseño", "Accesibilidad (WCAG 2.0)", "Ahora recibe 100,000+ usuarios mensuales"]
       }
     }
   },
