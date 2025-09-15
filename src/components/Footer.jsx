@@ -40,7 +40,7 @@ const Footer = () => {
               </div>
 
               {/* WhatsApp */}
-              <div className="flex items-center gap-3 mb-8">
+              <div className="flex items-center gap-3 mb-6">
                 <img src="/design/whatsapp.svg" alt="WhatsApp" className="w-5 h-5 filter brightness-0 invert" />
                 <a 
                   href={`https://wa.me/${t('contact.phone').replace(/[^\d]/g, '')}`}
@@ -52,9 +52,20 @@ const Footer = () => {
                 </a>
               </div>
 
+              {/* Email */}
+              <div className="flex items-center gap-3 mb-8">
+                <img src="/email-heart.png" alt="Email" className="w-5 h-5 filter brightness-0 invert" />
+                <a 
+                  href="mailto:run@jose.run?subject=Necesito%20tu%20ayuda%20con%20mis%20productos&body=Hola%20Jose,%0A%0A"
+                  className="font-tt-norms text-white hover:text-primary transition-colors text-lg"
+                >
+                  run@jose.run
+                </a>
+              </div>
+
               {/* Resume */}
               <div className="inline-flex items-center gap-3 px-4 py-2 border border-white rounded-sm">
-                <img src="/design/resume.svg" alt="Resume" className="w-4 h-4" />
+                <img src="/design/resume.svg" alt="Resume" className="w-5 h-5" />
                 <a 
                   href={resumeUrl}
                   target="_blank"
