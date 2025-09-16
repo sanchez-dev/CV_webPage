@@ -8,5 +8,11 @@ export default defineConfig({
   build: {
     outDir: 'dist',
     assetsDir: 'assets'
-  }
+  },
+  server: {
+    fs: {
+      strict: false
+    }
+  },
+  publicDir: 'public'
 })

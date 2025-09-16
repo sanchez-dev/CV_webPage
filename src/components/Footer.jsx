@@ -53,13 +53,26 @@ const Footer = () => {
               </div>
 
               {/* Email */}
-              <div className="flex items-center gap-3 mb-8">
+              <div className="flex items-center gap-3 mb-6">
                 <img src="/email-heart.png" alt="Email" className="w-5 h-5 filter brightness-0 invert" />
                 <a 
                   href="mailto:run@jose.run?subject=Necesito%20tu%20ayuda%20con%20mis%20productos&body=Hola%20Jose,%0A%0A"
                   className="font-tt-norms text-white hover:text-primary transition-colors text-lg"
                 >
                   run@jose.run
+                </a>
+              </div>
+
+              {/* Dribbble */}
+              <div className="flex items-center gap-3 mb-8">
+                <img src="/design/dribbble.svg" alt="Dribbble" className="w-5 h-5 filter brightness-0 invert" />
+                <a 
+                  href="https://dribbble.com/JoseSan"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-tt-norms text-white hover:text-primary transition-colors text-lg"
+                >
+                  Dribbble
                 </a>
               </div>
 

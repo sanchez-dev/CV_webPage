@@ -75,6 +75,13 @@
         "year": "2024",
         "description": "A clearer, more accessible experience: optimized architecture, a coherent design system, and accessibility standards.",
         "technologies": ["Information architecture", "UX/UI design", "Design system", "Accessibility compliance (WCAG 2.0)", "Portal serving 100,000+ monthly users"]
+      },
+      "project6": {
+        "title": "HearthField Game",
+        "company": "Personal Project",
+        "year": "2024",
+        "description": "A nostalgic 2D space shooter where you control a ship and catch specific bullet sequences. Built with Canvas 2D and sprite animations.",
+        "technologies": ["Canvas 2D", "JavaScript ES6+", "Web Audio API", "Sprite Animation", "Game Engine"]
       }
     }
   },
