@@ -1,6 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import { useState, useEffect } from 'react';
 import profileImage from '../assets/me.png';
+import Loader from './Loader';
 
 const Hero = () => {
   const { t, i18n } = useTranslation();
@@ -55,6 +56,7 @@ const Hero = () => {
           willChange: 'transform'
         }}
       >
+        {!imageLoaded && <Loader />}
         <img 
           src={profileImage}
           alt="Jose Luis Sanchez"

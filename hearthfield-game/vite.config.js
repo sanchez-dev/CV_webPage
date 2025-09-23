@@ -2,6 +2,7 @@ import { defineConfig } from 'vite'
 
 export default defineConfig({
   root: '.',
+  base: '/hearthfield-game/',
   publicDir: 'assets',
   build: {
     outDir: 'dist',

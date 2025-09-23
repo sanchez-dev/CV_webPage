@@ -52,7 +52,7 @@
       "project2": {
         "title": "Banking - BTG Pactual Portal",
         "year": "2020", 
-        "description": "BTG Pactual informational portal that simplifies investment product exploration and allows users to learn about the bank and its products.",
+        "description": "BTG Pactual’s informational portal that simplifies exploring investment options and helps users get to know the bank.",
         "technologies": ["Content strategy", "Information architecture", "UX/UI design", "Design system", "Simplified portal aligned with business"]
       },
       "project3": {
@@ -70,18 +70,23 @@
         "technologies": ["User interviews", "Co-creation workshops", "Concept testing", "Usability testing", "Validated concepts through direct user feedback"]
       },
       "project5": {
-        "title": "Portal Web Evolution",
+        "title": "Portal Web Evolution - BMM",
         "company": "Enterprise Solutions",
         "year": "2024",
         "description": "A clearer, more accessible experience: optimized architecture, a coherent design system, and accessibility standards.",
-        "technologies": ["Information architecture", "UX/UI design", "Design system", "Accessibility compliance (WCAG 2.0)", "Portal serving 100,000+ monthly users"]
+        "technologies": ["Information architecture", "UX/UI design", "Design system", "Accessibility compliance (WCAG 2.0)", "100,000+ monthly users"]
       },
       "project6": {
-        "title": "HearthField Game",
-        "company": "Personal Project",
-        "year": "2024",
-        "description": "A nostalgic 2D space shooter where you control a ship and catch specific bullet sequences. Built with Canvas 2D and sprite animations.",
-        "technologies": ["Canvas 2D", "JavaScript ES6+", "Web Audio API", "Sprite Animation", "Game Engine"]
+        "title": "Bogotrip - Game",
+        "company": "Folium",
+        "year": "2020",
+        "description": "I sketched, designed, and developed a video game inspired by Bogotá at night — urban vibes and hip hop — as an alternative communication strategy for an indie platform.",
+        "technologies": [
+          "Urban narrative ideation",
+          "Visual design & animation",
+          "Playable prototype",
+          "A different way to communicate, fun,  unforgettable"
+        ]
       }
     }
   },

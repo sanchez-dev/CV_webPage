@@ -56,7 +56,6 @@ const Highlights = () => {
             <a
               href="#contact"
               className="flex w-full md:inline-flex md:w-auto justify-center items-center px-12 py-4 bg-secondary text-white font-tt-norms font-medium rounded-full hover:bg-secondary-dark transition-colors text-2xl"
-              style={{boxShadow: '0 0 3px rgba(0, 0, 255, 0.3), 0 0 10px rgba(0, 0, 255, 0.2)'}}
             >
               Let's work together
             </a>

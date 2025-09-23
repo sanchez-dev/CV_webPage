@@ -180,3 +180,12 @@ video {
     text-wrap: balance;
   }
 }
+/* Oculta la barra de scroll pero mantiene la funcionalidad */
+.scrollbar-hide::-webkit-scrollbar {
+    display: none;
+}
+
+.scrollbar-hide {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}

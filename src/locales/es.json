@@ -48,21 +48,21 @@
         "company": "BMM", 
         "year": "2024",
         "description": "Ecosistema digital con productos, pagos y servicios integrados, en línea con la normativa colombiana.",
-        "technologies": ["Investigación y Jobs-to-be-Done", "Pruebas de concepto y usabilidad", "Sistema de diseño", "Ciclo de vida de producto end-to-end", "APP validada con usuarios"]
+        "technologies": ["Investigación y Jobs-to-be-Done", "Pruebas concepto y usabilidad", "Sistema de diseño", "Ciclo de vida de producto", "APP validada"]
       },
       "project2": {
         "title": "Banking - BTG Pactual Portal",
         "company": "Fintech Startup",
         "year": "2023",
-        "description": "Portal informativo BTG Pactual que simplifica la exploración de productos de inversión y permite a los usuarios conocer el banco y sus productos.",
-        "technologies": ["Estrategia de contenidos", "Arquitectura de información", "Diseño UX/UI", "Sistema de diseño", "Portal simplificado y alineado al negocio"]
+        "description": "Portal informativo de BTG Pactual. Facilita explorar inversiones y conocer las diferentes ofertas del banco.",
+        "technologies": ["Estrategia de contenidos", "Arquitectura información", "UX/UI", "Sistema de diseño", "Portal simplificado y alineado a negocio"]
       },
       "project3": {
         "title": "WEB Constructora Bolivar",
         "company": "Creative Studio", 
         "year": "2024",
         "description": "El Hub Digital de Constructora Bolívar, una aplicación web que unifica proyectos de múltiples ciudades, optimizando la consulta del cliente y el proceso comercial.",
-        "technologies": ["Investigación UX", "Arquitectura de información", "Diseño UX/UI", "Sistema de diseño", "Alineación de estrategia de producto", "Portal que entiende a la fuerza comercial y clientes"]
+        "technologies": ["Investigación UX", "Arquitectura de información", "UX/UI", "Sistema de diseño", "Alineación de estrategia de producto", "Portal que entiende a la fuerza comercial y clientes"]
       },
       "project4": {
         "title": "El usuario en el centro",
@@ -72,18 +72,18 @@
         "technologies": ["Entrevistas de usuario", "Talleres de co-creación", "Pruebas de concepto", "Pruebas de usabilidad", "Validación a través de feedback directo del usuario"]
       },
       "project5": {
-        "title": "Evolución portal web BMM",
+        "title": "Evolución portal web",
         "company": "Enterprise Solutions",
         "year": "2024",
-        "description": "Una experiencia más clara y accesible: arquitectura optimizada, diseño coherente y estándares de accesibilidad.",
-        "technologies": ["Arquitectura de información", "Diseño UX/UI", "Sistema de diseño", "Accesibilidad (WCAG 2.0)", "Ahora recibe 100,000+ usuarios mensuales"]
+        "description": "Experiencia más clara y accesible: arquitectura optimizada, diseño coherente y estándares WCGA2.0",
+        "technologies": ["Arquitectura de información", "UX/UI", "Sistema de diseño", "Accesibilidad (WCAG 2.0)", "100,000+ usuarios mensuales"]
       },
       "project6": {
-        "title": "HearthField Game",
+        "title": "Bogotrip - Game",
         "company": "Proyecto Personal",
-        "year": "2024",
-        "description": "Un shooter espacial nostálgico 2D donde controlas una nave y capturas secuencias específicas de proyectiles. Construido con Canvas 2D y animaciones sprite.",
-        "technologies": ["Canvas 2D", "JavaScript ES6+", "Web Audio API", "Animación Sprite", "Motor de Juego"]
+        "year": "2020",
+        "description": "Dibujé, diseñé y desarrolle un videojuego de Bogotá nocturna, con vibra urbana y hip hop, como una estrategia de comunicación para un medio alternativo",
+        "technologies": ["Ideación de la narrativa urbana", "Diseño visual y animación", "Prototipo jugable", "Un feature comunicativo único y memorable"]
       }
     }
   },
