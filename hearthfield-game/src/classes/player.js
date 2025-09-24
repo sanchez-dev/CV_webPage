@@ -4,7 +4,6 @@ class Ship {
   constructor ( directionPointX, directionPointY, images, screenFactor ) {
     this.directionPointX = directionPointX
     this.directionPointY = directionPointY
-    console.log(this.directionPointX, this.directionPointY)
 
     this.originalSize = 160
 

@@ -87,8 +87,6 @@ class Enemy {
       ...this.armSerenos(bulletSet.sereno || {speed: 0, q: 0, lifetime: 0})
     ]
 
-    console.log('Enemy bullets created:', this.bullets.length, 'bullets')
-    console.log('BulletSet received:', bulletSet)
   }
   // arrow
   armNormal ( {speed, lifetime, q, timeInterval} ) {
@@ -118,8 +116,6 @@ class Enemy {
         angle = spaces * i
       }
     }
-
-    console.log('Hearts created:', heartsWallet.length, 'speed:', speed, 'q:', q)
     return heartsWallet
   }
   // tigers

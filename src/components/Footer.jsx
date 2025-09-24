@@ -28,7 +28,7 @@ const Footer = () => {
             <div>
               {/* LinkedIn */}
               <div className="flex items-center gap-3 mb-6">
-                <img src="/design/linkedin.svg" alt="LinkedIn" className="w-5 h-5" />
+                <img src="/linkedin.svg" alt="LinkedIn" className="w-5 h-5" />
                 <a 
                   href={t('contact.linkedin')}
                   target="_blank"
@@ -41,7 +41,7 @@ const Footer = () => {
 
               {/* WhatsApp */}
               <div className="flex items-center gap-3 mb-6">
-                <img src="/design/whatsapp.svg" alt="WhatsApp" className="w-5 h-5 filter brightness-0 invert" />
+                <img src="/whatsapp.svg" alt="WhatsApp" className="w-5 h-5 filter brightness-0 invert" />
                 <a 
                   href={`https://wa.me/${t('contact.phone').replace(/[^\d]/g, '')}`}
                   target="_blank"
@@ -78,7 +78,7 @@ const Footer = () => {
 
               {/* Resume */}
               <div className="inline-flex items-center gap-3 px-4 py-2 border border-white rounded-sm">
-                <img src="/design/resume.svg" alt="Resume" className="w-5 h-5" />
+                <img src="/resume.svg" alt="Resume" className="w-5 h-5" />
                 <a 
                   href={resumeUrl}
                   target="_blank"

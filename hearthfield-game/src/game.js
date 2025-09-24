@@ -93,17 +93,14 @@ class HearthField {
 
       // Create enemy FIRST (player position depends on it)
       _this.enemy = _this.createEnemy()
-      console.log('Enemy created:', _this.enemy)
 
       // Then create player using enemy position
       _this.player = _this.createPlayer()
-      console.log('Player created:', _this.player)
 
       _this.communicationsEngine = communications.create(this.fieldWidth, this.fieldHeight, this.screenResize)
       _this.scoreEngine = new ScoreEngine(_this.enemy)
-      console.log('ScoreEngine created:', _this.scoreEngine)
+
       _this.scoreEngine.buildSequence()
-      console.log('Enemy bullets after buildSequence:', _this.enemy.bullets.length)
       this.score = 0
       this.initScene()
       console.log('Game initialization complete')
@@ -231,10 +228,7 @@ class HearthField {
     let playerX = this.enemy ? (this.enemy.x * this.screenResize) : (this.fieldWidth / 2)
     let playerY = this.enemy ? (this.enemy.y - ((this.enemy.size.h - 200) * this.screenResize)) : (this.fieldHeight - 100)
 
-    console.log('Player position:', playerX, playerY)
-
     let myPlayer = new Player( playerX, playerY, images, this.screenResize )
-    console.log('Player created:', myPlayer)
     return myPlayer
   }
 
@@ -243,11 +237,9 @@ class HearthField {
 
     // enemy
     enemyFace.onload = () => {
-      console.log('Enemy raincoat image loaded successfully')
       enemyFace.loaded = true
     }
     enemyFace.onerror = () => {
-      console.error('Failed to load enemy raincoat image')
       enemyFace.loaded = false
     }
     enemyFace.loaded = false
@@ -337,17 +329,12 @@ class HearthField {
       bullets : this.bulletsImages
     }
 
-    console.log('Enemy images object:', images)
-    console.log('Enemy face loaded:', enemyFace.complete, enemyFace.naturalWidth)
-
     let size = {
       w: 386,
       h: 584
     }
 
-    console.log('Creating enemy at position:', 1920 / 2, this.fieldHeight + 10)
     let myEnemy = new Enemy ( 1920 / 2, this.fieldHeight + 10, images, size, this.screenResize)
-    console.log('Enemy created:', myEnemy)
     return myEnemy
   }
 
@@ -512,7 +499,6 @@ class HearthField {
 
     // Check if image is loaded before drawing
     if (!tile.complete || tile.naturalWidth === 0) {
-      console.log('Skipping sprite draw - image not ready:', tile.src)
       return // Skip drawing if image not loaded
     }
 
@@ -601,9 +587,6 @@ class HearthField {
   drawPlayer () {
     let angle = this.player.faceTo()
 
-    // draw Ship
-    console.log('Drawing player at:', this.player.x, this.player.y, 'Size:', this.player.size)
-    console.log('Player ship loaded:', this.player.shipImage.loaded, 'Complete:', this.player.shipImage.complete)
 
     // Check if player ship image is loaded
     if (this.player.shipImage.loaded && this.player.shipImage.complete && this.player.shipImage.naturalWidth > 0) {
@@ -613,9 +596,7 @@ class HearthField {
       this.ctx.drawImage(this.player.shipImage, 0 - (this.player.size / 2), 0 - (this.player.size / 2), this.player.size, this.player.size)
       this.ctx.closePath()
       this.ctx.restore()
-      console.log('Player drawn successfully')
     } else {
-      console.log('Player image not ready yet')
       // Draw a placeholder circle for debugging
       this.ctx.save()
       this.ctx.fillStyle = '#00FF00'
@@ -628,10 +609,6 @@ class HearthField {
 
   drawEnemy () {
     // draw Enemy
-    console.log('Drawing enemy at:', this.enemy.x, this.enemy.y, 'Bullets:', this.enemy.bullets.length)
-    console.log('Enemy img object:', this.enemy.img)
-    console.log('Enemy img src:', this.enemy.img?.src)
-
     // Check if enemy image is ready, otherwise draw placeholder
     if (this.enemy.img && this.enemy.img.complete && this.enemy.img.naturalWidth > 0) {
       this.spriteAnimate(this.enemy, this.enemy.x, this.enemy.y, this.enemy.size)
@@ -643,7 +620,6 @@ class HearthField {
       this.ctx.arc(this.enemy.x * this.screenResize, this.enemy.y * this.screenResize, 50, 0, 2 * Math.PI)
       this.ctx.fill()
       this.ctx.restore()
-      console.log('Drawing enemy placeholder')
     }
 
     for (let i = 0; i < this.enemy.bullets.length; i++) {
@@ -667,11 +643,9 @@ class HearthField {
   }
 
   drawUI () {
-    console.log('drawUI called, UI elements:', this.scoreEngine.UI.length)
     for (let i = 0; i < this.scoreEngine.UI.length; i++) {
       for (let y = 0; y < this.scoreEngine.UI[i].length; y++) {
         if (this.scoreEngine.UI[i][y].visible) {
-          console.log('Drawing UI element:', this.scoreEngine.UI[i][y].type, 'at', this.scoreEngine.UI[i][y].x, this.scoreEngine.UI[i][y].y)
           this.spriteAnimate(this.scoreEngine.UI[i][y], this.scoreEngine.UI[i][y].x + this.scoreCorner, this.scoreEngine.UI[i][y].y + this.scoreCorner, this.scoreEngine.UI[i][y].img.size, null, 'ui' )
         }
         if (this.scoreEngine.UI[i][y].sequenceTurn && this.scoreEngine.UI[i][y].type === "sequence") {
@@ -694,7 +668,6 @@ class HearthField {
       this.ctx.closePath()
     }
 
-    // console.log(communicationsToDraw)
     for (let i = 0; i < communicationsToDraw.length; i++) {
       this.spriteAnimate(communicationsToDraw[i], communicationsToDraw[i].x, communicationsToDraw[i].y, communicationsToDraw[i].size)
     }
@@ -761,7 +734,6 @@ class HearthField {
     }
 
     if (this.gameRunning && this.player && this.enemy) {
-      console.log('Drawing player and enemy - Player pos:', this.player.x, this.player.y)
       this.player.update()
       this.drawEnemy()
       this.drawPlayer()
@@ -778,7 +750,6 @@ class HearthField {
     }
 
     if (this.scoreEngine && this.scoreEngine.UI) {
-      console.log('Drawing UI - Elements:', this.scoreEngine.UI.length)
       this.drawUI()
     }
     if (this.communicationsEngine) {
@@ -796,15 +767,12 @@ class HearthField {
   }
 
   switchAnimate () {
-    console.log('switchAnimate called, current animating:', this.animating)
     this.animating = !this.animating
-    console.log('New animating state:', this.animating)
 
     for (let i = 0; i < this.smallAnimation.length; i++) {
       this.smallAnimation[i].init()
     }
     if (this.animating) {
-      console.log('Starting animation loop')
       animate()
     }
   }
@@ -821,9 +789,8 @@ function animate () {
 }
 
 function create (canvas, cb) {
-  console.log('Creating HearthField with canvas:', canvas)
+
   hf = new HearthField(canvas)
-  console.log('HearthField created:', hf)
   cb(hf)
 }
 

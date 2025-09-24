@@ -106,7 +106,7 @@ const Jobs = () => {
         <div className="lg:space-y-[120px] space-y-0">
           <div className="grid grid-cols-12 gap-8">
             <div className="col-span-12 lg:col-span-9 mb-16 lg:mb-0">
-              <div className="space-y-6">
+              <div className="space-y-[34px]">
                 <div className="relative overflow-hidden rounded-md h-[384px] lg:h-[550px]">
                   <LazyVideo
                     src="/p2.mp4"
@@ -115,10 +115,10 @@ const Jobs = () => {
                 </div>
                 
                 <div className="space-y-4">
-                  <h3 className="text-xl font-tt-norms font-bold text-black uppercase">
+                  <h3 className="text-3xl font-tt-norms font-bold text-black">
                     {t('jobs.projects.project2.title')}
                   </h3>
-                  <p className="text-base font-tt-norms font-normal text-black">
+                  <p className="text-lg font-tt-norms font-normal text-black">
                     {t('jobs.projects.project2.description')}
                   </p>
                   <div className="flex flex-wrap gap-2 items-center">
@@ -184,7 +184,7 @@ const Jobs = () => {
 
           <div className="grid grid-cols-12 gap-8">
             <div className="col-span-12 lg:col-span-6 mb-16 lg:mb-0">
-              <div className="space-y-6">
+              <div className="space-y-[34px]">
                 <div className="relative overflow-hidden rounded-md h-[384px] lg:h-[550px]">
                   <LazyVideo
                     src="/v4.mp4"
@@ -193,10 +193,10 @@ const Jobs = () => {
                 </div>
                 
                 <div className="space-y-4">
-                  <h3 className="text-xl font-tt-norms font-bold text-black uppercase">
+                  <h3 className="text-3xl font-tt-norms font-bold text-black">
                     {t('jobs.projects.project4.title')}
                   </h3>
-                  <p className="text-base font-tt-norms font-normal text-black">
+                  <p className="text-lg font-tt-norms font-normal text-black">
                     {t('jobs.projects.project4.description')}
                   </p>
                   <div className="flex flex-wrap gap-2 items-center">
@@ -259,7 +259,7 @@ const Jobs = () => {
             </div>
 
             <div className="col-span-12 lg:col-span-3 mb-16 lg:mb-0">
-              <div className="space-y-6">
+              <div className="space-y-[34px]">
                 <div className="relative overflow-hidden rounded-md h-[554px] lg:h-[550px]">
                   <LazyVideo
                     src="/v5.mp4"
@@ -268,10 +268,10 @@ const Jobs = () => {
                 </div>
                 
                 <div className="space-y-4">
-                  <h3 className="text-xl font-tt-norms font-bold text-black uppercase">
+                  <h3 className="text-3xl font-tt-norms font-bold text-black">
                     {t('jobs.projects.project5.title')}
                   </h3>
-                  <p className="text-base font-tt-norms font-normal text-black">
+                  <p className="text-lg font-tt-norms font-normal text-black">
                     {t('jobs.projects.project5.description')}
                   </p>
                   <div className="flex flex-wrap gap-2 items-center">
@@ -323,7 +323,7 @@ const Jobs = () => {
 
           <div className="grid grid-cols-12 gap-8">
             <div className="col-span-12 lg:col-span-3 mb-16 lg:mb-0">
-              <div className="space-y-6">
+              <div className="space-y-[34px]">
                 <div className="relative overflow-hidden rounded-md h-[554px] lg:h-[550px]">
                   <LazyVideo
                     src="/V1.mp4"
@@ -332,10 +332,10 @@ const Jobs = () => {
                 </div>
                 
                 <div className="space-y-4">
-                  <h3 className="text-xl font-tt-norms font-bold text-black uppercase">
+                  <h3 className="text-3xl font-tt-norms font-bold text-black">
                     {t('jobs.projects.project1.title')}
                   </h3>
-                  <p className="text-base font-tt-norms font-normal text-black">
+                  <p className="text-lg font-tt-norms font-normal text-black">
                     {t('jobs.projects.project1.description')}
                   </p>
                   <div className="flex flex-wrap gap-2 items-center">
@@ -399,7 +399,7 @@ const Jobs = () => {
             </div>
 
             <div className="col-span-12 lg:col-span-6 mb-16 lg:mb-0">
-              <div className="space-y-6">
+              <div className="space-y-[34px]">
                 <div className="relative overflow-hidden rounded-md h-[384px] lg:h-[550px]">
                   <LazyVideo
                     src="/V3.mp4"
@@ -408,10 +408,10 @@ const Jobs = () => {
                 </div>
                 
                 <div className="space-y-4">
-                  <h3 className="text-xl font-tt-norms font-bold text-black uppercase">
+                  <h3 className="text-3xl font-tt-norms font-bold text-black">
                     {t('jobs.projects.project3.title')}
                   </h3>
-                  <p className="text-base font-tt-norms font-normal text-black">
+                  <p className="text-lg font-tt-norms font-normal text-black">
                     {t('jobs.projects.project3.description')}
                   </p>
                   <div className="flex flex-wrap gap-2 items-center">
@@ -464,7 +464,7 @@ const Jobs = () => {
           {/* Row 4: Hearthfield Game (9 cols) */}
           <div className="grid grid-cols-12 gap-8 items-stretch">
             <div className="col-span-12 lg:col-span-9 mb-16 lg:mb-0">
-              <div className="space-y-6">
+              <div className="space-y-[34px]">
                 <div className="relative w-full aspect-video overflow-hidden rounded-md">
                   <iframe
                     src="/hearthfield-game/index.html"
@@ -477,10 +477,10 @@ const Jobs = () => {
                 </div>
                 
                 <div className="space-y-4">
-                  <h3 className="text-xl font-tt-norms font-bold text-black uppercase">
+                  <h3 className="text-3xl font-tt-norms font-bold text-black">
                     {t('jobs.projects.project6.title')}
                   </h3>
-                  <p className="text-base font-tt-norms font-normal text-black">
+                  <p className="text-lg font-tt-norms font-normal text-black">
                     {t('jobs.projects.project6.description')}
                   </p>
                   <div className="flex flex-wrap gap-2 items-center">

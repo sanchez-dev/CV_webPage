@@ -17,7 +17,6 @@ class ScoreEngine {
     this.itemsUI = [...this.bulletsNames]
     this.bulletsMax = this.bulletsNames.length
 
-    console.log('Bullets order:', this.bulletsNames)
     this.subLevel = 0
     this.itemsUI.push('tries')
 
@@ -51,7 +50,6 @@ class ScoreEngine {
       let itemGap = 8
       _this.uiImages = uiImages
 
-      console.log('UI Images created:', Object.keys(uiImages))
 
       // tries
       let space = 0
@@ -61,7 +59,7 @@ class ScoreEngine {
       }
 
       _this.UI[0] = _this.uiLives
-      console.log('Lives UI created:', _this.uiLives.length, 'elements')
+
       // _this.buildSequence()
 
     })
@@ -122,7 +120,6 @@ class ScoreEngine {
     uiItem.rows = 1
     uiItem.type = 'UI'
 
-    console.log(`Loading UI icon: ${uiItem.src}`)
 
     return uiItem
   }
@@ -153,14 +150,11 @@ class ScoreEngine {
   }
 
   buildSequence () {
-    console.log('Building sequence...')
     this.wave = 0
     let _this = this
     this.createWaveSequence((waveSequence) => {
-      console.log('Wave sequence created:', waveSequence)
       _this.waveSequence = waveSequence
       _this.setActualSequence(waveSequence, (actualSequence) => {
-        console.log('Actual sequence set:', actualSequence)
         _this.actualSequence = actualSequence
       })
     })
@@ -201,7 +195,6 @@ class ScoreEngine {
 
     let levelIndex = Math.min(this.level, possibles.length - 1)
     let levelPosibilities = possibles[levelIndex]
-    console.log('Using level index:', levelIndex, 'Possibilities:', levelPosibilities)
     let waveSequence = []
 
     
@@ -242,7 +235,6 @@ class ScoreEngine {
       [b[0], b[1], b[2], b[3]],  // Level 10+: todos los bullets
     ]
 
-    console.log('Current level:', this.level, 'Available bullets:', posibleWallet[this.level])
     return posibleWallet
   }
 
@@ -520,9 +512,6 @@ class ScoreEngine {
       sereno: configurations.sereno
     }
 
-    console.log('Current sequence:', this.actualPhase)
-    console.log('Army ready (all types):', armyReady)
-
     this.enemy.armShip(armyReady)
 
   }
@@ -535,14 +524,12 @@ class ScoreEngine {
       this.wave = 0
       this.actualSequence = this.waveSequence[this.wave]
       this.level++
-      console.log('🎉 LEVEL UP! New level:', this.level, 'SubLevel:', this.subLevel)
 
       this.buildSequence()
 
     } else {
       this.wave++
       this.actualSequence = this.waveSequence[this.wave]
-      console.log('Wave progress:', this.wave, 'SubLevel:', this.subLevel)
 
       this.setActualSequence(this.actualSequence, (actual) => {
       })

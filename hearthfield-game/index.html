@@ -25,56 +25,13 @@
         /* Debug interface styles removed for production */
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Staatliches&display=swap" rel="stylesheet">
+  <script type="module" crossorigin src="/assets/game-ODvumPTX.js"></script>
+  <link rel="modulepreload" crossorigin href="/assets/modulepreload-polyfill-B5Qt9EMX.js">
 </head>
 <body>
     <!-- Debug interface removed for production -->
 
     <canvas id="gameCanvas"></canvas>
 
-    <script type="module">
-        import createGame from './src/game.js';
-
-        let canvas = document.getElementById('gameCanvas');
-        let game;
-
-        // Initialize game
-        createGame(canvas, (gameInstance) => {
-            console.log('Game instance created:', gameInstance);
-            game = gameInstance;
-
-            console.log('Starting animation...');
-            game.switchAnimate();
-
-            console.log('Starting game automatically...');
-            game.startGame();
-        });
-
-        // Mouse tracking
-        window.mouseX = 0;
-        window.mouseY = 0;
-
-        document.addEventListener('mousemove', (e) => {
-            window.mouseX = e.clientX;
-            window.mouseY = e.clientY;
-        });
-
-        // Game controls
-        document.addEventListener('keydown', (e) => {
-            if (e.code === 'Space') {
-                e.preventDefault();
-                if (!game.gameRunning) {
-                    game.startGame();
-                }
-            }
-        });
-
-        document.addEventListener('click', (e) => {
-            if (game && !game.gameRunning) {
-                game.startGame();
-            }
-        });
-
-        // FPS counter removed for production
-    </script>
 </body>
 </html>

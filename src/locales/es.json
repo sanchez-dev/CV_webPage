@@ -44,14 +44,14 @@
     "cta": "<span class=\"font-bold\">Hablemos de estos</span><br/>u otros proyectos",
     "projects": {
       "project1": {
-        "title": "BANKING APP (BMM)",
+        "title": "Banking BMM app",
         "company": "BMM", 
         "year": "2024",
         "description": "Ecosistema digital con productos, pagos y servicios integrados, en línea con la normativa colombiana.",
         "technologies": ["Investigación y Jobs-to-be-Done", "Pruebas concepto y usabilidad", "Sistema de diseño", "Ciclo de vida de producto", "APP validada"]
       },
       "project2": {
-        "title": "Banking - BTG Pactual Portal",
+        "title": "BTG Pactual Portal",
         "company": "Fintech Startup",
         "year": "2023",
         "description": "Portal informativo de BTG Pactual. Facilita explorar inversiones y conocer las diferentes ofertas del banco.",
@@ -65,14 +65,14 @@
         "technologies": ["Investigación UX", "Arquitectura de información", "UX/UI", "Sistema de diseño", "Alineación de estrategia de producto", "Portal que entiende a la fuerza comercial y clientes"]
       },
       "project4": {
-        "title": "El usuario en el centro",
+        "title": "Usuario al centro",
         "company": "Tech Innovation",
         "year": "2024",
         "description": "Siempre, desde la primera idea al prototipo, su feedback define si una idea merece ser producto.",
         "technologies": ["Entrevistas de usuario", "Talleres de co-creación", "Pruebas de concepto", "Pruebas de usabilidad", "Validación a través de feedback directo del usuario"]
       },
       "project5": {
-        "title": "Evolución portal web",
+        "title": "Evolución portal Web",
         "company": "Enterprise Solutions",
         "year": "2024",
         "description": "Experiencia más clara y accesible: arquitectura optimizada, diseño coherente y estándares WCGA2.0",
