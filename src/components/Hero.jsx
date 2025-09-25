@@ -2,8 +2,11 @@ import { useTranslation } from 'react-i18next';
 import { useState, useEffect } from 'react';
 import profileImage from '../assets/me.png';
 import Loader from './Loader';
+import TextPressure from "./SplitText";
 
 const Hero = () => {
+  document.title = "KILO CODE DEV PROOF: Source active - " + new Date().toLocaleString();
+  console.log("Hero component rendered with dev changes - ", new Date().toLocaleString());
   const { t, i18n } = useTranslation();
   const [scrollY, setScrollY] = useState(0);
   const [imageLoaded, setImageLoaded] = useState(false);
@@ -45,22 +48,24 @@ const Hero = () => {
   // }, [showBlur]);
 
   return (
-    <section className="min-h-screen bg-background px-4 relative pb-16 lg:pb-40">
+    <section className="min-h-screen px-4 relative pb-16 lg:pb-40">
+
+
       {/* Profile Image - Background with parallax effect */}
       <div 
         className="absolute top-1/2 left-1/2 z-0 parallax-element flex items-center justify-center"
         style={{ 
           transform: window.innerWidth < 1024 
-            ? 'translate(-50%, calc(-50% + 25px))' 
+            ? 'translate(-50%, calc(-50% + 45px))'
             : 'translate(-50%, calc(-50% - 70px))',
           willChange: 'transform'
         }}
       >
         {!imageLoaded && <Loader />}
-        <img 
+        <img
           src={profileImage}
           alt="Jose Luis Sanchez"
-          className={`w-[799px] h-[799px] max-w-[210%] lg:max-w-none object-contain will-change-transform transition-all duration-1000 ease-out ${
+          className={`w-[639px] h-[639px] lg:w-[799px] lg:h-[799px] max-w-[168%] lg:max-w-none object-contain will-change-transform transition-all duration-1000 ease-out ${
             imageLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
           }`}
           onLoad={() => setImageLoaded(true)}
@@ -68,43 +73,37 @@ const Hero = () => {
       </div>
 
       <div className="max-w-7xl mx-auto relative z-20">
-
+        <div className="absolute block w-full h-full flex top-[44vh] text-shadow-lg">
+          <TextPressure className="justify-between drop-shadow-[0px_4px_0px_var(--shadow-color)]"
+            text="JOSE SÁNCHEZ"
+            flex={true}
+            alpha={false}
+            stroke={false}
+            width={true}
+            weight={true}
+            italic={true}
+            textColor="var(--color-primary)"
+            strokeColor="#F3F3ED"
+            minFontSize={100}
+          />
+        </div>
+        <div className="absolute block w-full h-10 flex top-[58vh] lg:top-[68vh] text-shadow-lg">
+          <TextPressure className="justify-between drop-shadow-[0px_4px_0px_var(--shadow-color)]"
+            text="LEAD PRODUCT DESIGNER"
+            flex={true}
+            alpha={false}
+            stroke={false}
+            width={true}
+            weight={true}
+            italic={true}
+            textColor="var(--color-primary)"
+            strokeColor="#F3F3ED"
+            minFontSize={50}
+          />
+        </div>
         <div className="min-h-[102vh] mt-0 flex flex-col items-start justify-between lg:justify-center pt-[60px] lg:pt-0 pb-0">
-          {/* Main Title - First, with extra strong weight */}
-          <div className="relative z-[-1] mb-0 lg:mb-28">
-            <h1 className="space-y-0 -mt-8 font-tt-norms text-primary uppercase leading-none tracking-space font-[1000]" >
-              {t('hero.title').split(' ').map((word, index) => (
-                <span 
-                  key={index} 
-                  className={`block mr-3 ${
-                    index === 0 ? 'text-5xl lg:text-7xl font-[800] ' : 
-                    index === 1 ? 'text-5xl lg:text-7xl font-[800]' : 
-                    index === 2 ? 'text-5xl lg:text-7xl font-[400] italic' : ''
-                  }`}
-                >
-                  {word}
-                </span>
-              ))}
-            </h1>
-            <h2 className="mt-14 text-2xl lg:text-3xl font-tt-norms text-primary uppercase leading-none tracking-tight font-[400]" >
-              <span className="block lg:hidden">
-                {t('hero.subtitle').split(' ').map((word, index) => (
-                  <span key={index} className="block">
-                    {word}
-                  </span>
-                ))}
-              </span>
-              <span className="hidden lg:block">
-                {t('hero.subtitle')}
-              </span>
-            </h2>
-            <h3 className="text-3xl lg:text-7xl font-tt-norms font-normal text-primary uppercase tracking-wider mt-4">
-              {t('hero.role')}
-            </h3>
-          </div>
 
-          {/* Introduction Text - After title */}
-          <div className="bg-background py-8 lg:py-10  lg:max-w-xl relative z-30 lg:mx-0 lg:pr-0 w-screen lg:w-auto -ml-4 lg:ml-0 px-4 lg:px-0">
+          {/* <div className="bg-background py-8 lg:py-10  lg:max-w-xl relative z-30 lg:mx-0 lg:pr-0 w-screen lg:w-auto -ml-4 lg:ml-0 px-4 lg:px-0">
             <p className="text-black font-tt-norms text-4xl">
               <span className="font-normal">{t('hero.intro')} </span>
               <span className="font-bold text-primary text-5xl">{t('hero.name')}</span>
@@ -112,7 +111,7 @@ const Hero = () => {
               <span className="font-normal" dangerouslySetInnerHTML={{ __html: t('hero.description') }}>
               </span>
             </p>
-          </div>
+          </div> */}
         </div>
 
       </div>

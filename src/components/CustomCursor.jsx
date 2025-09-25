@@ -119,28 +119,6 @@ const CustomCursor = () => {
           <path d="M3.56845 0.810243L26.2559 2.17957L25.9549 7.17075L9.6562 6.18674L26.6647 23.1953L23.1292 26.7308L6.32161 9.92322L7.28352 25.8421L2.29234 26.1432L0.934752 3.64696L0.922322 3.45637L0.752451 0.640372L3.56845 0.810243Z" />
         </svg>
       </div>
-
-      {/* Blur Circle Effect - Separate element */}
-      <div 
-        className="cursor-circle"
-        style={{
-          position: 'fixed',
-          left: position.x - 45 + 9.5,
-          top: position.y - 45 + 9.5,
-          width: '90px',
-          height: '90px',
-          borderRadius: '50%',
-          pointerEvents: 'none',
-          zIndex: 9998,
-          transition: 'transform 0.3s ease-out, backdrop-filter 0.3s ease-out, background 0.3s ease-out',
-          transform: 'scale(1)', // Keep consistent size
-          backdropFilter: `blur(${isOverInteractive ? 0 : 6}px)`, // Remove blur on interactive elements
-          background: `rgba(255, 255, 255, ${isOverInteractive ? 0 : 0.3})`, // Remove background on interactive elements
-          opacity: isVisible ? 1 : 0,
-          willChange: 'transform, backdrop-filter, opacity',
-          mixBlendMode: 'normal',
-        }}
-      />
     </>
   );
 };

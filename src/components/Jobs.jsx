@@ -95,10 +95,10 @@ const Jobs = () => {
 
 
   return (
-    <section className="py-16 lg:py-40 relative bg-background z-10" id="projects">
+    <section className="py-24 lg:py-56 relative bg-background z-10" id="projects">
       <div className="max-w-7xl mx-auto px-4 ">
         <div className="mb-14 ">
-          <h2 className="text-4xl lg:text-5xl font-tt-norms font-bold text-black tracking-tight mb-4">
+          <h2 className="text-5xl lg:text-6xl font-tt-norms font-bold text-black tracking-tight mb-4">
             {t('jobs.title')}
           </h2>
         </div>
@@ -118,7 +118,7 @@ const Jobs = () => {
                   <h3 className="text-3xl font-tt-norms font-bold text-black">
                     {t('jobs.projects.project2.title')}
                   </h3>
-                  <p className="text-lg font-tt-norms font-normal text-black">
+                  <p className="text-xl font-tt-norms font-normal text-black">
                     {t('jobs.projects.project2.description')}
                   </p>
                   <div className="flex flex-wrap gap-2 items-center">
@@ -126,7 +126,7 @@ const Jobs = () => {
                       <div key={i} className="flex items-center gap-1 whitespace-nowrap">
                         <span
                           className="px-3 py-1 text-base font-tt-norms font-normal"
-                          style={{border: '1px solid black', backgroundColor: 'transparent', color: 'black', borderRadius: '6px'}}
+                          style={{border: '2px solid black', backgroundColor: 'transparent', color: 'black', borderRadius: '6px'}}
                         >
                           {tech}
                         </span>
@@ -143,7 +143,7 @@ const Jobs = () => {
                     <div className="flex items-center gap-1 whitespace-nowrap">
                       <span
                         className="px-3 py-1 text-base font-tt-norms font-normal"
-                        style={{border: '1px solid black', backgroundColor: 'transparent', color: 'black', borderRadius: '6px'}}
+                        style={{border: '2px solid black', backgroundColor: 'transparent', color: 'black', borderRadius: '6px'}}
                       >
                         {t('jobs.projects.project2.technologies', { returnObjects: true })[t('jobs.projects.project2.technologies', { returnObjects: true }).length - 2]}
                       </span>
@@ -196,7 +196,7 @@ const Jobs = () => {
                   <h3 className="text-3xl font-tt-norms font-bold text-black">
                     {t('jobs.projects.project4.title')}
                   </h3>
-                  <p className="text-lg font-tt-norms font-normal text-black">
+                  <p className="text-xl font-tt-norms font-normal text-black">
                     {t('jobs.projects.project4.description')}
                   </p>
                   <div className="flex flex-wrap gap-2 items-center">
@@ -204,7 +204,7 @@ const Jobs = () => {
                       <div key={i} className="flex items-center gap-1 whitespace-nowrap">
                         <span
                           className="px-3 py-1 text-base font-tt-norms font-normal"
-                          style={{border: '1px solid black', backgroundColor: 'transparent', color: 'black', borderRadius: '6px'}}
+                          style={{border: '2px solid black', backgroundColor: 'transparent', color: 'black', borderRadius: '6px'}}
                         >
                           {tech}
                         </span>
@@ -221,7 +221,7 @@ const Jobs = () => {
                     <div className="flex items-center gap-1 whitespace-nowrap">
                       <span
                         className="px-3 py-1 text-base font-tt-norms font-normal"
-                        style={{border: '1px solid black', backgroundColor: 'transparent', color: 'black', borderRadius: '6px'}}
+                        style={{border: '2px solid black', backgroundColor: 'transparent', color: 'black', borderRadius: '6px'}}
                       >
                         {t('jobs.projects.project4.technologies', { returnObjects: true })[t('jobs.projects.project4.technologies', { returnObjects: true }).length - 2]}
                       </span>
@@ -271,7 +271,7 @@ const Jobs = () => {
                   <h3 className="text-3xl font-tt-norms font-bold text-black">
                     {t('jobs.projects.project5.title')}
                   </h3>
-                  <p className="text-lg font-tt-norms font-normal text-black">
+                  <p className="text-xl font-tt-norms font-normal text-black">
                     {t('jobs.projects.project5.description')}
                   </p>
                   <div className="flex flex-wrap gap-2 items-center">
@@ -279,7 +279,7 @@ const Jobs = () => {
                       <div key={i} className="flex items-center gap-1 whitespace-nowrap">
                         <span
                           className="px-3 py-1 text-base font-tt-norms font-normal"
-                          style={{border: '1px solid black', backgroundColor: 'transparent', color: 'black', borderRadius: '6px'}}
+                          style={{border: '2px solid black', backgroundColor: 'transparent', color: 'black', borderRadius: '6px'}}
                         >
                           {tech}
                         </span>
@@ -296,7 +296,7 @@ const Jobs = () => {
                     <div className="flex items-center gap-1 whitespace-nowrap">
                       <span
                         className="px-3 py-1 text-base font-tt-norms font-normal"
-                        style={{border: '1px solid black', backgroundColor: 'transparent', color: 'black', borderRadius: '6px'}}
+                        style={{border: '2px solid black', backgroundColor: 'transparent', color: 'black', borderRadius: '6px'}}
                       >
                         {t('jobs.projects.project5.technologies', { returnObjects: true })[t('jobs.projects.project5.technologies', { returnObjects: true }).length - 2]}
                       </span>
@@ -335,7 +335,7 @@ const Jobs = () => {
                   <h3 className="text-3xl font-tt-norms font-bold text-black">
                     {t('jobs.projects.project1.title')}
                   </h3>
-                  <p className="text-lg font-tt-norms font-normal text-black">
+                  <p className="text-xl font-tt-norms font-normal text-black">
                     {t('jobs.projects.project1.description')}
                   </p>
                   <div className="flex flex-wrap gap-2 items-center">
@@ -343,7 +343,7 @@ const Jobs = () => {
                       <div key={i} className="flex items-center gap-1 whitespace-nowrap">
                         <span
                           className="px-3 py-1 text-base font-tt-norms font-normal"
-                          style={{border: '1px solid black', backgroundColor: 'transparent', color: 'black', borderRadius: '6px'}}
+                          style={{border: '2px solid black', backgroundColor: 'transparent', color: 'black', borderRadius: '6px'}}
                         >
                           {tech}
                         </span>
@@ -360,7 +360,7 @@ const Jobs = () => {
                     <div className="flex items-center gap-1 whitespace-nowrap">
                       <span
                         className="px-3 py-1 text-base font-tt-norms font-normal"
-                        style={{border: '1px solid black', backgroundColor: 'transparent', color: 'black', borderRadius: '6px'}}
+                        style={{border: '2px solid black', backgroundColor: 'transparent', color: 'black', borderRadius: '6px'}}
                       >
                         {t('jobs.projects.project1.technologies', { returnObjects: true })[t('jobs.projects.project1.technologies', { returnObjects: true }).length - 2]}
                       </span>
@@ -411,7 +411,7 @@ const Jobs = () => {
                   <h3 className="text-3xl font-tt-norms font-bold text-black">
                     {t('jobs.projects.project3.title')}
                   </h3>
-                  <p className="text-lg font-tt-norms font-normal text-black">
+                  <p className="text-xl font-tt-norms font-normal text-black">
                     {t('jobs.projects.project3.description')}
                   </p>
                   <div className="flex flex-wrap gap-2 items-center">
@@ -419,7 +419,7 @@ const Jobs = () => {
                       <div key={i} className="flex items-center gap-1 whitespace-nowrap">
                         <span
                           className="px-3 py-1 text-base font-tt-norms font-normal"
-                          style={{border: '1px solid black', backgroundColor: 'transparent', color: 'black', borderRadius: '6px'}}
+                          style={{border: '2px solid black', backgroundColor: 'transparent', color: 'black', borderRadius: '6px'}}
                         >
                           {tech}
                         </span>
@@ -436,7 +436,7 @@ const Jobs = () => {
                     <div className="flex items-center gap-1 whitespace-nowrap">
                       <span
                         className="px-3 py-1 text-base font-tt-norms font-normal"
-                        style={{border: '1px solid black', backgroundColor: 'transparent', color: 'black', borderRadius: '6px'}}
+                        style={{border: '2px solid black', backgroundColor: 'transparent', color: 'black', borderRadius: '6px'}}
                       >
                         {t('jobs.projects.project3.technologies', { returnObjects: true })[t('jobs.projects.project3.technologies', { returnObjects: true }).length - 2]}
                       </span>
@@ -480,7 +480,7 @@ const Jobs = () => {
                   <h3 className="text-3xl font-tt-norms font-bold text-black">
                     {t('jobs.projects.project6.title')}
                   </h3>
-                  <p className="text-lg font-tt-norms font-normal text-black">
+                  <p className="text-xl font-tt-norms font-normal text-black">
                     {t('jobs.projects.project6.description')}
                   </p>
                   <div className="flex flex-wrap gap-2 items-center">
@@ -494,7 +494,7 @@ const Jobs = () => {
                           <div key={i} className="flex items-center gap-1 whitespace-nowrap">
                             <span
                               className="px-3 py-1 text-base font-tt-norms font-normal"
-                              style={{border: '1px solid black', backgroundColor: 'transparent', color: 'black', borderRadius: '6px'}}
+                              style={{border: '2px solid black', backgroundColor: 'transparent', color: 'black', borderRadius: '6px'}}
                             >
                               {tech}
                             </span>
@@ -507,14 +507,14 @@ const Jobs = () => {
                         <>
                           {technologies.slice(0, -2).map((tech, i) => (
                             <div key={i} className="flex items-center gap-1 whitespace-nowrap">
-                              <span className="px-3 py-1 text-base font-tt-norms font-normal" style={{border: '1px solid black', backgroundColor: 'transparent', color: 'black', borderRadius: '6px'}}>
+                              <span className="px-3 py-1 text-base font-tt-norms font-normal" style={{border: '2px solid black', backgroundColor: 'transparent', color: 'black', borderRadius: '6px'}}>
                                 {tech}
                               </span>
                               <span className="text-black text-base arrow-indicator">→</span>
                             </div>
                           ))}
                           <div className="flex items-center gap-1 whitespace-nowrap">
-                            <span className="px-3 py-1 text-base font-tt-norms font-normal" style={{border: '1px solid black', backgroundColor: 'transparent', color: 'black', borderRadius: '6px'}}>
+                            <span className="px-3 py-1 text-base font-tt-norms font-normal" style={{border: '2px solid black', backgroundColor: 'transparent', color: 'black', borderRadius: '6px'}}>
                               {technologies[techLength - 2]}
                             </span>
                             <span className="text-black text-base arrow-indicator">→</span>
@@ -544,6 +544,19 @@ const Jobs = () => {
                   className="w-full h-full object-cover"
                   wrapperClassName="w-full h-full"
                 />
+              </div>
+            </div>
+          </div>
+          {/* New Full-Width Project Row */}
+          <div className="grid grid-cols-12 gap-8">
+            <div className="col-span-12">
+              <div className="space-y-[34px]">
+                <div className="relative overflow-hidden rounded-md h-[550px]">
+                  <LazyVideo
+                    src="/v6.mp4"
+                    className="w-full h-full"
+                  />
+                </div>
               </div>
             </div>
           </div>

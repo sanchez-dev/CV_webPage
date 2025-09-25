@@ -71,7 +71,7 @@
 @layer base {
   :root {
     /* Brand Colors */
-    --color-primary: #FF6900;
+    --color-primary: #ff4800;
     --color-secondary: #0000FF;
     --color-tertiary: #1C5845;
     --color-background: #F3F3ED;
@@ -101,6 +101,7 @@
     /* Project Text Color */
     --color-project-text: #616161;
     --color-project-tags: #A2A2A2;
+    --shadow-color: #3C91E6;
   }
 
   html {

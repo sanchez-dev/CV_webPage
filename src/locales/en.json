@@ -46,8 +46,8 @@
       "project1": {
         "title": "Banking APP BMM",
         "year": "2024",
-        "description": "A digital ecosystem with integrated products, payments, and services aligned with Colombian regulations.",
-        "technologies": ["Research & Jobs-To-Be-Done", "Concept & user testing", "Prototyping", "Design system", "End-to-end product lifecycle", "User-validated APP"]
+        "description": "A digital ecosystem with integrated products, payments, and services.",
+        "technologies": ["Research & JTBD", "UX/UI", "Design system", "End-to-end product lifecycle", "User-validated APP"]
       },
       "project2": {
         "title": "BTG Pactual Portal",
@@ -70,11 +70,11 @@
         "technologies": ["User interviews", "Co-creation workshops", "Concept testing", "Usability testing", "Validated concepts through direct user feedback"]
       },
       "project5": {
-        "title": "Portal Web Evolution - BMM",
+        "title": "Portal Web BMM",
         "company": "Enterprise Solutions",
         "year": "2024",
         "description": "A clearer, more accessible experience: optimized architecture, a coherent design system, and accessibility standards.",
-        "technologies": ["Information architecture", "UX/UI design", "Design system", "Accessibility compliance (WCAG 2.0)", "100,000+ monthly users"]
+        "technologies": ["Information architecture", "UX/UI", "Design system", "WCAG 2.0", "100,000+ monthly users"]
       },
       "project6": {
         "title": "Bogotrip - Game",
@@ -87,6 +87,11 @@
           "Playable prototype",
           "A fun and memorable way to communicate"
         ]
+      },
+      "project7": {
+        "title": "New Full-Width Project",
+        "description": "A new full-width project showcase with fake content for demonstration purposes.",
+        "technologies": ["React", "Tailwind CSS", "Vite", "React i18n"]
       }
     }
   },

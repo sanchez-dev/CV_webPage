@@ -75,8 +75,8 @@
         "title": "Evolución portal Web",
         "company": "Enterprise Solutions",
         "year": "2024",
-        "description": "Experiencia más clara y accesible: arquitectura optimizada, diseño coherente y estándares WCGA2.0",
-        "technologies": ["Arquitectura de información", "UX/UI", "Sistema de diseño", "Accesibilidad (WCAG 2.0)", "100,000+ usuarios mensuales"]
+        "description": "Nueva versión del Portal WEB BMM: Estandarizado, accesible.",
+        "technologies": ["Arquitectura de información", "UX/UI", "Sistema de diseño", "WCAG 2.1", "100,000+ usuarios mensuales"]
       },
       "project6": {
         "title": "Bogotrip - Game",
@@ -84,6 +84,11 @@
         "year": "2020",
         "description": "Dibujé, diseñé y desarrolle un videojuego de Bogotá nocturna, con vibra urbana y hip hop, como una estrategia de comunicación para un medio alternativo",
         "technologies": ["Ideación de la narrativa urbana", "Diseño visual y animación", "Prototipo jugable", "Un feature comunicativo único y memorable"]
+      },
+      "project7": {
+        "title": "Nuevo Proyecto de Ancho Completo",
+        "description": "Un nuevo showcase de proyecto de ancho completo con contenido falso para fines de demostración.",
+        "technologies": ["React", "Tailwind CSS", "Vite", "React i18n"]
       }
     }
   },
