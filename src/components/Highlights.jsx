@@ -21,7 +21,7 @@ const Highlights = () => {
             {/* Opening text */}
             <div className="text-xl text-black font-tt-norms mb-12">
               {t('highlights.opening').split('\n').map((line, index) => (
-                <p key={index} className="mb-4 last:mb-0" dangerouslySetInnerHTML={{ __html: line }}>
+                <p key={index} className="mb-4 last:mb-0 leading-[1.70]" dangerouslySetInnerHTML={{ __html: line }}>
                 </p>
               ))}
             </div>
@@ -38,11 +38,11 @@ const Highlights = () => {
                 return (
                   <span
                     key={index}
-                    className={`px-3 py-2 border font-tt-norms text-xl rounded-sm transition-colors ${
+                    className={`px-3 py-2 bg-[#E4E4D9] font-tt-norms text-xl rounded-lg transition-colors ${
                       isBold ? 'font-bold' : 'font-normal'
                     } ${
                       isFeatured 
-                        ? 'border-black text-black hover:bg-secondary hover:text-white hover:border-secondary'
+                        ? 'border-black text-black hover:bg-[--shadow-color] hover:text-white hover:border-secondary'
                         : 'border-black text-black hover:bg-black hover:text-white'
                     }`}
                   >
@@ -51,14 +51,6 @@ const Highlights = () => {
                 );
               })}
             </div>
-
-            {/* CTA Button */}
-            <a
-              href="#contact"
-              className="flex w-full md:inline-flex md:w-auto justify-center items-center px-12 py-4 bg-secondary text-white font-tt-norms font-medium rounded-full hover:bg-secondary-dark transition-colors text-2xl"
-            >
-              Let's work together
-            </a>
           </div>
         </div>
       </div>

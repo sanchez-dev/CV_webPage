@@ -46,13 +46,13 @@
       "project1": {
         "title": "Banking APP BMM",
         "year": "2024",
-        "description": "A digital ecosystem with integrated products, payments, and services.",
+        "description": "A digital ecosystem bringing together the bank’s products, payments, and services, built around the real needs of customers.",
         "technologies": ["Research & JTBD", "UX/UI", "Design system", "End-to-end product lifecycle", "User-validated APP"]
       },
       "project2": {
         "title": "BTG Pactual Portal",
         "year": "2020", 
-        "description": "BTG Pactual’s informational portal that simplifies exploring investment options and helps users get to know the bank.",
+        "description": "BTG Pactual’s portal to explore investments and get to know the bank.",
         "technologies": ["Content strategy", "Information architecture", "UX/UI design", "Design system", "Simplified portal aligned with business"]
       },
       "project3": {

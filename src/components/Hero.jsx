@@ -5,8 +5,6 @@ import Loader from './Loader';
 import TextPressure from "./SplitText";
 
 const Hero = () => {
-  document.title = "KILO CODE DEV PROOF: Source active - " + new Date().toLocaleString();
-  console.log("Hero component rendered with dev changes - ", new Date().toLocaleString());
   const { t, i18n } = useTranslation();
   const [scrollY, setScrollY] = useState(0);
   const [imageLoaded, setImageLoaded] = useState(false);

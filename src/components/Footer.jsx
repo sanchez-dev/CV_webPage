@@ -15,7 +15,7 @@ const Footer = () => {
       {/* Section 1: Dark Footer */}
       <footer className="py-16 lg:pt-40 lg:pb-20" id="contact">
         <div className="max-w-7xl mx-auto px-4">
-          <div className="bg-gradient-to-tr from-gray-800 to-black text-white rounded-lg lg:rounded-xl px-6 lg:px-12 py-12 lg:py-16" style={{boxShadow: '0 0 3px rgba(0, 0, 0, 0.3), 0 0 10px rgba(0, 0, 0, 0.4)'}}>
+          <div className="bg-[--shadow-color2] text-white rounded-xl lg:rounded-3xl px-6 lg:px-12 py-12 lg:py-16">
           <div className="grid lg:grid-cols-3 gap-12 lg:gap-16">
             {/* Column 1: Contact Title */}
             <div>
@@ -33,7 +33,7 @@ const Footer = () => {
                   href={t('contact.linkedin')}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="font-tt-norms text-white hover:text-primary transition-colors text-lg"
+                  className="font-tt-norms text-white hover:font-bold transition-colors text-lg"
                 >
                   Linkedin
                 </a>
@@ -46,7 +46,7 @@ const Footer = () => {
                   href={`https://wa.me/${t('contact.phone').replace(/[^\d]/g, '')}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="font-tt-norms text-white hover:text-primary transition-colors text-lg"
+                  className="font-tt-norms text-white hover:font-bold transition-colors text-lg"
                 >
                   Whatsapp
                 </a>
@@ -57,7 +57,7 @@ const Footer = () => {
                 <img src="/email-heart.png" alt="Email" className="w-5 h-5 filter brightness-0 invert" />
                 <a 
                   href="mailto:run@jose.run?subject=Necesito%20tu%20ayuda%20con%20mis%20productos&body=Hola%20Jose,%0A%0A"
-                  className="font-tt-norms text-white hover:text-primary transition-colors text-lg"
+                  className="font-tt-norms text-white hover:font-bold transition-colors text-lg"
                 >
                   run@jose.run
                 </a>
@@ -70,20 +70,20 @@ const Footer = () => {
                   href="https://dribbble.com/JoseSan"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="font-tt-norms text-white hover:text-primary transition-colors text-lg"
+                  className="font-tt-norms text-white hover:font-bold transition-colors text-lg"
                 >
                   Dribbble
                 </a>
               </div>
 
               {/* Resume */}
-              <div className="inline-flex items-center gap-3 px-4 py-2 border border-white rounded-sm">
+              <div className="inline-flex items-center gap-3 px-4 py-2 border border-white rounded-xl">
                 <img src="/resume.svg" alt="Resume" className="w-5 h-5" />
                 <a 
                   href={resumeUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="font-tt-norms text-white hover:text-primary transition-colors text-lg"
+                  className="font-tt-norms text-white hover:font-bold transition-colors text-lg"
                 >
                   {t('footer.resumeText')}
                 </a>
@@ -94,7 +94,7 @@ const Footer = () => {
                     Este archivo está en Español. Cambia el idioma a{' '}
                     <button 
                       onClick={() => toggleLanguage('en')}
-                      className="underline hover:text-white transition-colors cursor-pointer"
+                      className="underline hover:font-bold transition-colors cursor-pointer"
                     >
                       inglés
                     </button>
@@ -105,7 +105,7 @@ const Footer = () => {
                     This file is in English. Change the page to{' '}
                     <button 
                       onClick={() => toggleLanguage('es')}
-                      className="underline hover:text-white transition-colors cursor-pointer"
+                      className="underline hover:font-bold transition-colors cursor-pointer"
                     >
                       Spanish
                     </button>
@@ -124,25 +124,25 @@ const Footer = () => {
                     e.preventDefault();
                     window.scrollTo({ top: 0, behavior: 'smooth' });
                   }}
-                  className="block font-tt-norms text-white hover:text-primary transition-colors text-lg cursor-pointer"
+                  className="block font-tt-norms text-white hover:font-bold transition-colors text-lg cursor-pointer"
                 >
                   {t('navigation.home')}
                 </a>
                 <a 
                   href="#projects"
-                  className="block font-tt-norms text-white hover:text-primary transition-colors text-lg"
+                  className="block font-tt-norms text-white hover:font-bold transition-colors text-lg"
                 >
                   {t('navigation.projects')}
                 </a>
                 <a 
                   href="#about"
-                  className="block font-tt-norms text-white hover:text-primary transition-colors text-lg"
+                  className="block font-tt-norms text-white hover:font-bold transition-colors text-lg"
                 >
                   {t('navigation.about')}
                 </a>
                 <a 
                   href="#contact"
-                  className="block font-tt-norms text-white hover:text-primary transition-colors text-lg"
+                  className="block font-tt-norms text-white hover:font-bold transition-colors text-lg"
                 >
                   {t('navigation.contact')}
                 </a>
@@ -154,10 +154,10 @@ const Footer = () => {
       </footer>
 
       {/* Section 2: Light Footer */}
-      <section className="bg-gradient-to-b from-transparent to-[#CBCBCE] py-16 lg:py-30">
+      <section className="bg-gradient-to-b from-transparent to-[#C2C2Cb] py-16 lg:py-20">
         <div className="max-w-7xl mx-auto px-4 text-center">
           {/* Logo - Centered */}
-          <img src="/design/brand-footer.svg" alt="Jose S." className="w-[7.8rem] h-[7.8rem] lg:w-[9.75rem] lg:h-[9.75rem] mx-auto mb-28" />
+          <img src="/design/brand-footer.svg" alt="Jose S." className="w-[7.8rem] h-[7.8rem] lg:w-[16rem] lg:h-[16rem] mx-auto mb-20" />
 
           {/* Bottom content */}
           <div className="space-y-1">
@@ -173,7 +173,7 @@ const Footer = () => {
                 className={`px-2 py-2 text-sm font-tt-norms transition-all ${
                   i18n.language === 'en' 
                     ? 'text-black font-bold underline underline-offset-4 decoration-2' 
-                    : 'text-gray-400 font-normal hover:text-gray-600'
+                    : 'text-gray-400 font-normal hover:font-bold-600'
                 }`}
               >
                 ENGLISH
@@ -183,7 +183,7 @@ const Footer = () => {
                 className={`px-2 py-2 text-sm font-tt-norms transition-all ${
                   i18n.language === 'es' 
                     ? 'text-black font-bold underline underline-offset-4 decoration-2' 
-                    : 'text-gray-400 font-normal hover:text-gray-600'
+                    : 'text-gray-400 font-normal hover:font-bold-600'
                 }`}
               >
                 ESPAÑOL

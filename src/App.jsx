@@ -36,7 +36,6 @@ function App() {
 
   return (
     <div className="min-h-screen bg-background">
-      <CustomCursor />
       <Header />
       <main>
         <Hero />

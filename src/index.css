@@ -75,7 +75,7 @@
     --color-secondary: #0000FF;
     --color-tertiary: #1C5845;
     --color-background: #F3F3ED;
-    --color-black: #0D120C;
+    --color-black: #19222A;
     --color-white: #FFFFFF;
     
     /* Color Variations */
@@ -102,6 +102,7 @@
     --color-project-text: #616161;
     --color-project-tags: #A2A2A2;
     --shadow-color: #3C91E6;
+    --shadow-color2: #1673D0;
   }
 
   html {
@@ -119,55 +120,19 @@
     background-color: var(--color-background);
   }
   
-  /* Hide default cursor - Cross-browser compatibility */
+
   * {
     box-sizing: border-box;
   }
   
-  /* Enhanced cursor hiding for all browsers including Safari */
-  html, body, div, span, a, button, input, textarea, select, 
-  h1, h2, h3, h4, h5, h6, p, ul, ol, li, img, video {
-    cursor: none !important;
-    -webkit-cursor: none !important;
-    -moz-cursor: none !important;
-    -ms-cursor: none !important;
-    -o-cursor: none !important;
-  }
-  
-  /* Force cursor styles on pseudo-elements */
-  *::before, *::after {
-    cursor: none !important;
-    -webkit-cursor: none !important;
-  }
+
   
   .italic {
     font-style: italic;
   }
 
-  .cursor-circle {
-    display: block;
-    /* Ensure backdrop-filter works properly */
-    -webkit-backdrop-filter: blur(var(--blur-amount, 0px));
-    backdrop-filter: blur(var(--blur-amount, 0px));
-    /* Better performance with hardware acceleration */
-    transform: translate3d(0, 0, 0);
-  }
 }
 
-/* Global cursor override with higher specificity for Safari */
-html, body, *, *:hover, *:active, *:focus, *:visited {
-  cursor: none !important;
-  -webkit-cursor: none !important;
-  -moz-cursor: none !important;
-}
-
-/* Additional Safari-specific overrides */
-@media screen and (-webkit-min-device-pixel-ratio: 0) {
-  html, body, * {
-    cursor: none !important;
-    -webkit-cursor: none !important;
-  }
-}
 
 /* Simple video optimization */
 video {

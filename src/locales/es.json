@@ -47,8 +47,8 @@
         "title": "Banking BMM app",
         "company": "BMM", 
         "year": "2024",
-        "description": "Ecosistema digital con productos, pagos y servicios integrados, en línea con la normativa colombiana.",
-        "technologies": ["Investigación y Jobs-to-be-Done", "Pruebas concepto y usabilidad", "Sistema de diseño", "Ciclo de vida de producto", "APP validada"]
+        "description": "Un ecosistema digital que integra productos, pagos y servicios del banco, diseñado para responder a las necesidades reales de los clientes.",
+        "technologies": ["Investigación / JTBD", "Pruebas concepto y usabilidad", "Sistema de diseño", "Ciclo de vida de producto", "APP validada"]
       },
       "project2": {
         "title": "BTG Pactual Portal",

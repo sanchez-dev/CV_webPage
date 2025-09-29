@@ -12,6 +12,19 @@ const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [currentLang, setCurrentLang] = useState('en');
+  const [scrollProgress, setScrollProgress] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollTop = window.scrollY;
+      const docHeight = document.body.scrollHeight - window.innerHeight;
+      const progress = (scrollTop / docHeight) * 100;
+      setScrollProgress(progress);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const toggleLanguage = (lang) => {
     i18n.changeLanguage(lang);
@@ -53,11 +66,11 @@ const Header = () => {
   }, []);
 
   return (
-    <header className={`fixed top-0 left-0 right-0 z-50 bg-background transition-transform duration-300 ${
-      (isVisible || isHovered) ? 'translate-y-0' : '-translate-y-full'
+    <header className={`fixed top-0 lg:top-0 lg:left-1/2 lg:-translate-x-1/2 lg:w-[60vw] left-0 right-0 w-full  z-50 bg-background lg:bg-[#19222A] shadow-[0_0px_4px_rgba(0,0,0,0.05)]  lg:rounded-[16px] transition-transform duration-300 ${
+      (isVisible || isHovered) ? 'translate-y-0 lg:translate-y-2' : '-translate-y-full'
     }`}>
-      <div className="max-w-7xl mx-auto px-4 py-2">
-        <div className="flex items-center justify-between">
+      <div className="max-w-7xl mx-auto px-4 py-2 lg:max-w-[60vw] lg:px-[12px]">
+        <div className="flex items-center lg:px-2 gap-8 justify-between ">
           {/* Logo */}
           <div className="flex items-center gap-2">
             <img 
@@ -70,8 +83,16 @@ const Header = () => {
             </span>
           </div>
 
-          {/* Divider Line */}
-          <div className="h-px w-60 bg-primary hidden md:block"></div>
+          {/* Scroll Indicator */}
+          <div className="relative h-px w-[10vw] bg-[--color-primary] hidden md:block">
+            <div
+              className="absolute top-0 w-[8px] h-[8px] bg-[--color-primary] rounded-full transition-all duration-300"
+              style={{
+                left: `${scrollProgress}%`,
+                transform: `translateY(-50%) translateX(-50%)`
+              }}
+            ></div>
+          </div>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center">
@@ -79,19 +100,19 @@ const Header = () => {
               href={resumeUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-primary font-tt-norms font-medium text-sm tracking-wide hover:opacity-70 transition-opacity uppercase mr-8"
+              className="text-primary font-tt-norms font-bold text-sm tracking-wide hover:opacity-70 transition-opacity uppercase mr-8"
             >
               {t('navigation.resume')}
             </a>
             <a 
               href="#about" 
-              className="text-primary font-tt-norms font-medium text-sm tracking-wide hover:opacity-70 transition-opacity uppercase mr-8"
+              className="text-primary font-tt-norms font-bold text-sm tracking-wide hover:opacity-70 transition-opacity uppercase mr-8"
             >
               {t('navigation.about')}
             </a>
             <a 
               href="#contact" 
-              className="text-primary font-tt-norms font-medium text-sm tracking-wide hover:opacity-70 transition-opacity uppercase mr-8"
+              className="text-primary font-tt-norms font-bold text-sm tracking-wide hover:opacity-70 transition-opacity uppercase mr-8"
             >
               {t('navigation.contact')}
             </a>
@@ -100,7 +121,7 @@ const Header = () => {
             <div className="relative ml-12">
               <button
                 onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-                className="flex items-center gap-2 px-2 py-0 text-sm font-tt-norms font-medium tracking-wide text-primary border border-primary rounded-xs hover:bg-primary/10 transition-all uppercase"
+                className="flex items-center gap-2 px-2 py-0 text-sm font-tt-norms font-bold tracking-wide text-primary border border-primary rounded-lg hover:bg-primary/10 transition-all uppercase"
               >
                 {currentLang === 'en' ? 'ENG' : 'ESP'}
                 <svg 
@@ -115,10 +136,10 @@ const Header = () => {
               </button>
               
               {isDropdownOpen && (
-                <div className="absolute top-full right-0 mt-1 bg-background border border-primary rounded-sm overflow-hidden z-10">
+                <div className="absolute top-full w-16 right-0 mt-1 bg-background border border-primary rounded-lg overflow-hidden z-10">
                   <button
                     onClick={() => toggleLanguage('en')}
-                    className={`block w-full text-center px-2 py-0 text-sm font-tt-norms font-medium transition-all hover:bg-primary/10 ${
+                    className={`block w-full text-center px-2 py-1 text-sm font-tt-norms font-bold transition-all hover:bg-primary/10 ${
                       currentLang === 'en' ? 'bg-primary text-white' : 'text-primary'
                     }`}
                   >
@@ -126,7 +147,7 @@ const Header = () => {
                   </button>
                   <button
                     onClick={() => toggleLanguage('es')}
-                    className={`block w-full text-center px-2 py-0 text-sm font-tt-norms font-medium transition-all hover:bg-primary/10 ${
+                    className={`block w-full text-center px-2 py-1 text-sm font-tt-norms font-bold transition-all hover:bg-primary/10 ${
                       currentLang === 'es' ? 'bg-primary text-white' : 'text-primary'
                     }`}
                   >
@@ -143,7 +164,7 @@ const Header = () => {
             <div className="relative">
               <button
                 onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-                className="flex items-center gap-2 px-2 py-1 text-xs font-tt-norms font-medium text-primary border border-primary rounded-sm hover:bg-primary/10 transition-all"
+                className="flex items-center gap-2 px-2 py-1 text-sm font-tt-norms font-bold text-primary border border-primary rounded-lg hover:bg-primary/10 transition-all"
               >
                 {currentLang === 'en' ? 'ENG' : 'ESP'}
                 <svg 
@@ -158,10 +179,10 @@ const Header = () => {
               </button>
               
               {isDropdownOpen && (
-                <div className="absolute top-full right-0 mt-1 bg-background border border-primary rounded-sm overflow-hidden z-10">
+                <div className="absolute w-16 top-8 right-0 mt-1 bg-background border border-primary rounded-lg overflow-hidden z-10">
                   <button
                     onClick={() => toggleLanguage('en')}
-                    className={`block w-full text-center px-2 py-1 text-xs font-tt-norms font-medium transition-all hover:bg-primary/10 ${
+                    className={`block w-full text-center px-1 py-1 text-sm font-tt-norms font-bold transition-all hover:bg-primary/10 ${
                       currentLang === 'en' ? 'bg-primary text-white' : 'text-primary'
                     }`}
                   >
@@ -169,7 +190,7 @@ const Header = () => {
                   </button>
                   <button
                     onClick={() => toggleLanguage('es')}
-                    className={`block w-full text-center px-2 py-1 text-xs font-tt-norms font-medium transition-all hover:bg-primary/10 ${
+                    className={`block w-full text-center px-1 py-1 text-sm font-tt-norms font-bold transition-all hover:bg-primary/10 ${
                       currentLang === 'es' ? 'bg-primary text-white' : 'text-primary'
                     }`}
                   >
@@ -199,21 +220,21 @@ const Header = () => {
                 href={resumeUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="block text-primary font-tt-norms font-medium text-2xl tracking-wide hover:opacity-70 transition-opacity uppercase"
+                className="block text-primary font-tt-norms font-bold text-2xl tracking-wide hover:opacity-70 transition-opacity uppercase"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 {t('navigation.resume')}
               </a>
               <a 
                 href="#about" 
-                className="block text-primary font-tt-norms font-medium text-2xl tracking-wide hover:opacity-70 transition-opacity uppercase"
+                className="block text-primary font-tt-norms font-bold text-2xl tracking-wide hover:opacity-70 transition-opacity uppercase"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 {t('navigation.about')}
               </a>
               <a 
                 href="#contact" 
-                className="block text-primary font-tt-norms font-medium text-2xl tracking-wide hover:opacity-70 transition-opacity uppercase"
+                className="block text-primary font-tt-norms font-bold text-2xl tracking-wide hover:opacity-70 transition-opacity uppercase"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 {t('navigation.contact')}
