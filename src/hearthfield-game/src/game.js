@@ -740,6 +740,11 @@ class HearthField {
       this.player.update()
       this.drawEnemy()
       this.drawPlayer()
+
+      // Draw custom cursor at mouse position
+      if (window.mouseX !== undefined && window.mouseY !== undefined && this.focusedSquare && this.focusedSquare.img.loaded) {
+        this.spriteAnimate(this.focusedSquare, window.mouseX, window.mouseY, 32);
+      }
     } else if (this.gameRunning) {
       console.log('Game running but missing components:', {
         player: !!this.player,

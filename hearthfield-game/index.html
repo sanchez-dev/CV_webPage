@@ -36,6 +36,12 @@
         window.addEventListener('load', () => {
             const canvas = document.getElementById('gameCanvas');
             if (canvas) {
+                // Add mouse tracking
+                canvas.addEventListener('mousemove', (e) => {
+                    window.mouseX = e.clientX;
+                    window.mouseY = e.clientY;
+                    console.log("Mouse moved:", e.clientX, e.clientY);
+                });
                 create(canvas, (hf) => {
                     console.log('Game instance created and started');
                     hf.startGame();
