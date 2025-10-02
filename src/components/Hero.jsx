@@ -67,10 +67,8 @@ const Hero = () => {
             imageLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
           }`}
           onLoad={() => {
-            console.timeEnd('hero-image-load');
             setImageLoaded(true);
           }}
-          onLoadStart={() => console.time('hero-image-load')}
         />
       </div>
 

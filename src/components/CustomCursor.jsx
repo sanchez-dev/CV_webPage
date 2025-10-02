@@ -27,8 +27,7 @@ const CustomCursor = () => {
     // Handle interactive elements - simple approach
     const handleMouseOver = (e) => {
       const target = e.target;
-      console.log('Mouse over element:', target.tagName, target.className);
-      
+
       // Simple check for common interactive elements
       const isInteractive = (
         target.tagName === 'BUTTON' ||
@@ -39,8 +38,6 @@ const CustomCursor = () => {
         target.closest('[class*="hover:"]') ||
         window.getComputedStyle(target).cursor === 'pointer'
       );
-      
-      console.log('Is interactive:', isInteractive);
       
       setIsOverInteractive(isInteractive);
     };
