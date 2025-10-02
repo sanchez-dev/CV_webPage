@@ -25,12 +25,27 @@
         /* Debug interface styles removed for production */
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Staatliches&display=swap" rel="stylesheet">
-  <script type="module" crossorigin src="/assets/modulepreload-polyfill-B5Qt9EMX.js"></script>
 </head>
 <body>
     <!-- Debug interface removed for production -->
 
     <canvas id="gameCanvas"></canvas>
+
+    <script type="module">
+      import create from './src/game.js';
+      const canvas = document.getElementById('gameCanvas');
+      create(canvas, (hf) => {
+        hf.startGame();
+        hf.switchAnimate();
+
+        // Add mouse tracking for player movement
+        canvas.addEventListener('mousemove', (e) => {
+          const rect = canvas.getBoundingClientRect();
+          window.mouseX = e.clientX - rect.left;
+          window.mouseY = e.clientY - rect.top;
+        });
+      });
+    </script>
 
 </body>
 </html>
