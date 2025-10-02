@@ -8,9 +8,6 @@ import Footer from './components/Footer';
 import CustomCursor from './components/CustomCursor';
 
 
-const handleAnimationComplete = () => {
-  console.log('All letters have animated!');
-};
 
 function App() {
   useEffect(() => {

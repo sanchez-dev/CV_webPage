@@ -5,12 +5,7 @@ import Loader from './Loader';
 import TextPressure from "./SplitText";
 
 const Hero = () => {
-  const { t, i18n } = useTranslation();
-  const [scrollY, setScrollY] = useState(0);
   const [imageLoaded, setImageLoaded] = useState(false);
-  const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 });
-  const [isOverInteractive, setIsOverInteractive] = useState(false);
-  const [showBlur, setShowBlur] = useState(true);
 
   useEffect(() => {
     let animationId;
@@ -63,6 +58,7 @@ const Hero = () => {
         <img
           src={profileImage}
           alt="Jose Luis Sanchez"
+          fetchpriority="high"
           className={`w-[639px] h-[639px] lg:w-[799px] lg:h-[799px] max-w-[168%] lg:max-w-none object-contain will-change-transform transition-all duration-1000 ease-out ${
             imageLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
           }`}

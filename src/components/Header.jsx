@@ -7,7 +7,6 @@ const Header = () => {
   const { t, i18n } = useTranslation();
   const resumeUrl = useResumeLink();
   const [isVisible, setIsVisible] = useState(false);
-  const [lastScrollY, setLastScrollY] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);

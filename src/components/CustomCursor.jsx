@@ -3,8 +3,6 @@ import { useState, useEffect, useRef } from 'react';
 const CustomCursor = () => {
   const [position, setPosition] = useState({ x: 50, y: 50 });
   const [isVisible, setIsVisible] = useState(false);
-  const [isOverInteractive, setIsOverInteractive] = useState(false);
-  const [showBlur, setShowBlur] = useState(true);
   const cursorRef = useRef(null);
 
   useEffect(() => {
