@@ -5,113 +5,6 @@ import { useState, useRef, useEffect } from 'react';
 import Loader from './Loader';
 import ScrollIndicator from './ScrollIndicator';
 
-const LazyVideo = ({ src, className, ...props }) => {
-  const [isLoaded, setIsLoaded] = useState(false);
-  const videoRef = useRef(null);
-  const containerRef = useRef(null);
-  const scrollHandlerRef = useRef(null);
-  const rafRef = useRef(null);
-
-  // Throttle function for scroll
-  const throttle = (func, limit) => {
-    let inThrottle;
-    return function() {
-      const args = arguments;
-      const context = this;
-      if (!inThrottle) {
-        func.apply(context, args);
-        inThrottle = true;
-        setTimeout(() => inThrottle = false, limit);
-      }
-    }
-  };
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        const { isIntersecting } = entry;
-        if (videoRef.current) {
-          if (isIntersecting && isLoaded) {
-            videoRef.current.play().catch(console.error);
-            videoRef.current.playbackRate = 1;
-          } else {
-            videoRef.current.pause();
-            videoRef.current.playbackRate = 1;
-          }
-        }
-      },
-      { threshold: 0.01 } // Detect entry/exit
-    );
-
-    const currentRef = containerRef.current;
-    if (currentRef) {
-      observer.observe(currentRef);
-    }
-
-    // Simplified scroll handler: only play/pause, no rate adjustment
-    const handleScroll = throttle(() => {
-      if (!videoRef.current || !containerRef.current || !isLoaded) return;
-
-      const rect = containerRef.current.getBoundingClientRect();
-      const viewportHeight = window.innerHeight;
-
-      // Check if in viewport
-      if (rect.bottom <= 0 || rect.top >= viewportHeight) {
-        if (!videoRef.current.paused) {
-          videoRef.current.pause();
-        }
-        return;
-      }
-
-      // Ensure playing at normal speed
-      if (videoRef.current.paused) {
-        videoRef.current.play().catch(console.error);
-      }
-      videoRef.current.playbackRate = 1;
-    }, 16); // 60fps throttle
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-      if (currentRef) {
-        observer.unobserve(currentRef);
-      }
-      if (videoRef.current) {
-        videoRef.current.pause();
-        videoRef.current.playbackRate = 1;
-      }
-      cancelAnimationFrame(rafRef.current);
-    };
-  }, [isLoaded]);
-
-  return (
-    <div ref={containerRef} className={className}>
-      <video
-        ref={videoRef}
-        className="w-full h-full object-cover"
-        loop
-        muted
-        playsInline
-        preload="auto"
-        onLoadStart={() => console.time(`video-load-${src}`)}
-        onLoadedData={() => {
-          console.timeEnd(`video-load-${src}`);
-          setIsLoaded(true);
-        }}
-        style={{
-          opacity: isLoaded ? 1 : 0,
-          transition: 'opacity 0.3s ease-in-out'
-        }}
-        {...props}
-      >
-        <source src={src} type="video/mp4" />
-        Your browser does not support the video tag.
-      </video>
-      {!isLoaded && <Loader />}
-    </div>
-  );
-};
 
 const Jobs = () => {
   const { t } = useTranslation();
@@ -164,10 +57,17 @@ const Jobs = () => {
             <div className="col-span-12 lg:col-span-5 mb-16 lg:mb-0">
               <div className="space-y-8 lg:space-y-[34px]">
                 <div className="relative overflow-hidden rounded-[40px] h-[554px] lg:h-[650px]">
-                  <LazyVideo
-                    src="/BMM_A.mp4"
-                    className="w-full h-full"
-                  />
+                  <video
+                    className="w-full h-full object-cover"
+                    preload="auto"
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                  >
+                    <source src="/BMM_A.mp4" type="video/mp4" />
+                    Your browser does not support the video tag.
+                  </video>
                 </div>
                 
                 <div className="pt-2 space-y-8">
@@ -232,10 +132,17 @@ const Jobs = () => {
             <div className="col-span-12 lg:col-span-5 mb-16 lg:mb-0">
               <div className="space-y-8 lg:space-y-[34px]">
                 <div className="relative overflow-hidden rounded-[40px] h-[554px] lg:h-[650px]">
-                  <LazyVideo
-                    src="/BMM_W.mp4"
-                    className="w-full h-full"
-                  />
+                  <video
+                    className="w-full h-full object-cover"
+                    preload="auto"
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                  >
+                    <source src="/BMM_W.mp4" type="video/mp4" />
+                    Your browser does not support the video tag.
+                  </video>
                 </div>
                 
                 <div className="pt-2 space-y-8">
@@ -304,10 +211,17 @@ const Jobs = () => {
             <div className="col-span-12 lg:col-span-10 mb-16 lg:mb-0">
               <div className="space-y-8 lg:space-y-[34px]">
                 <div className="relative overflow-hidden rounded-[40px] h-[384px] lg:h-[650px]">
-                  <LazyVideo
-                    src="/BTG.mp4"
-                    className="w-full h-full"
-                  />
+                  <video
+                    className="w-full h-full object-cover"
+                    preload="auto"
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                  >
+                    <source src="/BTG.mp4" type="video/mp4" />
+                    Your browser does not support the video tag.
+                  </video>
                 </div>
                 
                 <div className="pt-2 space-y-8">
@@ -375,10 +289,17 @@ const Jobs = () => {
             <div className="col-span-12 lg:col-span-10 mb-16 lg:mb-0">
               <div className="space-y-8 lg:space-y-[34px]">
                 <div className="relative overflow-hidden rounded-[40px] h-[384px] lg:h-[650px]">
-                  <LazyVideo
-                    src="/BOLI.mp4"
-                    className="w-full h-full"
-                  />
+                  <video
+                    className="w-full h-full object-cover"
+                    preload="auto"
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                  >
+                    <source src="/BOLI.mp4" type="video/mp4" />
+                    Your browser does not support the video tag.
+                  </video>
                 </div>
                 
                 <div className="pt-2 space-y-8">
@@ -530,10 +451,17 @@ const Jobs = () => {
             <div className="col-span-12 lg:col-span-10">
               <div className="space-y-8 lg:space-y-[34px]">
                 <div className="relative  overflow-hidden rounded-[40px] h-[650px]">
-                  <LazyVideo
-                    src="/LEGACY.mp4"
-                    className="w-full h-full"
-                  />
+                  <video
+                    className="w-full h-full object-cover"
+                    preload="auto"
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                  >
+                    <source src="/LEGACY.mp4" type="video/mp4" />
+                    Your browser does not support the video tag.
+                  </video>
                 </div>
               </div>
             </div>
