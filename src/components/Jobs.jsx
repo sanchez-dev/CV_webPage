@@ -93,7 +93,7 @@ const LazyVideo = ({ src, className, ...props }) => {
         loop
         muted
         playsInline
-        preload="metadata"
+        preload="auto"
         onLoadStart={() => console.time(`video-load-${src}`)}
         onLoadedData={() => {
           console.timeEnd(`video-load-${src}`);
