@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import { useState, useEffect } from 'react';
-import profileImage from '../assets/me.png';
+import profileImage from '../assets/me.webp';
 import Loader from './Loader';
 import TextPressure from "./SplitText";
 
@@ -66,7 +66,11 @@ const Hero = () => {
           className={`w-[639px] h-[639px] lg:w-[799px] lg:h-[799px] max-w-[168%] lg:max-w-none object-contain will-change-transform transition-all duration-1000 ease-out ${
             imageLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
           }`}
-          onLoad={() => setImageLoaded(true)}
+          onLoad={() => {
+            console.timeEnd('hero-image-load');
+            setImageLoaded(true);
+          }}
+          onLoadStart={() => console.time('hero-image-load')}
         />
       </div>
 
@@ -87,7 +91,7 @@ const Hero = () => {
         </div>
         <div className="absolute block w-full h-10 flex top-[58vh] lg:top-[68vh] text-shadow-lg">
           <TextPressure className="justify-between drop-shadow-[0px_4px_0px_var(--shadow-color)]"
-            text="LEAD PRODUCT DESIGNER"
+            text="SENIOR PRODUCT DESIGNER"
             flex={true}
             alpha={false}
             stroke={false}

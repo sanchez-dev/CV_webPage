@@ -1,4 +1,5 @@
 'use strict'
+console.log("Game script loaded and executing.");
 import Player from './classes/player.js'
 import Bullets from './classes/bullets.js'
 import Star from './classes/star.js'
@@ -14,6 +15,7 @@ import communications from './classes/communications.js'
 
 class HearthField {
   constructor (canvas, quantity, starMaxVelocity, starMaxSize) {
+    console.log("HearthField constructor started with canvas:", canvas);
     // Constrollers
     this.container = canvas
     this.gameRunning = false
@@ -71,7 +73,7 @@ class HearthField {
       this.cloudPatternImage.loaded = false
     }
     this.cloudPatternImage.loaded = false
-    this.cloudPatternImage.src = '/hearthfield-game/assets/images/cloud-pattern.png'
+    this.cloudPatternImage.src = './assets/images/cloud-pattern.png'
 
 
     this.animating = false
@@ -92,16 +94,21 @@ class HearthField {
       _this.audioLibrary = audioLibrary
 
       // Create enemy FIRST (player position depends on it)
+      console.log('Creating enemy...');
       _this.enemy = _this.createEnemy()
+      console.log('Enemy created:', !!_this.enemy);
 
       // Then create player using enemy position
+      console.log('Creating player...');
       _this.player = _this.createPlayer()
+      console.log('Player created:', !!_this.player);
 
       _this.communicationsEngine = communications.create(this.fieldWidth, this.fieldHeight, this.screenResize)
       _this.scoreEngine = new ScoreEngine(_this.enemy)
 
       _this.scoreEngine.buildSequence()
       this.score = 0
+      console.log('Initializing scene...');
       this.initScene()
       console.log('Game initialization complete')
     })
@@ -109,6 +116,7 @@ class HearthField {
   }
 
   imageCreator (route, size, columns = 1, rows = 1, x, y, settings = {}) {
+    console.log('Attempting to load image with route:', route); // Log for debugging
     let img = new Image()
     img.columns = columns
     img.rows = rows
@@ -118,10 +126,11 @@ class HearthField {
 
     // Add load event handler
     img.onload = () => {
+      console.log('Image loaded successfully:', route);
       img.loaded = true
     }
     img.onerror = () => {
-      console.warn(`Failed to load image: ${route}`)
+      console.error(`Failed to load image: ${route}`); // Enhanced error log
       img.loaded = false
     }
 
@@ -145,16 +154,19 @@ class HearthField {
   }
 
   extraImages () {
-    this.focusedSquare = this.imageCreator('/hearthfield-game/assets/images/focus_square.png')
+    console.log('Loading extra images...');
+    this.focusedSquare = this.imageCreator('./assets/images/focus_square.png')
+    console.log('Extra images setup complete');
   }
 
   createAudioLibrary (cb) {
+    console.log('Creating audio library...'); // Log for debugging
     let audioLibrary = {}
-    audioLibrary.normal = new Sound('/hearthfield-game/assets/audio/normal#.wav', 0.3, 2)
-    audioLibrary.heart = new Sound('/hearthfield-game/assets/audio/heart#.wav', 0.4, 2)
-    audioLibrary.tiger = new Sound('/hearthfield-game/assets/audio/tiger#.wav', 0.4, 2)
-    audioLibrary.sereno = new Sound('/hearthfield-game/assets/audio/sereno.wav', 0.4, 1)
-    audioLibrary.arrow = new Sound('/hearthfield-game/assets/audio/arrow.wav', 0.4, 1)
+    audioLibrary.normal = new Sound('./assets/audio/normal#.wav', 0.3, 2)
+    audioLibrary.heart = new Sound('./assets/audio/heart#.wav', 0.4, 2)
+    audioLibrary.tiger = new Sound('./assets/audio/tiger#.wav', 0.4, 2)
+    audioLibrary.sereno = new Sound('./assets/audio/sereno.wav', 0.4, 1)
+    audioLibrary.arrow = new Sound('./assets/audio/arrow.wav', 0.4, 1)
     cb(audioLibrary)
   }
 
@@ -184,7 +196,7 @@ class HearthField {
   }
 
   createPlayer () {
-    console.log('Creating player...')
+    console.log('Creating player with screenResize:', this.screenResize);
     let ship = new Image()
     let bullet1 = new Image()
     let bullet1_death = new Image()
@@ -200,15 +212,15 @@ class HearthField {
     }
 
     // player
-    ship.src = '/hearthfield-game/assets/images/spray.png'
+    ship.src = './assets/images/spray.png'
     ship.loaded = false
 
     // player bullets
-    bullet1_death.src = '/hearthfield-game/assets/images/bullet_death.png'
+    bullet1_death.src = './assets/images/bullet_death.png'
     bullet1_death.columns = 16
     bullet1_death.rows = 1
 
-    bullet1.src = '/hearthfield-game/assets/images/bullet.png'
+    bullet1.src = './assets/images/bullet.png'
     bullet1.columns = 8
     bullet1.rows = 1
 
@@ -233,6 +245,7 @@ class HearthField {
   }
 
   createEnemy () {
+    console.log('Creating enemy with screenResize:', this.screenResize);
     let enemyFace = new Image()
 
     // enemy
@@ -243,7 +256,7 @@ class HearthField {
       enemyFace.loaded = false
     }
     enemyFace.loaded = false
-    enemyFace.src = '/hearthfield-game/assets/images/raincoat_final.png'
+    enemyFace.src = './assets/images/raincoat_final.png'
     enemyFace.columns = 6
     enemyFace.rows = 1
 
@@ -257,14 +270,14 @@ class HearthField {
     let bulletA = new Image()
     bulletA.onload = () => console.log('Wet sock bullet loaded')
     bulletA.onerror = () => console.error('Failed to load wet sock bullet')
-    bulletA.src = '/hearthfield-game/assets/images/wet_sock.png'
+    bulletA.src = './assets/images/wet_sock.png'
     bulletA.columns = 10
     bulletA.rows = 1
 
     let bulletA_D = new Image()
     bulletA_D.onload = () => console.log('Wet sock death loaded')
     bulletA_D.onerror = () => console.error('Failed to load wet sock death')
-    bulletA_D.src = '/hearthfield-game/assets/images/wet_sock_death.png'
+    bulletA_D.src = './assets/images/wet_sock_death.png'
     bulletA_D.columns = 8
     bulletA_D.rows = 1
 
@@ -272,36 +285,36 @@ class HearthField {
     let bullet1 = new Image()
     bullet1.onload = () => console.log('Heart bullet loaded')
     bullet1.onerror = () => console.error('Failed to load heart bullet')
-    bullet1.src = '/hearthfield-game/assets/images/heartB.png'
+    bullet1.src = './assets/images/heartB.png'
     bullet1.columns = 10
     bullet1.rows = 1
 
     let bullet1_D = new Image()
     bullet1_D.onload = () => console.log('Heart death loaded')
     bullet1_D.onerror = () => console.error('Failed to load heart death')
-    bullet1_D.src = '/hearthfield-game/assets/images/heartB_death.png'
+    bullet1_D.src = './assets/images/heartB_death.png'
     bullet1_D.columns = 16
     bullet1_D.rows = 1
 
     // tiger
     let bulletT = new Image()
-    bulletT.src = '/hearthfield-game/assets/images/tiger.png'
+    bulletT.src = './assets/images/tiger.png'
     bulletT.columns = 8
     bulletT.rows = 1
 
     let bulletT_D = new Image()
-    bulletT_D.src = '/hearthfield-game/assets/images/tiger_death.png'
+    bulletT_D.src = './assets/images/tiger_death.png'
     bulletT_D.columns = 8
     bulletT_D.rows = 1
 
     // Snow_man
     let bulletS = new Image()
-    bulletS.src = '/hearthfield-game/assets/images/snow_man.png'
+    bulletS.src = './assets/images/snow_man.png'
     bulletS.columns = 8
     bulletS.rows = 1
 
     let bulletS_D = new Image()
-    bulletS_D.src = '/hearthfield-game/assets/images/snow_man_death.png'
+    bulletS_D.src = './assets/images/snow_man_death.png'
     bulletS_D.columns = 24
     bulletS_D.rows = 1
 
@@ -339,11 +352,14 @@ class HearthField {
   }
 
   initScene () {
+    console.log('initScene: Setting up stars and scene elements...');
     // Raining
     let star1 = new Image()
     let star2 = new Image()
-    star1.src = '/hearthfield-game/assets/images/snowflake.png'
-    star2.src = '/hearthfield-game/assets/images/snowflake.png'
+    star1.src = './assets/images/snowflake.png'
+    star1.onerror = () => { console.error("Snowflake image failed to load from:", star1.src); };
+    star2.src = './assets/images/snowflake.png'
+    star2.onerror = () => { console.error("Snowflake image failed to load from:", star2.src); };
 
     for (let i = 0; i < this.quantity; i++ ) {
       this.stars.push(new Star(this.starMinSize, this.starMaxSize, this.fieldWidth, this.fieldHeight, this.depth, star1))
@@ -358,29 +374,29 @@ class HearthField {
 
     // Sky
     let cloudsHeight = 120
-    let moonImage = this.imageCreator('/hearthfield-game/assets/images/moon_final.png', 128, 6, 1, (this.fieldWidth / 2) - 300, cloudsHeight - 20 )
-    let leftCloudImage = this.imageCreator('/hearthfield-game/assets/images/left-cloud.png', 192, 1, 1, (this.fieldWidth / 2) - 620, cloudsHeight )
-    let leftCloudTImage = this.imageCreator('/hearthfield-game/assets/images/left-cloud-2.png', 192, 1, 1, (this.fieldWidth / 2) - 940, cloudsHeight )
-    let rightCloudImage = this.imageCreator('/hearthfield-game/assets/images/right-cloud-1.png', 192, 1, 1, (this.fieldWidth / 2) - 280, cloudsHeight )
-    let rightCloudTImage = this.imageCreator('/hearthfield-game/assets/images/right-cloud-2.png', 192, 1, 1, (this.fieldWidth / 2), cloudsHeight )
-    let rightCloudThImage = this.imageCreator('/hearthfield-game/assets/images/right-cloud-3.png', 192, 1, 1, (this.fieldWidth / 2) + 300, cloudsHeight )
-    let rightCloudFImage = this.imageCreator('/hearthfield-game/assets/images/right-cloud-2.png', 192, 1, 1, (this.fieldWidth / 2) + 600, cloudsHeight )
-    let rightCloudFIImage = this.imageCreator('/hearthfield-game/assets/images/right-cloud-1.png', 192, 1, 1, (this.fieldWidth / 2) + 900, cloudsHeight )
-    let rightCloudFIIImage = this.imageCreator('/hearthfield-game/assets/images/right-cloud-3.png', 192, 1, 1, (this.fieldWidth / 2) + 1200, cloudsHeight )
+    let moonImage = this.imageCreator('./assets/images/moon_final.png', 128, 6, 1, (this.fieldWidth / 2) - 300, cloudsHeight - 20 )
+    let leftCloudImage = this.imageCreator('./assets/images/left-cloud.png', 192, 1, 1, (this.fieldWidth / 2) - 620, cloudsHeight )
+    let leftCloudTImage = this.imageCreator('./assets/images/left-cloud-2.png', 192, 1, 1, (this.fieldWidth / 2) - 940, cloudsHeight )
+    let rightCloudImage = this.imageCreator('./assets/images/right-cloud-1.png', 192, 1, 1, (this.fieldWidth / 2) - 280, cloudsHeight )
+    let rightCloudTImage = this.imageCreator('./assets/images/right-cloud-2.png', 192, 1, 1, (this.fieldWidth / 2), cloudsHeight )
+    let rightCloudThImage = this.imageCreator('./assets/images/right-cloud-3.png', 192, 1, 1, (this.fieldWidth / 2) + 300, cloudsHeight )
+    let rightCloudFImage = this.imageCreator('./assets/images/right-cloud-2.png', 192, 1, 1, (this.fieldWidth / 2) + 600, cloudsHeight )
+    let rightCloudFIImage = this.imageCreator('./assets/images/right-cloud-1.png', 192, 1, 1, (this.fieldWidth / 2) + 900, cloudsHeight )
+    let rightCloudFIIImage = this.imageCreator('./assets/images/right-cloud-3.png', 192, 1, 1, (this.fieldWidth / 2) + 1200, cloudsHeight )
     
     
     // Mountains
     let mountainsPosition = 40 * this.screenResize
-    let mountainCityImage = this.imageCreator('/hearthfield-game/assets/images/mountain_city_final.png', 0, 1, 1, 0, this.fieldHeight - ((this.fieldHeight / 4 * 3) - mountainsPosition))
-    let redCloudsImage = this.imageCreator('/hearthfield-game/assets/images/red_clouds.png', 0, 1, 1, 0 + 440, this.fieldHeight - ((this.fieldHeight / 4 * 3) - mountainsPosition))
+    let mountainCityImage = this.imageCreator('./assets/images/mountain_city_final.png', 0, 1, 1, 0, this.fieldHeight - ((this.fieldHeight / 4 * 3) - mountainsPosition))
+    let redCloudsImage = this.imageCreator('./assets/images/red_clouds.png', 0, 1, 1, 0 + 440, this.fieldHeight - ((this.fieldHeight / 4 * 3) - mountainsPosition))
     
     // Station
     let stationDimensions = { w: 683, h: 376 }
     let railsDimensions = { w: 1920, h: 528 }
     let advertisingDimensions = { w: 62, h: 122 }
-    let stationImage = this.imageCreator('/hearthfield-game/assets/images/station_final.png', stationDimensions, 1, 1, stationDimensions.w / 2, this.fieldHeight - ((stationDimensions.h * this.screenResize)))
-    let advertisingImage = this.imageCreator('/hearthfield-game/assets/images/advertising_final.png', advertisingDimensions, 16, 1, 237, this.fieldHeight - ((advertisingDimensions.h + 256) * this.screenResize))
-    let railsImage = this.imageCreator('/hearthfield-game/assets/images/rails_final.png', railsDimensions, 1, 1, railsDimensions.w / 2, this.fieldHeight)
+    let stationImage = this.imageCreator('./assets/images/station_final.png', stationDimensions, 1, 1, stationDimensions.w / 2, this.fieldHeight - ((stationDimensions.h * this.screenResize)))
+    let advertisingImage = this.imageCreator('./assets/images/advertising_final.png', advertisingDimensions, 16, 1, 237, this.fieldHeight - ((advertisingDimensions.h + 256) * this.screenResize))
+    let railsImage = this.imageCreator('./assets/images/rails_final.png', railsDimensions, 1, 1, railsDimensions.w / 2, this.fieldHeight)
 
     let _this = this
     // Buses
@@ -407,7 +423,7 @@ class HearthField {
       duration: 9
     }
 
-    let transmi1Image = this.imageCreator('/hearthfield-game/assets/images/metro_final.png', busDimensions, 1, 1, this.fieldWidth + 100, this.fieldHeight - ((busDimensions.h + bus1YVariable) * this.screenResize), transmi1Settings)
+    let transmi1Image = this.imageCreator('./assets/images/metro_final.png', busDimensions, 1, 1, this.fieldWidth + 100, this.fieldHeight - ((busDimensions.h + bus1YVariable) * this.screenResize), transmi1Settings)
     
     let bus2YVariable = - 40
 
@@ -425,7 +441,7 @@ class HearthField {
         ],
       duration: 7
     }
-    let transmi2Image = this.imageCreator('/hearthfield-game/assets/images/metro_final.png', busDimensions, 1, 1, this.fieldWidth + 100, this.fieldHeight - ((busDimensions.h + bus2YVariable) * this.screenResize), transmi2Settings)
+    let transmi2Image = this.imageCreator('./assets/images/metro_final.png', busDimensions, 1, 1, this.fieldWidth + 100, this.fieldHeight - ((busDimensions.h + bus2YVariable) * this.screenResize), transmi2Settings)
 
     // Adding elements to scene
     // Clouds
@@ -722,7 +738,15 @@ class HearthField {
 
   update () {
     this.ctx.clearRect(0, 0, this.fieldWidth, this.fieldHeight);
+    this.ctx.fillStyle = '#0E1F31';
+    this.ctx.fillRect(0, 0, this.fieldWidth, this.fieldHeight);
     this.timer += 12 // FPS
+
+    if (!this.updateLogCount) this.updateLogCount = 0;
+    this.updateLogCount++;
+    if (this.updateLogCount % 60 === 0) {
+      console.log('Update loop running, timer:', this.timer, 'gameRunning:', this.gameRunning);
+    }
 
     this.drawScene()
 
@@ -737,6 +761,11 @@ class HearthField {
       this.player.update()
       this.drawEnemy()
       this.drawPlayer()
+
+      // Draw custom cursor at mouse position - removed as per feedback
+      // if (window.mouseX !== undefined && window.mouseY !== undefined && this.focusedSquare && this.focusedSquare.img.loaded) {
+      //   this.spriteAnimate(this.focusedSquare, window.mouseX, window.mouseY, 32);
+      // }
     } else if (this.gameRunning) {
       console.log('Game running but missing components:', {
         player: !!this.player,
@@ -758,8 +787,9 @@ class HearthField {
   }
 
   startGame() {
-    console.log('Starting game!')
+    console.log('Starting game!');
     this.gameRunning = true
+    console.log('Game started, gameRunning:', this.gameRunning);
     if (this.communicationsEngine) {
       this.communicationsEngine.setState('playing')
     }
@@ -789,15 +819,16 @@ function animate () {
 }
 
 function create (canvas, cb) {
-
+  console.log("create() called with canvas", canvas);
   hf = new HearthField(canvas)
+  console.log('HearthField instance created in create()');
   cb(hf)
 }
 
 
 // Convert paths for web
 function fixAssetPath(path) {
-  return path.replace('/hearthfield-game/assets/images/', '/hearthfield-game/assets/images/').replace('audio/', '/hearthfield-game/assets/hearthfield-game/assets/audio/');
+  return path.replace('./assets/images/', './assets/images/').replace('audio/', './assets/hearthfield-game/assets/audio/');
 }
 
 // Update all image paths in the code

@@ -47,6 +47,7 @@ class Ship {
   update() {
     this.x = window.mouseX || 0
     this.y = window.mouseY || 0
+    console.log('Player update: x=', this.x, 'y=', this.y);
   }
 }
 

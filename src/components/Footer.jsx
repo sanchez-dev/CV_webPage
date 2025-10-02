@@ -15,11 +15,12 @@ const Footer = () => {
       {/* Section 1: Dark Footer */}
       <footer className="py-16 lg:pt-40 lg:pb-20" id="contact">
         <div className="max-w-7xl mx-auto px-4">
-          <div className="bg-[--shadow-color2] text-white rounded-xl lg:rounded-3xl px-6 lg:px-12 py-12 lg:py-16">
+          <div className="bg-[--shadow-color2] text-white rounded-2xl lg:rounded-[40px] px-6 lg:px-12 py-12 lg:py-16">
           <div className="grid lg:grid-cols-3 gap-12 lg:gap-16">
+            
             {/* Column 1: Contact Title */}
             <div>
-              <h3 className="font-tt-norms font-bold text-3xl lg:text-4xl text-white">
+              <h3 className="font-tt-norms font-bold text-3xl lg:text-5xl text-white">
                 {t('navigation.contact')}
               </h3>
             </div>
@@ -33,7 +34,7 @@ const Footer = () => {
                   href={t('contact.linkedin')}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="font-tt-norms text-white hover:font-bold transition-colors text-lg"
+                  className="font-tt-norms text-white hover:font-bold transition-colors text-2xl"
                 >
                   Linkedin
                 </a>
@@ -46,7 +47,7 @@ const Footer = () => {
                   href={`https://wa.me/${t('contact.phone').replace(/[^\d]/g, '')}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="font-tt-norms text-white hover:font-bold transition-colors text-lg"
+                  className="font-tt-norms text-white hover:font-bold transition-colors text-2xl"
                 >
                   Whatsapp
                 </a>
@@ -57,7 +58,7 @@ const Footer = () => {
                 <img src="/email-heart.png" alt="Email" className="w-5 h-5 filter brightness-0 invert" />
                 <a 
                   href="mailto:run@jose.run?subject=Necesito%20tu%20ayuda%20con%20mis%20productos&body=Hola%20Jose,%0A%0A"
-                  className="font-tt-norms text-white hover:font-bold transition-colors text-lg"
+                  className="font-tt-norms text-white hover:font-bold transition-colors text-2xl"
                 >
                   run@jose.run
                 </a>
@@ -70,7 +71,7 @@ const Footer = () => {
                   href="https://dribbble.com/JoseSan"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="font-tt-norms text-white hover:font-bold transition-colors text-lg"
+                  className="font-tt-norms text-white hover:font-bold transition-colors text-2xl"
                 >
                   Dribbble
                 </a>
@@ -83,12 +84,12 @@ const Footer = () => {
                   href={resumeUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="font-tt-norms text-white hover:font-bold transition-colors text-lg"
+                  className="font-tt-norms text-white hover:font-bold transition-colors text-2xl"
                 >
                   {t('footer.resumeText')}
                 </a>
               </div>
-              <p className="font-tt-norms text-white/60 text-sm mt-2 leading-relaxed">
+              <p className="font-tt-norms text-white/60 text-lg mt-2 leading-relaxed">
                 {i18n.language === 'es' ? (
                   <>
                     Este archivo está en Español. Cambia el idioma a{' '}
@@ -124,25 +125,25 @@ const Footer = () => {
                     e.preventDefault();
                     window.scrollTo({ top: 0, behavior: 'smooth' });
                   }}
-                  className="block font-tt-norms text-white hover:font-bold transition-colors text-lg cursor-pointer"
+                  className="block font-tt-norms text-white hover:font-bold transition-colors text-2xl cursor-pointer"
                 >
                   {t('navigation.home')}
                 </a>
                 <a 
                   href="#projects"
-                  className="block font-tt-norms text-white hover:font-bold transition-colors text-lg"
+                  className="block font-tt-norms text-white hover:font-bold transition-colors text-2xl"
                 >
                   {t('navigation.projects')}
                 </a>
                 <a 
                   href="#about"
-                  className="block font-tt-norms text-white hover:font-bold transition-colors text-lg"
+                  className="block font-tt-norms text-white hover:font-bold transition-colors text-2xl"
                 >
                   {t('navigation.about')}
                 </a>
                 <a 
                   href="#contact"
-                  className="block font-tt-norms text-white hover:font-bold transition-colors text-lg"
+                  className="block font-tt-norms text-white hover:font-bold transition-colors text-2xl"
                 >
                   {t('navigation.contact')}
                 </a>
@@ -162,7 +163,7 @@ const Footer = () => {
           {/* Bottom content */}
           <div className="space-y-1">
             {/* Copyright */}
-            <p className="font-tt-norms text-black/60 text-sm">
+            <p className="font-tt-norms text-black/60 text-xl">
               <span className="font-bold">JS © 2025.</span> / Bogotá ✘ Remote
             </p>
 
@@ -170,7 +171,7 @@ const Footer = () => {
             <div className="flex justify-center items-center space-x-2">
               <button
                 onClick={() => toggleLanguage('en')}
-                className={`px-2 py-2 text-sm font-tt-norms transition-all ${
+                className={`px-2 py-2 text-xl font-tt-norms transition-all ${
                   i18n.language === 'en' 
                     ? 'text-black font-bold underline underline-offset-4 decoration-2' 
                     : 'text-gray-400 font-normal hover:font-bold-600'
@@ -180,7 +181,7 @@ const Footer = () => {
               </button>
               <button
                 onClick={() => toggleLanguage('es')}
-                className={`px-2 py-2 text-sm font-tt-norms transition-all ${
+                className={`px-2 py-2 text-xl font-tt-norms transition-all ${
                   i18n.language === 'es' 
                     ? 'text-black font-bold underline underline-offset-4 decoration-2' 
                     : 'text-gray-400 font-normal hover:font-bold-600'

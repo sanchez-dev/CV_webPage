@@ -19,7 +19,7 @@ const Highlights = () => {
           {/* Right Side - Content (8 columns) */}
           <div className="col-span-12 lg:col-span-8">
             {/* Opening text */}
-            <div className="text-xl text-black font-tt-norms mb-12">
+            <div className="text-2xl text-black font-tt-norms mb-12">
               {t('highlights.opening').split('\n').map((line, index) => (
                 <p key={index} className="mb-4 last:mb-0 leading-[1.70]" dangerouslySetInnerHTML={{ __html: line }}>
                 </p>

@@ -29,13 +29,14 @@ function App() {
         }
       }
     };
-
+    console.log("App updated at", new Date());
     document.addEventListener('click', handleClick);
     return () => document.removeEventListener('click', handleClick);
   }, []);
 
   return (
     <div className="min-h-screen bg-background">
+
       <Header />
       <main>
         <Hero />

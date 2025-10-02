@@ -7,51 +7,107 @@ import ScrollIndicator from './ScrollIndicator';
 
 const LazyVideo = ({ src, className, ...props }) => {
   const [isLoaded, setIsLoaded] = useState(false);
-  const [isInView, setIsInView] = useState(false);
   const videoRef = useRef(null);
+  const containerRef = useRef(null);
+  const scrollHandlerRef = useRef(null);
+  const rafRef = useRef(null);
+
+  // Throttle function for scroll
+  const throttle = (func, limit) => {
+    let inThrottle;
+    return function() {
+      const args = arguments;
+      const context = this;
+      if (!inThrottle) {
+        func.apply(context, args);
+        inThrottle = true;
+        setTimeout(() => inThrottle = false, limit);
+      }
+    }
+  };
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting && !isInView) {
-          setIsInView(true);
+        const { isIntersecting } = entry;
+        if (videoRef.current) {
+          if (isIntersecting && isLoaded) {
+            videoRef.current.play().catch(console.error);
+            videoRef.current.playbackRate = 1;
+          } else {
+            videoRef.current.pause();
+            videoRef.current.playbackRate = 1;
+          }
         }
       },
-      { threshold: 0.1 }
+      { threshold: 0.01 } // Detect entry/exit
     );
 
-    const currentRef = videoRef.current;
+    const currentRef = containerRef.current;
     if (currentRef) {
       observer.observe(currentRef);
     }
 
+    // Simplified scroll handler: only play/pause, no rate adjustment
+    const handleScroll = throttle(() => {
+      if (!videoRef.current || !containerRef.current || !isLoaded) return;
+
+      const rect = containerRef.current.getBoundingClientRect();
+      const viewportHeight = window.innerHeight;
+
+      // Check if in viewport
+      if (rect.bottom <= 0 || rect.top >= viewportHeight) {
+        if (!videoRef.current.paused) {
+          videoRef.current.pause();
+        }
+        return;
+      }
+
+      // Ensure playing at normal speed
+      if (videoRef.current.paused) {
+        videoRef.current.play().catch(console.error);
+      }
+      videoRef.current.playbackRate = 1;
+    }, 16); // 60fps throttle
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+
     return () => {
+      window.removeEventListener('scroll', handleScroll);
       if (currentRef) {
         observer.unobserve(currentRef);
       }
+      if (videoRef.current) {
+        videoRef.current.pause();
+        videoRef.current.playbackRate = 1;
+      }
+      cancelAnimationFrame(rafRef.current);
     };
-  }, [isInView]);
+  }, [isLoaded]);
 
   return (
-    <div ref={videoRef} className={className}>
-      {isInView && (
-        <video
-          className="w-full h-full object-cover"
-          autoPlay
-          loop
-          muted
-          playsInline
-          onLoadedData={() => setIsLoaded(true)}
-          style={{
-            opacity: isLoaded ? 1 : 0,
-            transition: 'opacity 0.3s ease-in-out'
-          }}
-          {...props}
-        >
-          <source src={src} type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
-      )}
+    <div ref={containerRef} className={className}>
+      <video
+        ref={videoRef}
+        className="w-full h-full object-cover"
+        loop
+        muted
+        playsInline
+        preload="metadata"
+        onLoadStart={() => console.time(`video-load-${src}`)}
+        onLoadedData={() => {
+          console.timeEnd(`video-load-${src}`);
+          setIsLoaded(true);
+        }}
+        style={{
+          opacity: isLoaded ? 1 : 0,
+          transition: 'opacity 0.3s ease-in-out'
+        }}
+        {...props}
+      >
+        <source src={src} type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
       {!isLoaded && <Loader />}
     </div>
   );
@@ -107,24 +163,24 @@ const Jobs = () => {
             </div>
             <div className="col-span-12 lg:col-span-5 mb-16 lg:mb-0">
               <div className="space-y-8 lg:space-y-[34px]">
-                <div className="relative overflow-hidden rounded-2xl h-[554px] lg:h-[550px]">
+                <div className="relative overflow-hidden rounded-[40px] h-[554px] lg:h-[650px]">
                   <LazyVideo
                     src="/BMM_A.mp4"
                     className="w-full h-full"
                   />
                 </div>
                 
-                <div className="space-y-8">
-                  <h3 className="text-3xl font-tt-norms font-bold text-black break-words">
+                <div className="pt-2 space-y-8">
+                  <h3 className="text-4xl font-tt-norms font-bold text-black break-words">
                     {t('jobs.projects.project1.title')}
                   </h3>
-                  <p className="text-xl font-tt-norms font-normal text-black leading-[1.54] break-words">
+                  <p className="text-2xl font-tt-norms font-normal text-black leading-[1.54] break-words">
                     {t('jobs.projects.project1.description')}
                   </p>
                   <div className="flex flex-wrap gap-2 items-center">
                     {t('jobs.projects.project1.technologies', { returnObjects: true }).slice(0, -2).map((tech, i) => (
                       <span
-                        className="px-3 py-1 text-base lg:text-lg font-tt-norms font-normal inline-flex items-center gap-1 break-words"
+                        className="px-3 py-1 text-base lg:text-xl font-tt-norms font-normal inline-flex items-center gap-1 break-words"
                         style={{backgroundColor: '#E4E4D9', color: 'var(--color-black)', borderRadius: '6px'}}
                       >
                         {tech}
@@ -137,7 +193,7 @@ const Jobs = () => {
                       </span>
                     ))}
                     <span
-                      className="px-3 py-1 text-base lg:text-lg font-tt-norms font-normal inline-flex items-center gap-1 break-words"
+                      className="px-3 py-1 text-base lg:text-xl font-tt-norms font-normal inline-flex items-center gap-1 break-words"
                       style={{backgroundColor: '#E4E4D9', color: 'var(--color-black)', borderRadius: '6px'}}
                     >
                       {t('jobs.projects.project1.technologies', { returnObjects: true })[t('jobs.projects.project1.technologies', { returnObjects: true }).length - 2]}
@@ -150,7 +206,7 @@ const Jobs = () => {
                     </span>
                     <div className="flex items-center gap-1 whitespace-nowrap">
                       <span
-                        className="px-3 py-1 text-base lg:text-lg font-tt-norms font-bold inline-flex items-center gap-1 break-words"
+                        className="px-3 py-1 text-base lg:text-xl font-tt-norms font-bold inline-flex items-center gap-1 break-words"
                         style={{backgroundColor: 'var(--shadow-color)', color: 'white', borderRadius: '6px'}}
                       >
                         R
@@ -162,7 +218,7 @@ const Jobs = () => {
                         </span>
                       </span>
                       <span
-                        className="px-3 py-1 text-base lg:text-lg font-tt-norms font-bold break-words"
+                        className="px-3 py-1 text-base lg:text-xl font-tt-norms font-bold break-words"
                         style={{backgroundColor: 'var(--color-black)', color: 'white', borderRadius: '6px'}}
                       >
                         {t('jobs.projects.project1.technologies', { returnObjects: true })[t('jobs.projects.project1.technologies', { returnObjects: true }).length - 1]}
@@ -175,24 +231,24 @@ const Jobs = () => {
 
             <div className="col-span-12 lg:col-span-5 mb-16 lg:mb-0">
               <div className="space-y-8 lg:space-y-[34px]">
-                <div className="relative overflow-hidden rounded-2xl h-[554px] lg:h-[550px]">
+                <div className="relative overflow-hidden rounded-[40px] h-[554px] lg:h-[650px]">
                   <LazyVideo
                     src="/BMM_W.mp4"
                     className="w-full h-full"
                   />
                 </div>
                 
-                <div className="space-y-8">
-                  <h3 className="text-3xl font-tt-norms font-bold text-black break-words">
+                <div className="pt-2 space-y-8">
+                  <h3 className="text-4xl font-tt-norms font-bold text-black break-words">
                     {t('jobs.projects.project5.title')}
                   </h3>
-                  <p className="text-xl font-tt-norms font-normal text-black leading-[1.54] break-words">
+                  <p className="text-2xl font-tt-norms font-normal text-black leading-[1.54] break-words">
                     {t('jobs.projects.project5.description')}
                   </p>
                   <div className="flex flex-wrap gap-2 items-center">
                     {t('jobs.projects.project5.technologies', { returnObjects: true }).slice(0, -2).map((tech, i) => (
                       <span
-                        className="px-3 py-1 text-base lg:text-lg font-tt-norms font-normal inline-flex items-center gap-1 break-words"
+                        className="px-3 py-1 text-base lg:text-xl font-tt-norms font-normal inline-flex items-center gap-1 break-words"
                         style={{backgroundColor: '#E4E4D9', color: 'var(--color-black)', borderRadius: '6px'}}
                       >
                         {tech}
@@ -205,7 +261,7 @@ const Jobs = () => {
                       </span>
                     ))}
                     <span
-                      className="px-3 py-1 text-base lg:text-lg font-tt-norms font-normal inline-flex items-center gap-1 break-words"
+                      className="px-3 py-1 text-base lg:text-xl font-tt-norms font-normal inline-flex items-center gap-1 break-words"
                       style={{backgroundColor: '#E4E4D9', color: 'var(--color-black)', borderRadius: '6px'}}
                     >
                       {t('jobs.projects.project5.technologies', { returnObjects: true })[t('jobs.projects.project5.technologies', { returnObjects: true }).length - 2]}
@@ -218,7 +274,7 @@ const Jobs = () => {
                     </span>
                     <div className="flex items-center gap-1 whitespace-nowrap">
                       <span
-                        className="px-3 py-1 text-base lg:text-lg font-tt-norms font-bold inline-flex items-center gap-1 break-words"
+                        className="px-3 py-1 text-base lg:text-xl font-tt-norms font-bold inline-flex items-center gap-1 break-words"
                         style={{backgroundColor: 'var(--shadow-color)', color: 'white', borderRadius: '6px'}}
                       >
                         R
@@ -230,7 +286,7 @@ const Jobs = () => {
                         </span>
                       </span>
                       <span
-                        className="px-3 py-1 text-base lg:text-lg font-tt-norms font-bold break-words"
+                        className="px-3 py-1 text-base lg:text-xl font-tt-norms font-bold break-words"
                         style={{backgroundColor: 'var(--color-black)', color: 'white', borderRadius: '6px'}}
                       >
                         {t('jobs.projects.project5.technologies', { returnObjects: true })[t('jobs.projects.project5.technologies', { returnObjects: true }).length - 1]}
@@ -247,24 +303,24 @@ const Jobs = () => {
             <div className="space-y-1 lg:space-y-[34px]"></div>
             <div className="col-span-12 lg:col-span-10 mb-16 lg:mb-0">
               <div className="space-y-8 lg:space-y-[34px]">
-                <div className="relative overflow-hidden rounded-2xl h-[384px] lg:h-[550px]">
+                <div className="relative overflow-hidden rounded-[40px] h-[384px] lg:h-[650px]">
                   <LazyVideo
                     src="/BTG.mp4"
                     className="w-full h-full"
                   />
                 </div>
                 
-                <div className="space-y-8">
-                  <h3 className="text-3xl font-tt-norms font-bold text-black break-words">
+                <div className="pt-2 space-y-8">
+                  <h3 className="text-4xl font-tt-norms font-bold text-black break-words">
                     {t('jobs.projects.project2.title')}
                   </h3>
-                  <p className="text-xl font-tt-norms font-normal text-black leading-[1.54] break-words">
+                  <p className="text-2xl font-tt-norms font-normal text-black leading-[1.54] break-words">
                     {t('jobs.projects.project2.description')}
                   </p>
                   <div className="flex flex-wrap gap-2 items-center">
                     {t('jobs.projects.project2.technologies', { returnObjects: true }).slice(0, -2).map((tech, i) => (
                       <span
-                        className="px-3 py-1 text-base lg:text-lg font-tt-norms font-normal inline-flex items-center gap-1 break-words"
+                        className="px-3 py-1 text-base lg:text-xl font-tt-norms font-normal inline-flex items-center gap-1 break-words"
                         style={{backgroundColor: '#E4E4D9', color: 'var(--color-black)', borderRadius: '6px'}}
                       >
                         {tech}
@@ -277,7 +333,7 @@ const Jobs = () => {
                       </span>
                     ))}
                     <span
-                      className="px-3 py-1 text-base lg:text-lg font-tt-norms font-normal inline-flex items-center gap-1 break-words"
+                      className="px-3 py-1 text-base lg:text-xl font-tt-norms font-normal inline-flex items-center gap-1 break-words"
                       style={{backgroundColor: '#E4E4D9', color: 'var(--color-black)', borderRadius: '6px'}}
                     >
                       {t('jobs.projects.project2.technologies', { returnObjects: true })[t('jobs.projects.project2.technologies', { returnObjects: true }).length - 2]}
@@ -290,7 +346,7 @@ const Jobs = () => {
                     </span>
                     <div className="flex items-center gap-1 whitespace-nowrap">
                       <span
-                        className="px-3 py-1 text-base lg:text-lg font-tt-norms font-bold inline-flex items-center gap-1 break-words"
+                        className="px-3 py-1 text-base lg:text-xl font-tt-norms font-bold inline-flex items-center gap-1 break-words"
                         style={{backgroundColor: 'var(--shadow-color)', color: 'white', borderRadius: '6px'}}
                       >
                         R
@@ -302,7 +358,7 @@ const Jobs = () => {
                         </span>
                       </span>
                       <span
-                        className="px-3 py-1 text-base lg:text-lg font-tt-norms font-bold break-words bg-[--color-black]"
+                        className="px-3 py-1 text-base lg:text-xl font-tt-norms font-bold break-words bg-[--color-black]"
                         style={{color: 'white', borderRadius: '6px'}}
                       >
                         {t('jobs.projects.project2.technologies', { returnObjects: true })[t('jobs.projects.project2.technologies', { returnObjects: true }).length - 1]}
@@ -316,26 +372,26 @@ const Jobs = () => {
           {/* First line Boli */}
           <div className="grid grid-cols-12 gap-4 lg:gap-16">
             <div className="col-span-12 lg:col-span-1 mb-16 lg:mb-0"></div>
-            <div className="col-span-12 lg:col-span-5 mb-16 lg:mb-0">
+            <div className="col-span-12 lg:col-span-10 mb-16 lg:mb-0">
               <div className="space-y-8 lg:space-y-[34px]">
-                <div className="relative overflow-hidden rounded-2xl h-[384px] lg:h-[550px]">
+                <div className="relative overflow-hidden rounded-[40px] h-[384px] lg:h-[650px]">
                   <LazyVideo
                     src="/BOLI.mp4"
                     className="w-full h-full"
                   />
                 </div>
                 
-                <div className="space-y-8">
-                  <h3 className="text-3xl font-tt-norms font-bold text-black break-words">
+                <div className="pt-2 space-y-8">
+                  <h3 className="text-4xl font-tt-norms font-bold text-black break-words">
                     {t('jobs.projects.project3.title')}
                   </h3>
-                  <p className="text-xl font-tt-norms font-normal text-black leading-[1.54] break-words">
+                  <p className="text-2xl font-tt-norms font-normal text-black leading-[1.54] break-words">
                     {t('jobs.projects.project3.description')}
                   </p>
                   <div className="flex flex-wrap gap-2 items-center">
                     {t('jobs.projects.project3.technologies', { returnObjects: true }).slice(0, -2).map((tech, i) => (
                       <span
-                        className="px-3 py-1 text-base lg:text-lg font-tt-norms font-normal inline-flex items-center gap-1 break-words"
+                        className="px-3 py-1 text-base lg:text-xl font-tt-norms font-normal inline-flex items-center gap-1 break-words"
                         style={{backgroundColor: '#E4E4D9', color: 'var(--color-black)', borderRadius: '6px'}}
                       >
                         {tech}
@@ -348,7 +404,7 @@ const Jobs = () => {
                       </span>
                     ))}
                     <span
-                      className="px-3 py-1 text-base lg:text-lg font-tt-norms font-normal inline-flex items-center gap-1 break-words"
+                      className="px-3 py-1 text-base lg:text-xl font-tt-norms font-normal inline-flex items-center gap-1 break-words"
                       style={{backgroundColor: '#E4E4D9', color: 'var(--color-black)', borderRadius: '6px'}}
                     >
                       {t('jobs.projects.project3.technologies', { returnObjects: true })[t('jobs.projects.project3.technologies', { returnObjects: true }).length - 2]}
@@ -361,7 +417,7 @@ const Jobs = () => {
                     </span>
                     <div className="flex items-center gap-1 whitespace-nowrap">
                       <span
-                        className="px-3 py-1 text-base lg:text-lg font-tt-norms font-bold inline-flex items-center gap-1 break-words"
+                        className="px-3 py-1 text-base lg:text-xl font-tt-norms font-bold inline-flex items-center gap-1 break-words"
                         style={{backgroundColor: 'var(--shadow-color)', color: 'white', borderRadius: '6px'}}
                       >
                         R
@@ -373,7 +429,7 @@ const Jobs = () => {
                         </span>
                       </span>
                       <span
-                        className="px-3 py-1 text-base lg:text-lg font-tt-norms font-bold break-words"
+                        className="px-3 py-1 text-base lg:text-xl font-tt-norms font-bold break-words"
                         style={{backgroundColor: 'var(--color-black)', color: 'white', borderRadius: '6px'}}
                       >
                         {t('jobs.projects.project3.technologies', { returnObjects: true })[t('jobs.projects.project3.technologies', { returnObjects: true }).length - 1]}
@@ -383,97 +439,28 @@ const Jobs = () => {
                 </div>
               </div>
             </div>
-            <div className="col-span-12 lg:col-span-5 mb-16 lg:mb-0">
-              <div className="space-y-8 lg:space-y-[34px]">
-                <div className="relative overflow-hidden rounded-2xl h-[384px] lg:h-[550px]">
-                  <LazyVideo
-                    src="/USERS.mp4"
-                    className="w-full h-full"
-                  />
-                </div>
-                
-                <div className="space-y-8">
-                  <h3 className="text-3xl font-tt-norms font-bold text-black break-words">
-                    {t('jobs.projects.project4.title')}
-                  </h3>
-                  <p className="text-xl font-tt-norms font-normal text-black leading-[1.54] break-words">
-                    {t('jobs.projects.project4.description')}
-                  </p>
-                  <div className="flex flex-wrap gap-2 items-center">
-                    {t('jobs.projects.project4.technologies', { returnObjects: true }).slice(0, -2).map((tech, i) => (
-                      <span
-                        className="px-3 py-1 text-base lg:text-lg font-tt-norms font-normal inline-flex items-center gap-1 break-words"
-                        style={{backgroundColor: '#E4E4D9', color: 'var(--color-black)', borderRadius: '6px'}}
-                      >
-                        {tech}
-                        <span
-                          className="text-black text-base lg:text-lg arrow-indicator"
-                          data-arrow="horizontal"
-                        >
-                          →
-                        </span>
-                      </span>
-                    ))}
-                    <span
-                      className="px-3 py-1 text-base lg:text-lg font-tt-norms font-normal inline-flex items-center gap-1 break-words"
-                      style={{backgroundColor: '#E4E4D9', color: 'var(--color-black)', borderRadius: '6px'}}
-                    >
-                      {t('jobs.projects.project4.technologies', { returnObjects: true })[t('jobs.projects.project4.technologies', { returnObjects: true }).length - 2]}
-                      <span
-                        className="text-black text-base lg:text-lg arrow-indicator"
-                        data-arrow="horizontal"
-                      >
-                        →
-                      </span>
-                    </span>
-                    <div className="flex items-center gap-1 whitespace-nowrap">
-                      <span
-                        className="px-3 py-1 text-base lg:text-lg font-tt-norms font-bold inline-flex items-center gap-1 break-words"
-                        style={{backgroundColor: 'var(--shadow-color)', color: 'white', borderRadius: '6px'}}
-                      >
-                        R
-                        <span
-                          className="text-white text-base lg:text-lg arrow-indicator"
-                          data-arrow="horizontal"
-                        >
-                          →
-                        </span>
-                      </span>
-                      <span
-                        className="px-3 py-1 text-base lg:text-lg font-tt-norms font-bold break-words"
-                        style={{backgroundColor: 'var(--color-black)', color: 'white', borderRadius: '6px'}}
-                      >
-                        {t('jobs.projects.project4.technologies', { returnObjects: true })[t('jobs.projects.project4.technologies', { returnObjects: true }).length - 1]}
-                      </span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-
           </div>
           {/* Row 4: Hearthfield Game (9 cols) */}
           <div className="grid grid-cols-12 gap-4 lg:gap-16 items-stretch">
             <div className="col-span-10 lg:col-span-1 mb-16 lg:mb-0"></div>
             <div className="col-span-12 lg:col-span-10 mb-16 lg:mb-0">
               <div className="space-y-8 lg:space-y-[34px]">
-                <div className="relative w-full aspect-video overflow-hidden rounded-2xl">
+                <div className="relative w-full aspect-video overflow-hidden rounded-[40px]">
                   <iframe
                     src="/hearthfield-game/index.html"
                     title={t('jobs.projects.project6.title')}
                     className="absolute top-0 left-0 w-full h-full rounded-xl"
-                    style={{ border: 0, transform: 'translateY(-20px)' }}
+                    style={{ border: 0, transform: 'translateY(0)' }}
                     allowFullScreen=""
                     loading="lazy"
                   ></iframe>
                 </div>
                 
-                <div className="space-y-8">
-                  <h3 className="text-3xl font-tt-norms font-bold text-black break-words">
+                <div className="pt-2 space-y-8">
+                  <h3 className="text-4xl font-tt-norms font-bold text-black break-words">
                     {t('jobs.projects.project6.title')}
                   </h3>
-                  <p className="text-xl font-tt-norms font-normal text-black leading-[1.54] break-words">
+                  <p className="text-2xl font-tt-norms font-normal text-black leading-[1.54] break-words">
                     {t('jobs.projects.project6.description')}
                   </p>
                   <div className="flex flex-wrap gap-2 items-center">
@@ -485,7 +472,7 @@ const Jobs = () => {
                       if (techLength < 3) {
                         return technologies.map((tech, i) => (
                           <span
-                            className="px-3 py-1 text-base lg:text-lg font-tt-norms font-normal inline-flex items-center gap-1"
+                            className="px-3 py-1 text-base lg:text-xl font-tt-norms font-normal inline-flex items-center gap-1"
                             style={{backgroundColor: '#E4E4D9', color: 'var(--color-black)', borderRadius: '6px'}}
                           >
                             {tech}
@@ -498,7 +485,7 @@ const Jobs = () => {
                         <>
                           {technologies.slice(0, -2).map((tech, i) => (
                             <span
-                              className="px-3 py-1 text-base lg:text-lg font-tt-norms font-normal inline-flex items-center gap-1 break-words"
+                              className="px-3 py-1 text-base lg:text-xl font-tt-norms font-normal inline-flex items-center gap-1 break-words"
                               style={{backgroundColor: '#E4E4D9', color: 'var(--color-black)', borderRadius: '6px'}}
                             >
                               {tech}
@@ -506,7 +493,7 @@ const Jobs = () => {
                             </span>
                           ))}
                           <span
-                            className="px-3 py-1 text-base lg:text-lg font-tt-norms font-normal inline-flex items-center gap-1 break-words"
+                            className="px-3 py-1 text-base lg:text-xl font-tt-norms font-normal inline-flex items-center gap-1 break-words"
                             style={{backgroundColor: '#E4E4D9', color: 'var(--color-black)', borderRadius: '6px'}}
                           >
                             {technologies[techLength - 2]}
@@ -514,7 +501,7 @@ const Jobs = () => {
                           </span>
                           <div className="flex items-center gap-1 whitespace-nowrap">
                             <span
-                              className="px-3 py-1 text-base lg:text-lg font-tt-norms font-bold inline-flex items-center gap-1 break-words"
+                              className="px-3 py-1 text-base lg:text-xl font-tt-norms font-bold inline-flex items-center gap-1 break-words"
                               style={{backgroundColor: 'var(--shadow-color)', color: 'white', borderRadius: '6px'}}
                             >
                               R
@@ -525,7 +512,7 @@ const Jobs = () => {
                                 →
                               </span>
                             </span>
-                            <span className="px-3 py-1 text-base lg:text-lg font-tt-norms font-bold break-words" style={{backgroundColor: 'var(--color-black)', color: 'white', borderRadius: '6px'}}>
+                            <span className="px-3 py-1 text-base lg:text-xl font-tt-norms font-bold break-words" style={{backgroundColor: 'var(--color-black)', color: 'white', borderRadius: '6px'}}>
                               {technologies[techLength - 1]}
                             </span>
                           </div>
@@ -540,9 +527,9 @@ const Jobs = () => {
           {/* ALL row */}
           <div className="grid grid-cols-12 gap-4 lg:gap-16">
             <div className="col-span-1"></div>
-            <div className="col-span-10">
+            <div className="col-span-12 lg:col-span-10">
               <div className="space-y-8 lg:space-y-[34px]">
-                <div className="relative overflow-hidden rounded-2xl h-[550px]">
+                <div className="relative  overflow-hidden rounded-[40px] h-[650px]">
                   <LazyVideo
                     src="/LEGACY.mp4"
                     className="w-full h-full"
