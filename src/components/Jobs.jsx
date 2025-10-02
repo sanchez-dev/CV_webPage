@@ -59,7 +59,7 @@ const Jobs = () => {
                 <div className="relative overflow-hidden rounded-[40px] h-[554px] lg:h-[650px]">
                   <video
                     className="w-full h-full object-cover"
-                    preload="auto"
+                    preload="metadata"
                     autoPlay
                     loop
                     muted
@@ -134,7 +134,8 @@ const Jobs = () => {
                 <div className="relative overflow-hidden rounded-[40px] h-[554px] lg:h-[650px]">
                   <video
                     className="w-full h-full object-cover"
-                    preload="auto"
+                    preload="none"
+                    loading="lazy"
                     autoPlay
                     loop
                     muted
@@ -213,7 +214,8 @@ const Jobs = () => {
                 <div className="relative overflow-hidden rounded-[40px] h-[384px] lg:h-[650px]">
                   <video
                     className="w-full h-full object-cover"
-                    preload="auto"
+                    preload="none"
+                    loading="lazy"
                     autoPlay
                     loop
                     muted
@@ -291,7 +293,8 @@ const Jobs = () => {
                 <div className="relative overflow-hidden rounded-[40px] h-[384px] lg:h-[650px]">
                   <video
                     className="w-full h-full object-cover"
-                    preload="auto"
+                    preload="none"
+                    loading="lazy"
                     autoPlay
                     loop
                     muted
@@ -453,7 +456,8 @@ const Jobs = () => {
                 <div className="relative  overflow-hidden rounded-[40px] h-[650px]">
                   <video
                     className="w-full h-full object-cover"
-                    preload="auto"
+                    preload="none"
+                    loading="lazy"
                     autoPlay
                     loop
                     muted

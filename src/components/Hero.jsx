@@ -63,6 +63,7 @@ const Hero = () => {
         <img
           src={profileImage}
           alt="Jose Luis Sanchez"
+          fetchpriority="high"
           className={`w-[639px] h-[639px] lg:w-[799px] lg:h-[799px] max-w-[168%] lg:max-w-none object-contain will-change-transform transition-all duration-1000 ease-out ${
             imageLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
           }`}
