@@ -105,20 +105,17 @@ class Communications {
   }
   
   startState() {
-    console.log('start')
     this.state = 'start'
     this.UI = []
     // Removed startMessage - game starts automatically now
   }
   
   playingState() {
-    console.log('playing')
     this.state = 'playing'
     this.UI = []
   }
   
   onboardingState() {
-    console.log('onboarding')
     this.state = 'onboarding'
     this.UI = []
   }

@@ -1,5 +1,5 @@
 'use strict'
-console.log("Game script loaded and executing.");
+// Production clean build - no logs v2.0
 import Player from './classes/player.js'
 import Bullets from './classes/bullets.js'
 import Star from './classes/star.js'
@@ -15,7 +15,6 @@ import communications from './classes/communications.js'
 
 class HearthField {
   constructor (canvas, quantity, starMaxVelocity, starMaxSize) {
-    console.log("HearthField constructor started with canvas:", canvas);
     // Constrollers
     this.container = canvas
     this.gameRunning = false
@@ -69,7 +68,6 @@ class HearthField {
       this.cloudPatternImage.loaded = true
     }
     this.cloudPatternImage.onerror = () => {
-      console.warn('Failed to load cloud pattern image')
       this.cloudPatternImage.loaded = false
     }
     this.cloudPatternImage.loaded = false
@@ -89,34 +87,26 @@ class HearthField {
     })
 
     this.createAudioLibrary((audioLibrary) => {
-      console.log('Audio library created, initializing game components...')
       _this.extraImages()
       _this.audioLibrary = audioLibrary
 
       // Create enemy FIRST (player position depends on it)
-      console.log('Creating enemy...');
       _this.enemy = _this.createEnemy()
-      console.log('Enemy created:', !!_this.enemy);
 
       // Then create player using enemy position
-      console.log('Creating player...');
       _this.player = _this.createPlayer()
-      console.log('Player created:', !!_this.player);
 
       _this.communicationsEngine = communications.create(this.fieldWidth, this.fieldHeight, this.screenResize)
       _this.scoreEngine = new ScoreEngine(_this.enemy)
 
       _this.scoreEngine.buildSequence()
       this.score = 0
-      console.log('Initializing scene...');
       this.initScene()
-      console.log('Game initialization complete')
     })
 
   }
 
   imageCreator (route, size, columns = 1, rows = 1, x, y, settings = {}) {
-    console.log('Attempting to load image with route:', route); // Log for debugging
     let img = new Image()
     img.columns = columns
     img.rows = rows
@@ -126,11 +116,9 @@ class HearthField {
 
     // Add load event handler
     img.onload = () => {
-      console.log('Image loaded successfully:', route);
       img.loaded = true
     }
     img.onerror = () => {
-      console.error(`Failed to load image: ${route}`); // Enhanced error log
       img.loaded = false
     }
 
@@ -154,13 +142,10 @@ class HearthField {
   }
 
   extraImages () {
-    console.log('Loading extra images...');
     this.focusedSquare = this.imageCreator('./assets/images/focus_square.png')
-    console.log('Extra images setup complete');
   }
 
   createAudioLibrary (cb) {
-    console.log('Creating audio library...'); // Log for debugging
     let audioLibrary = {}
     audioLibrary.normal = new Sound('./assets/audio/normal#.wav', 0.3, 2)
     audioLibrary.heart = new Sound('./assets/audio/heart#.wav', 0.4, 2)
@@ -196,18 +181,15 @@ class HearthField {
   }
 
   createPlayer () {
-    console.log('Creating player with screenResize:', this.screenResize);
     let ship = new Image()
     let bullet1 = new Image()
     let bullet1_death = new Image()
 
     // Add load event handlers
     ship.onload = () => {
-      console.log('Player ship image loaded')
       ship.loaded = true
     }
     ship.onerror = () => {
-      console.error('Failed to load player ship image')
       ship.loaded = false
     }
 
@@ -245,7 +227,6 @@ class HearthField {
   }
 
   createEnemy () {
-    console.log('Creating enemy with screenResize:', this.screenResize);
     let enemyFace = new Image()
 
     // enemy
@@ -268,30 +249,30 @@ class HearthField {
     // enemyBullets
     // sock
     let bulletA = new Image()
-    bulletA.onload = () => console.log('Wet sock bullet loaded')
-    bulletA.onerror = () => console.error('Failed to load wet sock bullet')
+    bulletA.onload = () => {}
+    bulletA.onerror = () => {}
     bulletA.src = './assets/images/wet_sock.png'
     bulletA.columns = 10
     bulletA.rows = 1
 
     let bulletA_D = new Image()
-    bulletA_D.onload = () => console.log('Wet sock death loaded')
-    bulletA_D.onerror = () => console.error('Failed to load wet sock death')
+    bulletA_D.onload = () => {}
+    bulletA_D.onerror = () => {}
     bulletA_D.src = './assets/images/wet_sock_death.png'
     bulletA_D.columns = 8
     bulletA_D.rows = 1
 
     // heart
     let bullet1 = new Image()
-    bullet1.onload = () => console.log('Heart bullet loaded')
-    bullet1.onerror = () => console.error('Failed to load heart bullet')
+    bullet1.onload = () => {}
+    bullet1.onerror = () => {}
     bullet1.src = './assets/images/heartB.png'
     bullet1.columns = 10
     bullet1.rows = 1
 
     let bullet1_D = new Image()
-    bullet1_D.onload = () => console.log('Heart death loaded')
-    bullet1_D.onerror = () => console.error('Failed to load heart death')
+    bullet1_D.onload = () => {}
+    bullet1_D.onerror = () => {}
     bullet1_D.src = './assets/images/heartB_death.png'
     bullet1_D.columns = 16
     bullet1_D.rows = 1
@@ -352,14 +333,13 @@ class HearthField {
   }
 
   initScene () {
-    console.log('initScene: Setting up stars and scene elements...');
     // Raining
     let star1 = new Image()
     let star2 = new Image()
     star1.src = './assets/images/snowflake.png'
-    star1.onerror = () => { console.error("Snowflake image failed to load from:", star1.src); };
+    star1.onerror = () => {};
     star2.src = './assets/images/snowflake.png'
-    star2.onerror = () => { console.error("Snowflake image failed to load from:", star2.src); };
+    star2.onerror = () => {};
 
     for (let i = 0; i < this.quantity; i++ ) {
       this.stars.push(new Star(this.starMinSize, this.starMaxSize, this.fieldWidth, this.fieldHeight, this.depth, star1))
@@ -745,7 +725,6 @@ class HearthField {
     if (!this.updateLogCount) this.updateLogCount = 0;
     this.updateLogCount++;
     if (this.updateLogCount % 60 === 0) {
-      console.log('Update loop running, timer:', this.timer, 'gameRunning:', this.gameRunning);
     }
 
     this.drawScene()
@@ -766,11 +745,6 @@ class HearthField {
       // if (window.mouseX !== undefined && window.mouseY !== undefined && this.focusedSquare && this.focusedSquare.img.loaded) {
       //   this.spriteAnimate(this.focusedSquare, window.mouseX, window.mouseY, 32);
       // }
-    } else if (this.gameRunning) {
-      console.log('Game running but missing components:', {
-        player: !!this.player,
-        enemy: !!this.enemy
-      })
     }
 
     for (let i = 0; i < this.stars.length; i++) {
@@ -787,13 +761,10 @@ class HearthField {
   }
 
   startGame() {
-    console.log('Starting game!');
     this.gameRunning = true
-    console.log('Game started, gameRunning:', this.gameRunning);
     if (this.communicationsEngine) {
       this.communicationsEngine.setState('playing')
     }
-    console.log('Game running:', this.gameRunning)
   }
 
   switchAnimate () {
@@ -819,9 +790,7 @@ function animate () {
 }
 
 function create (canvas, cb) {
-  console.log("create() called with canvas", canvas);
   hf = new HearthField(canvas)
-  console.log('HearthField instance created in create()');
   cb(hf)
 }
 

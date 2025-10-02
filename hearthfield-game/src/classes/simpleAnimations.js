@@ -23,7 +23,6 @@ class Animation {
     try {
       this[`init_${animationSettings.type}`](object)
     } catch (e) {
-      console.log(e)
     }
 
   }
@@ -133,7 +132,6 @@ class Animation {
     try {
       this[this.type](lapse)
     } catch (e) {
-      console.log(e)
     }
 
   }
